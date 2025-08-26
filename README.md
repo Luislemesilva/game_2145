@@ -2,8 +2,6 @@
 
 
 
-
-
 ## 🛠️ Construído com
 
 O projeto foi construido a partir da tecnologia GDScript.
