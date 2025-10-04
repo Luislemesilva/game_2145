@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="JOGO_2025"
-run/main_scene="uid://2lx5up5mtogr"
+run/main_scene="uid://w80u5ox1ktxp"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 
 [display]

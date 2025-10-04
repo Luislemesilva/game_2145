@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j2uilqs8cgpj"
-path="res://.godot/imported/Shooting_while_crouching (48 x 32).png-7fec1818694966da2a61556764dc312d.ctex"
+uid="uid://bmhciuk4u0vqn"
+path="res://.godot/imported/Shooting_while_standing (48 x 48).png-2f3fb30b84a4aa6ac86a1164b3498fec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Shooting_while_crouching (48 x 32).png"
-dest_files=["res://.godot/imported/Shooting_while_crouching (48 x 32).png-7fec1818694966da2a61556764dc312d.ctex"]
+source_file="res://Sprites/Hex/Shooting_while_standing (48 x 48).png"
+dest_files=["res://.godot/imported/Shooting_while_standing (48 x 48).png-2f3fb30b84a4aa6ac86a1164b3498fec.ctex"]
 
 [params]
 

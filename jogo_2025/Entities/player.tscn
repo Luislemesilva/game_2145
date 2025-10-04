@@ -1,13 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://beqo7bs0c80bn"]
+[gd_scene load_steps=18 format=3 uid="uid://bnxhjb84inu5w"]
 
-[ext_resource type="Script" uid="uid://co5s15wgtlgg0" path="res://Scripts/player.gd" id="1_tcnsb"]
-[ext_resource type="Texture2D" uid="uid://b63u2bd4dfdnl" path="res://Sprites/Diego/Idle (32 x 48).png" id="2_gb1tc"]
-[ext_resource type="Texture2D" uid="uid://bspkba8jde1sx" path="res://Sprites/Diego/Jump (32 x 48).png" id="3_taegk"]
-[ext_resource type="Texture2D" uid="uid://cxcnxmntb3a2s" path="res://Sprites/Diego/Running (32 x 48).png" id="3_xd3k7"]
+[ext_resource type="Script" uid="uid://71bg7vjt1n4l" path="res://Scripts/player.gd" id="1_tcnsb"]
+[ext_resource type="Texture2D" uid="uid://blijqcmi118xc" path="res://Sprites/Hex/Idle (32 x 48).png" id="2_gb1tc"]
+[ext_resource type="Texture2D" uid="uid://cm1ilqyw3peuv" path="res://Sprites/Hex/Jump (32 x 48).png" id="3_taegk"]
+[ext_resource type="Texture2D" uid="uid://cnsjjjxgef2v4" path="res://Sprites/Hex/Running (32 x 48).png" id="3_xd3k7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gb1tc"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ypkcv"]
 radius = 9.0
-height = 40.0
+height = 34.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xd3k7"]
 atlas = ExtResource("2_gb1tc")
@@ -69,15 +69,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_prmdv")
 }],
 "loop": true,
-"name": &"Idle",
-"speed": 5.0
+"name": &"idle",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_klb6e")
 }],
-"loop": false,
-"name": &"Jump",
+"loop": true,
+"name": &"jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -100,7 +100,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_k47j4")
 }],
 "loop": true,
-"name": &"Running",
+"name": &"walk",
 "speed": 10.0
 }]
 
@@ -108,17 +108,10 @@ animations = [{
 script = ExtResource("1_tcnsb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-1, 4)
-shape = SubResource("CapsuleShape2D_gb1tc")
+shape = SubResource("CapsuleShape2D_ypkcv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, 0)
+position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_s1j76")
-animation = &"Jump"
-autoplay = "Idle"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_bottom = 200
-position_smoothing_enabled = true
+animation = &"jump"
+autoplay = "idle"

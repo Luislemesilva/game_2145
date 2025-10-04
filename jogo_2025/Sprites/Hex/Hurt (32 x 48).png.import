@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dimuiosvun13o"
-path="res://.godot/imported/Shooting_while_running (48 x 48).png-c3c3c96c1a7b5758cd034dbfca1daed4.ctex"
+uid="uid://bvd6uunf3qlhc"
+path="res://.godot/imported/Hurt (32 x 48).png-7cb59cc8afa9e6953cc862d0e94cbd48.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Shooting_while_running (48 x 48).png"
-dest_files=["res://.godot/imported/Shooting_while_running (48 x 48).png-c3c3c96c1a7b5758cd034dbfca1daed4.ctex"]
+source_file="res://Sprites/Hex/Hurt (32 x 48).png"
+dest_files=["res://.godot/imported/Hurt (32 x 48).png-7cb59cc8afa9e6953cc862d0e94cbd48.ctex"]
 
 [params]
 

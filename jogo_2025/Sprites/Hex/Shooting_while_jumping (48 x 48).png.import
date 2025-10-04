@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckhpvfwgqi2pe"
-path="res://.godot/imported/Crouching (32 x 32).png-dd1178e434df44108b608df78c17605a.ctex"
+uid="uid://ci01qflohf3r4"
+path="res://.godot/imported/Shooting_while_jumping (48 x 48).png-50c520721656414ee44a42267384e70b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Crouching (32 x 32).png"
-dest_files=["res://.godot/imported/Crouching (32 x 32).png-dd1178e434df44108b608df78c17605a.ctex"]
+source_file="res://Sprites/Hex/Shooting_while_jumping (48 x 48).png"
+dest_files=["res://.godot/imported/Shooting_while_jumping (48 x 48).png-50c520721656414ee44a42267384e70b.ctex"]
 
 [params]
 

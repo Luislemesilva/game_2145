@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://la2jqkxplrnw"
-path="res://.godot/imported/Shooting_while_jumping (48 x 48).png-961c73e134dabd704a83bb7f6e7b971a.ctex"
+uid="uid://2cjmflwa8ik0"
+path="res://.godot/imported/Shooting_while_running (48 x 48).png-aaf46e20ea709f38d57058278462fe0e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Shooting_while_jumping (48 x 48).png"
-dest_files=["res://.godot/imported/Shooting_while_jumping (48 x 48).png-961c73e134dabd704a83bb7f6e7b971a.ctex"]
+source_file="res://Sprites/Hex/Shooting_while_running (48 x 48).png"
+dest_files=["res://.godot/imported/Shooting_while_running (48 x 48).png-aaf46e20ea709f38d57058278462fe0e.ctex"]
 
 [params]
 

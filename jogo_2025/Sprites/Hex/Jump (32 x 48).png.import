@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccbe70vo5aq7g"
-path="res://.godot/imported/Blink (32 x 48).png-22870cb138a199c37c7cbd8d79e5660e.ctex"
+uid="uid://cm1ilqyw3peuv"
+path="res://.godot/imported/Jump (32 x 48).png-ff2d7bfa9e7ad31bff46e468474e533a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Blink (32 x 48).png"
-dest_files=["res://.godot/imported/Blink (32 x 48).png-22870cb138a199c37c7cbd8d79e5660e.ctex"]
+source_file="res://Sprites/Hex/Jump (32 x 48).png"
+dest_files=["res://.godot/imported/Jump (32 x 48).png-ff2d7bfa9e7ad31bff46e468474e533a.ctex"]
 
 [params]
 

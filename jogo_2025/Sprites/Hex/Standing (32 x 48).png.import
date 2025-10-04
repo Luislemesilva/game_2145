@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bspkba8jde1sx"
-path="res://.godot/imported/Jump (32 x 48).png-09a2defb36461cc0501c3419fcbb7ca7.ctex"
+uid="uid://djt5pj2bg4igg"
+path="res://.godot/imported/Standing (32 x 48).png-39136f843baae54245bb8d0835c40587.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Jump (32 x 48).png"
-dest_files=["res://.godot/imported/Jump (32 x 48).png-09a2defb36461cc0501c3419fcbb7ca7.ctex"]
+source_file="res://Sprites/Hex/Standing (32 x 48).png"
+dest_files=["res://.godot/imported/Standing (32 x 48).png-39136f843baae54245bb8d0835c40587.ctex"]
 
 [params]
 

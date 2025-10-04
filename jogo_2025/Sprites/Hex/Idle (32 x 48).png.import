@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r1mpye6agsc"
-path="res://.godot/imported/Reloading_while_standing (32 x 48).png-396779d216607c3b956395aa6443d641.ctex"
+uid="uid://blijqcmi118xc"
+path="res://.godot/imported/Idle (32 x 48).png-2e1ccb81e68594e6870cb0cbeabd943f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Reloading_while_standing (32 x 48).png"
-dest_files=["res://.godot/imported/Reloading_while_standing (32 x 48).png-396779d216607c3b956395aa6443d641.ctex"]
+source_file="res://Sprites/Hex/Idle (32 x 48).png"
+dest_files=["res://.godot/imported/Idle (32 x 48).png-2e1ccb81e68594e6870cb0cbeabd943f.ctex"]
 
 [params]
 

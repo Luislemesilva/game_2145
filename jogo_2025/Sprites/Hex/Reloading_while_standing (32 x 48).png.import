@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhra2daa0ha1w"
-path="res://.godot/imported/Shooting_while_standing (48 x 48).png-e24973f8a071fc89eb4c73fa3f67d104.ctex"
+uid="uid://ccl6r135sksgx"
+path="res://.godot/imported/Reloading_while_standing (32 x 48).png-4929ad5058dd43802c4e9710288cf622.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Diego/Shooting_while_standing (48 x 48).png"
-dest_files=["res://.godot/imported/Shooting_while_standing (48 x 48).png-e24973f8a071fc89eb4c73fa3f67d104.ctex"]
+source_file="res://Sprites/Hex/Reloading_while_standing (32 x 48).png"
+dest_files=["res://.godot/imported/Reloading_while_standing (32 x 48).png-4929ad5058dd43802c4e9710288cf622.ctex"]
 
 [params]
 
