@@ -186,7 +186,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_eyssl")
 }],
-"loop": false,
+"loop": true,
 "name": &"crouch",
 "speed": 5.0
 }, {
@@ -211,7 +211,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_klb6e")
 }],
-"loop": false,
+"loop": true,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -237,7 +237,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nmb0b")
 }],
-"loop": false,
+"loop": true,
 "name": &"reload_crouch",
 "speed": 5.0
 }, {
@@ -263,7 +263,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_738w2")
 }],
-"loop": false,
+"loop": true,
 "name": &"reload_idle",
 "speed": 5.0
 }, {
@@ -277,7 +277,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_nbmgb")
 }],
-"loop": false,
+"loop": true,
 "name": &"shoot_crouch",
 "speed": 5.0
 }, {
@@ -291,7 +291,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uck12")
 }],
-"loop": false,
+"loop": true,
 "name": &"shoot_idle",
 "speed": 5.0
 }, {
@@ -305,7 +305,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vknsg")
 }],
-"loop": false,
+"loop": true,
 "name": &"shoot_jump",
 "speed": 5.0
 }, {
@@ -328,7 +328,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x5h13")
 }],
-"loop": false,
+"loop": true,
 "name": &"shoot_walk",
 "speed": 5.0
 }, {
@@ -351,7 +351,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k47j4")
 }],
-"loop": false,
+"loop": true,
 "name": &"walk",
 "speed": 10.0
 }]
@@ -366,5 +366,5 @@ shape = SubResource("CapsuleShape2D_ypkcv")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_s1j76")
-animation = &"walk"
+animation = &"jump"
 autoplay = "idle"
