@@ -1,4 +1,6 @@
 extends CharacterBody2D
+# DECLARE a bullet_scene aqui (linha 2)
+@export var bullet_scene: PackedScene
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -11,6 +13,11 @@ var is_reloading = false
 var can_shoot = true
 var is_shooting = false
 var direction = 0.0
+var shoot_direction = Vector2.RIGHT
+
+func _ready():
+	if bullet_scene == null:
+		print("ℹ️  Atribua a Bullet Scene no Inspector")
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -39,6 +46,8 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	update_aim_direction()
+	
 	if Input.is_action_just_pressed("shoot") and can_shoot and not is_reloading:
 		shoot()
 	
@@ -48,21 +57,37 @@ func _physics_process(delta: float) -> void:
 	if not is_shooting and not is_reloading:
 		update_animation()
 
+func update_aim_direction():
+	var aim_x = Input.get_axis("aim_left", "aim_right")
+	var aim_y = Input.get_axis("aim_up", "aim_down")
+	
+	if aim_x != 0 or aim_y != 0:
+		shoot_direction = Vector2(aim_x, aim_y).normalized()
+	elif direction != 0:
+		shoot_direction = Vector2(direction, 0)
+	
+	if shoot_direction.x != 0:
+		anim.flip_h = shoot_direction.x < 0
+
 func update_animation() -> void:
 	if not is_on_floor():
 		anim.play("jump")
 	elif is_crouching:
 		anim.play("crouch")
 	elif direction != 0:
-		anim.flip_h = direction < 0
 		anim.play("walk")
 	else:
 		anim.play("idle")
 
 func shoot() -> void:
+	# Agora bullet_scene está declarada e acessível
+	if bullet_scene == null:
+		print("❌ ERRO: Bullet Scene não atribuída!")
+		return
+	
 	can_shoot = false
 	is_shooting = true
-	
+
 	var anim_name = "shoot_idle"
 	if not is_on_floor():
 		anim_name = "shoot_jump"
@@ -70,10 +95,27 @@ func shoot() -> void:
 		anim_name = "shoot_crouch"
 	elif direction != 0:
 		anim_name = "shoot_walk"
-	
+
 	anim.play(anim_name)
-	await get_tree().create_timer(0.5).timeout
+
+	var bullet = bullet_scene.instantiate()
 	
+	if bullet:
+		var offset = Vector2(20, 0)
+		if anim.flip_h:
+			offset.x = -20
+		
+		bullet.global_position = global_position + offset
+		
+		if bullet.has_method("set_direction"):
+			bullet.set_direction(shoot_direction)
+		else:
+			bullet.direction = shoot_direction
+
+		print("🎯 Atirando na direção:", shoot_direction)
+		get_parent().add_child(bullet)
+
+	await get_tree().create_timer(0.5).timeout
 	can_shoot = true
 	is_shooting = false
 

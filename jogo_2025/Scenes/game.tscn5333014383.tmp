@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://w80u5ox1ktxp"]
+[gd_scene load_steps=4 format=3 uid="uid://w80u5ox1ktxp"]
 
 [ext_resource type="PackedScene" uid="uid://bnxhjb84inu5w" path="res://Entities/player.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://cnji78y81cmeb" path="res://Scenes/Bullet.tscn" id="2_qxrlw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmjs"]
 size = Vector2(135, 20)
@@ -26,4 +25,3 @@ debug_color = Color(0.251671, 0.620966, 0.389651, 0.42)
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(39, 140)
-bullet_scene = ExtResource("2_qxrlw")
