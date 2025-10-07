@@ -1,6 +1,7 @@
 extends CharacterBody2D
-# DECLARE a bullet_scene aqui (linha 2)
+
 @export var bullet_scene: PackedScene
+@export var use_mouse_aim := true 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -23,19 +24,19 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
-	direction = Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("Left", "Right")
 	
 	if is_reloading and (direction != 0 or Input.is_action_just_pressed("ui_accept")):
 		is_reloading = false
 		can_shoot = true
 		anim.stop()
 	
-	if Input.is_action_pressed("ui_down") and is_on_floor() and not is_reloading:
+	if Input.is_action_pressed("Crouch") and is_on_floor() and not is_reloading:
 		is_crouching = true
 	else:
 		is_crouching = false
 	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_crouching and not is_reloading:
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and not is_crouching and not is_reloading:
 		velocity.y = JUMP_VELOCITY
 	
 	if not is_reloading:
@@ -48,26 +49,33 @@ func _physics_process(delta: float) -> void:
 	
 	update_aim_direction()
 	
-	if Input.is_action_just_pressed("shoot") and can_shoot and not is_reloading:
+	if Input.is_action_just_pressed("Shoot") and can_shoot and not is_reloading:
 		shoot()
 	
-	if Input.is_action_just_pressed("reload") and not is_reloading and not is_shooting:
+	if Input.is_action_just_pressed("Reload") and not is_reloading and not is_shooting:
 		reload()
 	
 	if not is_shooting and not is_reloading:
 		update_animation()
 
+
 func update_aim_direction():
-	var aim_x = Input.get_axis("aim_left", "aim_right")
-	var aim_y = Input.get_axis("aim_up", "aim_down")
-	
-	if aim_x != 0 or aim_y != 0:
-		shoot_direction = Vector2(aim_x, aim_y).normalized()
-	elif direction != 0:
-		shoot_direction = Vector2(direction, 0)
-	
-	if shoot_direction.x != 0:
-		anim.flip_h = shoot_direction.x < 0
+	if use_mouse_aim:
+		var mouse_pos = get_global_mouse_position()
+		shoot_direction = (mouse_pos - global_position).normalized()
+		anim.flip_h = mouse_pos.x < global_position.x
+	else:
+		var aim_x = Input.get_axis("aim_left", "aim_right")
+		var aim_y = Input.get_axis("aim_up", "aim_down")
+		
+		if aim_x != 0 or aim_y != 0:
+			shoot_direction = Vector2(aim_x, aim_y).normalized()
+		elif direction != 0:
+			shoot_direction = Vector2(direction, 0)
+		
+		if shoot_direction.x != 0:
+			anim.flip_h = shoot_direction.x < 0
+
 
 func update_animation() -> void:
 	if not is_on_floor():
@@ -79,8 +87,8 @@ func update_animation() -> void:
 	else:
 		anim.play("idle")
 
+
 func shoot() -> void:
-	# Agora bullet_scene está declarada e acessível
 	if bullet_scene == null:
 		print("❌ ERRO: Bullet Scene não atribuída!")
 		return
@@ -99,14 +107,13 @@ func shoot() -> void:
 	anim.play(anim_name)
 
 	var bullet = bullet_scene.instantiate()
-	
 	if bullet:
 		var offset = Vector2(20, 0)
 		if anim.flip_h:
 			offset.x = -20
 		
 		bullet.global_position = global_position + offset
-		
+
 		if bullet.has_method("set_direction"):
 			bullet.set_direction(shoot_direction)
 		else:
@@ -118,6 +125,7 @@ func shoot() -> void:
 	await get_tree().create_timer(0.5).timeout
 	can_shoot = true
 	is_shooting = false
+
 
 func reload() -> void:
 	is_reloading = true

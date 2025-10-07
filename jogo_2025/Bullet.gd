@@ -1,22 +1,13 @@
-extends CharacterBody2D
-# REMOVA o preload e deixe apenas isso:
-@export var bullet_scene: PackedScene
+extends Area2D
 
-@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@export var speed: float = 600.0
+var direction: Vector2 = Vector2.ZERO
 
-const SPEED = 100.0
-const JUMP_VELOCITY = -300.0
-const GRAVITY = 980.0
+func set_direction(dir: Vector2):
+	direction = dir.normalized()
 
-var is_crouching = false
-var is_reloading = false
-var can_shoot = true
-var is_shooting = false
-var direction = 0.0
-var shoot_direction = Vector2.RIGHT
+func _process(delta):
+	position += direction * speed * delta
 
-func _ready():
-	if bullet_scene == null:
-		print("ℹ️  Atribua a Bullet Scene no Inspector")
-
-# O resto do seu código continua igual...
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
