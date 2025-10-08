@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djt5pj2bg4igg"
-path="res://.godot/imported/Standing (32 x 48).png-39136f843baae54245bb8d0835c40587.ctex"
+uid="uid://gbd4yxbceaqa"
+path="res://.godot/imported/healthbarProgress.png-7a25c21ee7950506aa2d90c65588e304.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Standing (32 x 48).png"
-dest_files=["res://.godot/imported/Standing (32 x 48).png-39136f843baae54245bb8d0835c40587.ctex"]
+source_file="res://Sprites/healthbarProgress.png"
+dest_files=["res://.godot/imported/healthbarProgress.png-7a25c21ee7950506aa2d90c65588e304.ctex"]
 
 [params]
 

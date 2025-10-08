@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://w80u5ox1ktxp"]
+[gd_scene load_steps=12 format=3 uid="uid://w80u5ox1ktxp"]
 
 [ext_resource type="PackedScene" uid="uid://bnxhjb84inu5w" path="res://Entities/player.tscn" id="1_ebmjs"]
-[ext_resource type="Script" uid="uid://dyh56has3ol3d" path="res://Scenes/hud.gd" id="3_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://vsgie4lhcam7" path="res://Sprites/healthbarUnder.png" id="3_3dryh"]
+[ext_resource type="Script" uid="uid://dyh56has3ol3d" path="res://Scripts/hud.gd" id="3_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://gbd4yxbceaqa" path="res://Sprites/healthbarProgress.png" id="4_wowpa"]
+[ext_resource type="Texture2D" uid="uid://0vkneyuyp00i" path="res://Sprites/download (2).png" id="5_wowpa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmjs"]
 size = Vector2(135, 20)
@@ -11,6 +14,15 @@ size = Vector2(135, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wrm1d"]
 size = Vector2(135, 20)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i6g32"]
+texture = ExtResource("3_3dryh")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1l0tm"]
+texture = ExtResource("4_wowpa")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v158k"]
+texture = ExtResource("5_wowpa")
 
 [node name="Game" type="Node2D"]
 
@@ -62,18 +74,25 @@ script = ExtResource("3_wrm1d")
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 70.0
-offset_bottom = 25.0
+offset_left = 30.0
+offset_top = 13.0
+offset_right = 148.0
+offset_bottom = 28.0
+theme_override_styles/background = SubResource("StyleBoxTexture_i6g32")
+theme_override_styles/fill = SubResource("StyleBoxTexture_1l0tm")
+step = 1.0
+value = 100.0
+fill_mode = 1
+show_percentage = false
 
 [node name="HealthLabel" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 80.0
-offset_top = 10.0
-offset_right = 120.0
-offset_bottom = 25.0
+offset_left = 152.0
+offset_top = 8.0
+offset_right = 194.0
+offset_bottom = 31.0
+text = "100%"
 
 [node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -88,3 +107,11 @@ offset_right = 590.0
 offset_bottom = 315.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="PlayerFace" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 28.0
+offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_v158k")

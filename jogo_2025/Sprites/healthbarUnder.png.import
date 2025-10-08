@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djt5pj2bg4igg"
-path="res://.godot/imported/Standing (32 x 48).png-39136f843baae54245bb8d0835c40587.ctex"
+uid="uid://vsgie4lhcam7"
+path="res://.godot/imported/healthbarUnder.png-30744663864310746be49d8b3e5b0433.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Standing (32 x 48).png"
-dest_files=["res://.godot/imported/Standing (32 x 48).png-39136f843baae54245bb8d0835c40587.ctex"]
+source_file="res://Sprites/healthbarUnder.png"
+dest_files=["res://.godot/imported/healthbarUnder.png-30744663864310746be49d8b3e5b0433.ctex"]
 
 [params]
 
