@@ -370,3 +370,7 @@ position = Vector2(3, -6)
 sprite_frames = SubResource("SpriteFrames_s1j76")
 animation = &"walk"
 autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_bottom = 360
