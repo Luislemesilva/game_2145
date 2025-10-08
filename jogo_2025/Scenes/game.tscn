@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://w80u5ox1ktxp"]
 
 [ext_resource type="PackedScene" uid="uid://bnxhjb84inu5w" path="res://Entities/player.tscn" id="1_ebmjs"]
-[ext_resource type="PackedScene" uid="uid://cnji78y81cmeb" path="res://Scenes/Bullet.tscn" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://dyh56has3ol3d" path="res://Scenes/hud.gd" id="3_wrm1d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebmjs"]
 size = Vector2(135, 20)
@@ -26,4 +26,42 @@ debug_color = Color(0.251671, 0.620966, 0.389651, 0.42)
 
 [node name="Player" parent="." instance=ExtResource("1_ebmjs")]
 position = Vector2(39, 140)
-bullet_scene = ExtResource("2_qxrlw")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_wrm1d")
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 70.0
+offset_bottom = 25.0
+
+[node name="HealthLabel" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 80.0
+offset_top = 10.0
+offset_right = 120.0
+offset_bottom = 25.0
+
+[node name="AmmoLabel" type="Label" parent="CanvasLayer/HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 150.0
+offset_top = 175.0
+offset_right = 250.0
+offset_bottom = 155.0
+grow_horizontal = 0
+grow_vertical = 0
