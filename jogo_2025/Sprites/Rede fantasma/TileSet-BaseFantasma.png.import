@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vsgie4lhcam7"
-path="res://.godot/imported/healthbarUnder.png-30744663864310746be49d8b3e5b0433.ctex"
+uid="uid://t55y1jm3rsyk"
+path="res://.godot/imported/TileSet-BaseFantasma.png-214f5d943ba7a3bc8642eb91806001a4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/healthbarUnder.png"
-dest_files=["res://.godot/imported/healthbarUnder.png-30744663864310746be49d8b3e5b0433.ctex"]
+source_file="res://Sprites/Rede fantasma/TileSet-BaseFantasma.png"
+dest_files=["res://.godot/imported/TileSet-BaseFantasma.png-214f5d943ba7a3bc8642eb91806001a4.ctex"]
 
 [params]
 

@@ -373,4 +373,4 @@ autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_left = 0
-limit_bottom = 360
+limit_bottom = 432
