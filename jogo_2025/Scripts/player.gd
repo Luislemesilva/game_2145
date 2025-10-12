@@ -22,6 +22,13 @@ var shoot_direction = Vector2.RIGHT
 
 @export var bullet_scene: PackedScene
 
+func _ready():
+	# ⚠️ ESSENCIAL PARA A HUD FUNCIONAR ⚠️
+	add_to_group("player")
+	print("🔥 Player inicializado!")
+	print("   Vida: ", current_health, "/", max_health)
+	print("   Munição: ", current_ammo, "/", max_ammo)
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
@@ -55,6 +62,39 @@ func _physics_process(delta: float) -> void:
 	if not is_shooting and not is_reloading:
 		update_animation()
 
+func _input(event):
+	# SISTEMA DE TESTE CORRIGIDO
+	# TESTE - Tecla Tab para DANO (afeta VIDA)
+	if event.is_action_pressed("ui_focus_next"):  # Tecla Tab
+		print("========================================")
+		print("🎮 TECLA TAB - APLICANDO DANO NA VIDA!")
+		print("========================================")
+		take_damage(15)
+	
+	# TESTE - Tecla F para ATIRAR (afeta MUNIÇÃO) - CORRIGIDO
+	if event.is_action_pressed("Shoot") and not Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):  # Tecla F
+		print("========================================")
+		print("🎮 TECLA F - GASTANDO MUNIÇÃO!")
+		print("========================================")
+		if current_ammo > 0:
+			current_ammo -= 1
+			print("🔫 Munição gasta! Agora: ", current_ammo, "/", max_ammo)
+		else:
+			print("💢 Sem munição!")
+	
+	# TESTE - Tecla Shift+Tab para CURAR (afeta VIDA)
+	if event.is_action_pressed("ui_focus_prev"):  # Tecla Shift+Tab
+		print("========================================")
+		print("🎮 SHIFT+TAB - CURANDO VIDA!")
+		print("========================================")
+		heal(20)
+	
+	# TESTE - Tecla Escape para STATUS
+	if event.is_action_pressed("ui_cancel"):  # Tecla Escape
+		print("📊 STATUS ATUAL:")
+		print("   Vida: ", current_health, "/", max_health)
+		print("   Munição: ", current_ammo, "/", max_ammo)
+
 func update_animation() -> void:
 	if not is_on_floor():
 		anim.play("jump")
@@ -79,7 +119,7 @@ func shoot() -> void:
 	
 	can_shoot = false
 	is_shooting = true
-	current_ammo -= 1
+	current_ammo -= 1  # Isso já está CORRETO - gasta munição
 	
 	if bullet_scene:
 		create_bullet()
@@ -131,15 +171,21 @@ func cancel_reload() -> void:
 	anim.stop()
 
 func take_damage(amount: int):
+	print("🎯 APLICANDO DANO NA VIDA: ", amount)
 	current_health -= amount
 	current_health = max(0, current_health)
+	print("💔 Vida agora: ", current_health, "/", max_health)
+	
 	if current_health <= 0:
 		die()
 
 func heal(amount: int):
+	print("🎯 APLICANDO CURA NA VIDA: ", amount)
 	current_health = min(current_health + amount, max_health)
+	print("❤️ Vida agora: ", current_health, "/", max_health)
 
 func die():
+	print("💀 Player morreu! Reiniciando cena...")
 	get_tree().reload_current_scene()
 
 func get_health() -> int:
