@@ -10,6 +10,7 @@ var max_health := 100
 var current_health := max_health
 var current_ammo = 10
 var max_ammo = 10
+var is_in_dialogue = false 
 
 var is_crouching = false
 var is_reloading = false
@@ -29,7 +30,18 @@ func _ready():
 	print("   Vida: ", current_health, "/", max_health)
 	print("   Munição: ", current_ammo, "/", max_ammo)
 
+func set_in_dialogue(value: bool):
+	is_in_dialogue = value
+
 func _physics_process(delta: float) -> void:
+	# ⬅️ SE estiver em diálogo, não processa movimento
+	if is_in_dialogue:
+		velocity.x = 0  # Para movimento horizontal
+		velocity.y = 0  # Para pulo/gravidade
+		move_and_slide()
+		return
+	
+	# ⬅️ Seu código normal de movimento continua aqui...
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
@@ -63,6 +75,10 @@ func _physics_process(delta: float) -> void:
 		update_animation()
 
 func _input(event):
+	# ⬅️ SE estiver em diálogo, ignora TODOS os inputs
+	if is_in_dialogue:
+		return
+	
 	# SISTEMA DE TESTE CORRIGIDO
 	# TESTE - Tecla Tab para DANO (afeta VIDA)
 	if event.is_action_pressed("ui_focus_next"):  # Tecla Tab
