@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bjnqpkrxh70q4"]
+[gd_scene load_steps=13 format=3 uid="uid://bjnqpkrxh70q4"]
 
 [ext_resource type="Script" uid="uid://b3bmggx78iivp" path="res://Scripts/enemy.gd" id="1_287tu"]
 [ext_resource type="Texture2D" uid="uid://dhdg1jatact7n" path="res://Sprites/Holly/Running (32 x 32).png" id="1_hghv2"]
 [ext_resource type="Texture2D" uid="uid://c055lhuu2l8ic" path="res://Sprites/Holly/Hurt (32 x 32).png" id="2_afpow"]
 [ext_resource type="Texture2D" uid="uid://csqkhltbo6t2i" path="res://Sprites/Holly/Standing (32 x 32).png" id="3_287tu"]
+[ext_resource type="PackedScene" uid="uid://bogocrwy5t2qa" path="res://Scenes/hitbox.tscn" id="5_0830c"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0830c"]
+size = Vector2(9.433291, 18.342793)
 
 [sub_resource type="Animation" id="Animation_1dp5w"]
 resource_name = "Hurt"
@@ -177,7 +179,10 @@ _data = {
 &"Walk": SubResource("Animation_0830c")
 }
 
-[node name="Enemy" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghaa6"]
+size = Vector2(16, 28)
+
+[node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_287tu")
@@ -187,10 +192,11 @@ texture = ExtResource("1_hghv2")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_1f0kj")
+position = Vector2(0.34541416, 2.700976)
+scale = Vector2(1.3572539, 1.4500545)
+shape = SubResource("RectangleShape2D_0830c")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="anim" type="AnimationPlayer" parent="." groups=["enemies"]]
 libraries = {
 &"": SubResource("AnimationLibrary_8uf12")
 }
@@ -201,3 +207,14 @@ speed_scale = 0.8
 position = Vector2(0, 2)
 target_position = Vector2(12, 0)
 collision_mask = 6
+
+[node name="Hitbox" parent="." instance=ExtResource("5_0830c")]
+collision_layer = 17
+collision_mask = 49
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ghaa6")
+debug_color = Color(0.9717234, 0.07745459, 0.38540453, 0.41960785)
+
+[connection signal="current_animation_changed" from="anim" to="." method="_on_anim_current_animation_changed"]

@@ -5,6 +5,7 @@ const GRAVITY = 980.0
 
 @onready var wall_detector := $wall_detector as RayCast2D
 @onready var texture := $texture as Sprite2D
+@onready var anim := $anim as AnimationPlayer 
 
 var direction := 1
 var player_in_range = false
@@ -18,7 +19,9 @@ var dialogues = [
 ]
 var current_dialogue_index = 0
 
+	
 func _ready():
+
 	print("🔧 NPC inicializando...")
 	setup_interaction_system()
 	print("✅ NPC pronto!")
@@ -50,6 +53,7 @@ func setup_interaction_system():
 		
 		var image = Image.create(32, 32, false, Image.FORMAT_RGBA8)
 		image.fill(Color.WHITE)
+		@warning_ignore("shadowed_variable")
 		var texture = ImageTexture.create_from_image(image)
 		cloud.texture = texture
 		
@@ -243,7 +247,7 @@ func create_press_space(parent: Control) -> Label:
 	label.name = "PressSpace"
 	label.position = Vector2(20, 80)
 	label.size = Vector2(560, 30)
-	label.text = "PRESSIONE ESPAÇO PARA CONTINUAR"  # ⬅️ Texto em caixa alta
+	label.text = "PRESSIONE ESPAÇO PARA CONTINUAR"  
 	label.add_theme_font_size_override("font_size", 18)
 	label.add_theme_color_override("font_color", Color.YELLOW)
 	label.add_theme_constant_override("outline_size", 2)
@@ -293,3 +297,11 @@ func end_dialogue():
 	
 	if get_tree().root.has_node("EmergencyDialogue"):
 		get_tree().root.get_node("EmergencyDialogue").queue_free()
+
+
+
+
+
+func _on_anim_current_animation_changed(anim_name: String) -> void:
+	if anim_name == "Hurt":
+			queue_free()

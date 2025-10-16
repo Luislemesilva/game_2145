@@ -24,7 +24,6 @@ var shoot_direction = Vector2.RIGHT
 @export var bullet_scene: PackedScene
 
 func _ready():
-	# ⚠️ ESSENCIAL PARA A HUD FUNCIONAR ⚠️
 	add_to_group("player")
 	print("🔥 Player inicializado!")
 	print("   Vida: ", current_health, "/", max_health)
