@@ -159,10 +159,18 @@ func shoot() -> void:
 func create_bullet() -> void:
 	var bullet = bullet_scene.instantiate()
 	get_parent().add_child(bullet)
-	bullet.global_position = global_position
+	
+	# 🔥 CORREÇÃO: Spawn da bala mais à frente do player
+	var spawn_offset = Vector2(20, 0)  # 20 pixels à frente
+	if anim.flip_h:  # Se estiver virado para esquerda
+		spawn_offset.x = -20  # Spawn à esquerda
+	
+	bullet.global_position = global_position + spawn_offset
 	
 	if bullet.has_method("set_direction"):
 		bullet.set_direction(shoot_direction)
+	
+	print("🎯 Bala spawn em: ", bullet.global_position)
 
 func reload() -> void:
 	is_reloading = true

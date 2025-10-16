@@ -183,8 +183,8 @@ _data = {
 size = Vector2(16, 28)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
-collision_layer = 4
-collision_mask = 2
+collision_layer = 6
+collision_mask = 11
 script = ExtResource("1_287tu")
 
 [node name="texture" type="Sprite2D" parent="."]

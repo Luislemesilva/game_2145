@@ -11,6 +11,13 @@ var direction := 1
 var player_in_range = false
 var is_talking = false
 
+# 🔥 NOVAS VARIÁVEIS PARA DANO
+var max_health := 50
+var current_health := max_health
+var damage_to_player := 10  # Dano que causa quando encosta no player
+var can_attack_player := true
+var attack_cooldown := 1.0  # Tempo entre ataques
+
 var dialogues = [
 	"Olá, aventureiro! Bem-vindo à nossa cidade!",
 	"Espero que sua jornada seja repleta de sucessos.",
@@ -19,12 +26,81 @@ var dialogues = [
 ]
 var current_dialogue_index = 0
 
-	
 func _ready():
-
 	print("🔧 NPC inicializando...")
 	setup_interaction_system()
 	print("✅ NPC pronto!")
+
+# 🔥 NOVA FUNÇÃO PARA RECEBER DANO DO PLAYER
+func take_damage(amount: int):
+	print("🎯 NPC recebeu dano: ", amount)
+	current_health -= amount
+	current_health = max(0, current_health)
+	print("💔 Vida do NPC agora: ", current_health, "/", max_health)
+	
+	# Toca animação de dano se tiver
+	if anim.has_animation("hurt"):
+		anim.play("hurt")
+	
+	if current_health <= 0:
+		die()
+
+# 🔥 NOVA FUNÇÃO PARA MORRER
+func die():
+	print("💀 NPC morreu!")
+	
+	# Toca animação de morte se tiver
+	if anim.has_animation("die"):
+		anim.play("die")
+		await anim.animation_finished
+	
+	# Remove o NPC do jogo
+	queue_free()
+
+# 🔥 NOVA FUNÇÃO PARA CAUSAR DANO NO PLAYER
+func attack_player():
+	if not can_attack_player:
+		return
+	
+	var player = get_tree().get_first_node_in_group("player")
+	if player and player.has_method("take_damage"):
+		print("👊 NPC causando dano no player: ", damage_to_player)
+		player.take_damage(damage_to_player)
+		
+		# Cooldown entre ataques
+		can_attack_player = false
+		await get_tree().create_timer(attack_cooldown).timeout
+		can_attack_player = true
+
+# 🔥 MODIFIQUE a física process para detectar colisão com player
+func _physics_process(delta: float) -> void:
+	if not is_talking:
+		if not is_on_floor():
+			velocity.y += GRAVITY * delta
+		
+		if wall_detector.is_colliding():
+			direction *= -1
+			wall_detector.scale.x *= -1
+
+		if direction == -1:
+			texture.flip_h = true
+		else:
+			texture.flip_h = false
+			
+		velocity.x = direction * SPEED * delta
+	else:
+		velocity.x = 0
+		velocity.y = 0
+
+	move_and_slide()
+	
+	# 🔥 VERIFICA SE ENCOSTOU NO PLAYER PARA CAUSAR DANO
+	if is_on_floor():
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider() and collision.get_collider().is_in_group("player"):
+				attack_player()
+				break
 
 func setup_interaction_system():
 	if not has_node("Area2D"):
@@ -53,9 +129,8 @@ func setup_interaction_system():
 		
 		var image = Image.create(32, 32, false, Image.FORMAT_RGBA8)
 		image.fill(Color.WHITE)
-		@warning_ignore("shadowed_variable")
-		var texture = ImageTexture.create_from_image(image)
-		cloud.texture = texture
+		var cloud_texture = ImageTexture.create_from_image(image)
+		cloud.texture = cloud_texture
 		
 		cloud.position = Vector2(0, -80)
 		cloud.scale = Vector2(1.5, 1.5)
@@ -69,27 +144,6 @@ func setup_interaction_system():
 	detection_area.body_exited.connect(_on_body_exited)
 	
 	print("🎯 Sistema de interação configurado!")
-
-func _physics_process(delta: float) -> void:
-	if not is_talking:
-		if not is_on_floor():
-			velocity.y += GRAVITY * delta
-		
-		if wall_detector.is_colliding():
-			direction *= -1
-			wall_detector.scale.x *= -1
-
-		if direction == -1:
-			texture.flip_h = true
-		else:
-			texture.flip_h = false
-			
-		velocity.x = direction * SPEED * delta
-	else:
-		velocity.x = 0
-		velocity.y = 0
-
-	move_and_slide()
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
@@ -123,7 +177,7 @@ func start_dialogue():
 	is_talking = true
 	current_dialogue_index = 0
 	
-	# ⬅️ NOVO: Comunica com o player para bloquear inputs
+	# ⬅️ Comunica com o player para bloquear inputs
 	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("set_in_dialogue"):
 		player.set_in_dialogue(true)
@@ -172,7 +226,7 @@ func show_dialogue(text: String):
 			print("⚠️ Criando PressSpace...")
 			press_space = create_press_space(dialogue_panel)
 		else:
-			print("✅ PressSpace já existe")
+			print("✅ PressSpace já exists")
 		
 		# ⚠️ CORREÇÕES PARA GARANTIR VISIBILIDADE ⚠️
 		dialogue_text.text = text
@@ -278,7 +332,7 @@ func end_dialogue():
 	is_talking = false
 	current_dialogue_index = 0
 	
-	# ⬅️ NOVO: Comunica com o player para liberar inputs
+	# ⬅️ Comunica com o player para liberar inputs
 	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("set_in_dialogue"):
 		player.set_in_dialogue(false)
@@ -298,10 +352,7 @@ func end_dialogue():
 	if get_tree().root.has_node("EmergencyDialogue"):
 		get_tree().root.get_node("EmergencyDialogue").queue_free()
 
-
-
-
-
-func _on_anim_current_animation_changed(anim_name: String) -> void:
-	if anim_name == "Hurt":
-			queue_free()
+# 🔥 CORREÇÃO CRÍTICA: REMOVA ou COMENTE esta função que faz o NPC desaparecer
+# func _on_anim_current_animation_changed(anim_name: String) -> void:
+#     if anim_name == "Hurt":
+#         queue_free()
