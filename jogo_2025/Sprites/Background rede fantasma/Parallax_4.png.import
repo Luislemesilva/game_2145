@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvd6uunf3qlhc"
-path="res://.godot/imported/Hurt (32 x 48).png-7cb59cc8afa9e6953cc862d0e94cbd48.ctex"
+uid="uid://b5ox4iv4nel0p"
+path="res://.godot/imported/Parallax_4.png-ddcd1e8f1685d104b27c9580afbf2812.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Hurt (32 x 48).png"
-dest_files=["res://.godot/imported/Hurt (32 x 48).png-7cb59cc8afa9e6953cc862d0e94cbd48.ctex"]
+source_file="res://Sprites/Background rede fantasma/Parallax_4.png"
+dest_files=["res://.godot/imported/Parallax_4.png-ddcd1e8f1685d104b27c9580afbf2812.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnsjjjxgef2v4"
-path="res://.godot/imported/Running (32 x 48).png-a0e76577a854ae734d8ea9dbcda350dd.ctex"
+uid="uid://d3qaanyw075l4"
+path="res://.godot/imported/5-sky.png-ba8657aa080eb7f2e3a097c4b226fd30.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Running (32 x 48).png"
-dest_files=["res://.godot/imported/Running (32 x 48).png-a0e76577a854ae734d8ea9dbcda350dd.ctex"]
+source_file="res://Sprites/Background rede fantasma/5-sky.png"
+dest_files=["res://.godot/imported/5-sky.png-ba8657aa080eb7f2e3a097c4b226fd30.ctex"]
 
 [params]
 

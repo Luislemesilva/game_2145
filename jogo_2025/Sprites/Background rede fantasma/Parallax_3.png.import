@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b68hx3f5mbfkm"
-path="res://.godot/imported/Shooting_while_crouching (48 x 32).png-45e6bd21516e842a279f8b07b855c881.ctex"
+uid="uid://cwjo711hhdwkv"
+path="res://.godot/imported/Parallax_3.png-4b57e9b841a1708a0a2b7873961eed96.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Shooting_while_crouching (48 x 32).png"
-dest_files=["res://.godot/imported/Shooting_while_crouching (48 x 32).png-45e6bd21516e842a279f8b07b855c881.ctex"]
+source_file="res://Sprites/Background rede fantasma/Parallax_3.png"
+dest_files=["res://.godot/imported/Parallax_3.png-4b57e9b841a1708a0a2b7873961eed96.ctex"]
 
 [params]
 

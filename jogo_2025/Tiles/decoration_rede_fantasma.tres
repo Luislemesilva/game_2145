@@ -1,0 +1,23 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bqd8gh05o2l5"]
+
+[ext_resource type="Texture2D" uid="uid://t55y1jm3rsyk" path="res://Sprites/Rede fantasma/TileSet-BaseFantasma.png" id="1_a512v"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5huhx"]
+texture = ExtResource("1_a512v")
+texture_region_size = Vector2i(24, 24)
+6:5/0 = 0
+7:5/0 = 0
+7:6/0 = 0
+6:6/0 = 0
+8:3/0 = 0
+7:3/0 = 0
+7:0/0 = 0
+6:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+0:3/0 = 0
+
+[resource]
+tile_size = Vector2i(24, 24)
+sources/0 = SubResource("TileSetAtlasSource_5huhx")

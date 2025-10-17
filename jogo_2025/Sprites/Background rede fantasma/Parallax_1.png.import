@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm1ilqyw3peuv"
-path="res://.godot/imported/Jump (32 x 48).png-ff2d7bfa9e7ad31bff46e468474e533a.ctex"
+uid="uid://1aoautwgr2ai"
+path="res://.godot/imported/Parallax_1.png-9f9a62fa4b4cd9face252df376fc4fb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Jump (32 x 48).png"
-dest_files=["res://.godot/imported/Jump (32 x 48).png-ff2d7bfa9e7ad31bff46e468474e533a.ctex"]
+source_file="res://Sprites/Background rede fantasma/Parallax_1.png"
+dest_files=["res://.godot/imported/Parallax_1.png-9f9a62fa4b4cd9face252df376fc4fb5.ctex"]
 
 [params]
 

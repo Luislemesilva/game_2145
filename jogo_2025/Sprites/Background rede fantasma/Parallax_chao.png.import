@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3yj5m40twdoy"
-path="res://.godot/imported/Crouching (32 x 32).png-474d269bbe2d7eb4ea5aee8cac0f8117.ctex"
+uid="uid://fej8oetga8xe"
+path="res://.godot/imported/Parallax_chao.png-5533f7cebd7a891ea90e665fd5fb3c7a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Hex/Crouching (32 x 32).png"
-dest_files=["res://.godot/imported/Crouching (32 x 32).png-474d269bbe2d7eb4ea5aee8cac0f8117.ctex"]
+source_file="res://Sprites/Background rede fantasma/Parallax_chao.png"
+dest_files=["res://.godot/imported/Parallax_chao.png-5533f7cebd7a891ea90e665fd5fb3c7a.ctex"]
 
 [params]
 
