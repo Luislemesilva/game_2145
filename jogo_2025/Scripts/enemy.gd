@@ -57,7 +57,7 @@ func die():
 	# Remove o NPC do jogo
 	queue_free()
 
-# 🔥 NOVA FUNÇÃO PARA CAUSAR DANO NO PLAYER
+# 🔥 FUNÇÃO attack_player ATUALIZADA COM KNOCKBACK
 func attack_player():
 	if not can_attack_player:
 		return
@@ -65,14 +65,22 @@ func attack_player():
 	var player = get_tree().get_first_node_in_group("player")
 	if player and player.has_method("take_damage"):
 		print("👊 NPC causando dano no player: ", damage_to_player)
-		player.take_damage(damage_to_player)
+		
+		# 🔥 CALCULA DIREÇÃO DO KNOCKBACK
+		var knockback_direction = Vector2.ZERO
+		if player.global_position.x < global_position.x:
+			knockback_direction = Vector2.LEFT  # Player está à esquerda
+		else:
+			knockback_direction = Vector2.RIGHT  # Player está à direita
+		
+		# 🔥 CHAMA take_damage COM DIREÇÃO DO KNOCKBACK
+		player.take_damage(damage_to_player, knockback_direction)
 		
 		# Cooldown entre ataques
 		can_attack_player = false
 		await get_tree().create_timer(attack_cooldown).timeout
 		can_attack_player = true
 
-# 🔥 MODIFIQUE a física process para detectar colisão com player
 func _physics_process(delta: float) -> void:
 	if not is_talking:
 		if not is_on_floor():
@@ -351,8 +359,3 @@ func end_dialogue():
 	
 	if get_tree().root.has_node("EmergencyDialogue"):
 		get_tree().root.get_node("EmergencyDialogue").queue_free()
-
-# 🔥 CORREÇÃO CRÍTICA: REMOVA ou COMENTE esta função que faz o NPC desaparecer
-# func _on_anim_current_animation_changed(anim_name: String) -> void:
-#     if anim_name == "Hurt":
-#         queue_free()

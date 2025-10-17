@@ -21,6 +21,11 @@ var direction = 0.0
 var use_mouse_aim := true
 var shoot_direction = Vector2.RIGHT
 
+# 🔥 NOVAS VARIÁVEIS PARA KNOCKBACK
+var is_invincible := false
+var invincibility_time := 0.5
+var knockback_force := 400.0
+
 @export var bullet_scene: PackedScene
 
 func _ready():
@@ -40,35 +45,39 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 	
-	# ⬅️ Seu código normal de movimento continua aqui...
+	# ⬅️ Aplica gravidade mesmo durante knockback
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
 	
-	direction = Input.get_axis("ui_left", "ui_right")
-	
-	update_aim_direction()
-	
-	if is_reloading and direction != 0:
-		cancel_reload()
-	
-	is_crouching = Input.is_action_pressed("ui_down") and is_on_floor() and not is_reloading
-	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_crouching and not is_reloading:
-		velocity.y = JUMP_VELOCITY
-	
-	if not is_reloading:
-		if direction != 0:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
+	# ⬅️ Só permite controle do player se não estiver em knockback forte
+	if not is_invincible or is_on_floor():
+		direction = Input.get_axis("ui_left", "ui_right")
+		
+		update_aim_direction()
+		
+		if is_reloading and direction != 0:
+			cancel_reload()
+		
+		is_crouching = Input.is_action_pressed("ui_down") and is_on_floor() and not is_reloading
+		
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not is_crouching and not is_reloading:
+			velocity.y = JUMP_VELOCITY
+		
+		if not is_reloading:
+			if direction != 0:
+				velocity.x = direction * SPEED
+			else:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("Shoot") and can_shoot and not is_reloading and current_ammo > 0:
-		shoot()
-	
-	if Input.is_action_just_pressed("Reload") and not is_reloading and current_ammo < max_ammo:
-		reload()
+	# ⬅️ Só permite atirar/recarregar se não estiver em knockback
+	if not is_invincible:
+		if Input.is_action_just_pressed("Shoot") and can_shoot and not is_reloading and current_ammo > 0:
+			shoot()
+		
+		if Input.is_action_just_pressed("Reload") and not is_reloading and current_ammo < max_ammo:
+			reload()
 	
 	if not is_shooting and not is_reloading:
 		update_animation()
@@ -193,14 +202,67 @@ func cancel_reload() -> void:
 	can_shoot = true
 	anim.stop()
 
-func take_damage(amount: int):
+# 🔥 FUNÇÃO take_damage ATUALIZADA COM KNOCKBACK
+func take_damage(amount: int, attack_direction: Vector2 = Vector2.ZERO):
+	if is_invincible:
+		return
+	
 	print("🎯 APLICANDO DANO NA VIDA: ", amount)
 	current_health -= amount
 	current_health = max(0, current_health)
 	print("💔 Vida agora: ", current_health, "/", max_health)
 	
+	# 🔥 SISTEMA DE KNOCKBACK
+	if attack_direction != Vector2.ZERO:
+		apply_knockback(attack_direction)
+	else:
+		# Knockback padrão se não houver direção específica
+		var kb_direction = Vector2.LEFT if anim.flip_h else Vector2.RIGHT
+		apply_knockback(kb_direction)
+	
+	# Sistema de invencibilidade
+	start_invincibility()
+	
 	if current_health <= 0:
 		die()
+
+# 🔥 NOVA FUNÇÃO PARA APLICAR KNOCKBACK
+func apply_knockback(direction: Vector2):
+	print("💥 Aplicando knockback na direção: ", direction)
+	
+	# Para qualquer movimento horizontal atual
+	velocity.x = 0
+	
+	# Aplica força horizontal do knockback
+	velocity.x = direction.x * knockback_force
+	
+	# 🔥 PULO PARA TRÁS - força vertical
+	velocity.y = JUMP_VELOCITY * 0.7  # 70% da força do pulo normal
+	
+	# Força a atualização física imediatamente
+	move_and_slide()
+	
+	print("🚀 Velocidade após knockback: ", velocity)
+
+# 🔥 NOVA FUNÇÃO PARA INVENCIBILIDADE
+func start_invincibility():
+	is_invincible = true
+	
+	# Efeito visual de piscar (opcional)
+	if anim:
+		create_tween().tween_method(_flash_effect, 0.0, 1.0, invincibility_time)
+	
+	await get_tree().create_timer(invincibility_time).timeout
+	is_invincible = false
+	
+	# Restaura cor normal
+	if anim:
+		anim.modulate = Color.WHITE
+
+# 🔥 FUNÇÃO PARA EFEITO VISUAL DE PISCAR (opcional)
+func _flash_effect(progress: float):
+	if anim:
+		anim.modulate = Color.WHITE if fmod(progress * 10, 2) < 1 else Color.TRANSPARENT
 
 func heal(amount: int):
 	print("🎯 APLICANDO CURA NA VIDA: ", amount)
