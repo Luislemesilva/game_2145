@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=10 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/player.tscn" id="2_d643p"]
@@ -8,11 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://cwjo711hhdwkv" path="res://Sprites/Background rede fantasma/Parallax_3.png" id="6_cb2in"]
 [ext_resource type="Texture2D" uid="uid://7udfp0ypylc3" path="res://Sprites/Background rede fantasma/Parallax_2.png" id="7_gu8ay"]
 [ext_resource type="Texture2D" uid="uid://1aoautwgr2ai" path="res://Sprites/Background rede fantasma/Parallax_1.png" id="8_nspkn"]
+[ext_resource type="PackedScene" uid="uid://bpxlmm223heg3" path="res://Entities/Enemies/skeleton.tscn" id="9_gqgb5"]
 
 [node name="RFCombat" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(34, 354)
+position = Vector2(32, 370)
+collision_layer = 2
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -79,3 +81,12 @@ texture = ExtResource("8_nspkn")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1536, 432)
+
+[node name="Skeleton" parent="." instance=ExtResource("9_gqgb5")]
+position = Vector2(184, 320)
+
+[node name="Skeleton2" parent="." instance=ExtResource("9_gqgb5")]
+position = Vector2(912, 80)
+
+[node name="Skeleton4" parent="." instance=ExtResource("9_gqgb5")]
+position = Vector2(392, -112)

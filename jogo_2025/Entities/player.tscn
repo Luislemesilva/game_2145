@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://w80u5ox1ktxp"]
+[gd_scene load_steps=40 format=3 uid="uid://w80u5ox1ktxp"]
 
 [ext_resource type="Script" uid="uid://c35nbnn0g5v4i" path="res://Scripts/player.gd" id="1_tcnsb"]
 [ext_resource type="Texture2D" uid="uid://bsufou4d06oxm" path="res://Sprites/Hex/Hex_Idle_Oficial-Sheet.png" id="2_taegk"]
@@ -251,6 +251,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_taegk"]
+size = Vector2(11, 20)
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tcnsb")
 
@@ -260,12 +263,18 @@ shape = SubResource("CapsuleShape2D_2poj3")
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.06464331
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1
 limit_left = 0
 limit_bottom = 432
 limit_smoothed = true
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_taegk")
+debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)
