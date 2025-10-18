@@ -1,39 +1,130 @@
 extends CharacterBody2D
 
+
+enum PlayerState {      #Maquina de Estado do personagem
+	 idle,
+	 walk,
+	 jump,
+	 damage, 
+	 
+}
+
 @onready var anim: AnimatedSprite2D = $Anim
+@onready var collision: CollisionShape2D = $Collision
+@onready var reload_timer: Timer = $ReloadTimer
+
 
 const SPEED = 200.0
-const JUMP_FORCE = -400.0
+const JUMP_VELOCITY = -300.0
 
+var jump_count = 0
+@export var max_jump_count = 2
+
+var status: PlayerState
+
+func _ready() -> void:
+	go_to_idle_state()
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+	
+	match status:
+		PlayerState.idle:
+			idle_state()
+		PlayerState.walk:
+			walk_state()
+		PlayerState.jump:
+			jump_state()
+		PlayerState.damage:
+			damage_state()
+			
+	move_and_slide()
 
-	# Handle jump.
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = JUMP_FORCE
+func go_to_damage_state():
+	status = PlayerState.damage
+	anim.play("damage")           #troca dos frames da animação de damage (olhar)
+	velocity = Vector2.ZERO
+	reload_timer.start()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+func go_to_idle_state():
+	status = PlayerState.idle
+	anim.play("idle")
+	
+func go_to_walk_state():
+	status = PlayerState.walk
+	anim.play("walk")
+	
+func go_to_jump_state():
+	status = PlayerState.jump
+	anim.play("jump")
+	velocity.y = JUMP_VELOCITY
+	jump_count += 1
+
+
+func idle_state():
+	move()
+	if velocity.x != 0:
+		go_to_walk_state()
+		return
+		
+	if Input.is_action_just_pressed("Jump"):
+		go_to_jump_state()
+		return
+		
+func walk_state():
+	move()
+	if velocity.x == 0:
+		go_to_idle_state()
+		return
+		
+	if Input.is_action_just_pressed("Jump"):
+		go_to_jump_state()
+		return
+	
+func jump_state():
+	move()
+	
+	if Input.is_action_just_pressed("Jump") && jump_count < max_jump_count:
+		go_to_jump_state()
+	
+	if is_on_floor():
+		jump_count = 0
+		if velocity.x == 0:
+			go_to_idle_state()
+		else:
+			go_to_walk_state()
+		return
+		
+func damage_state():
+	pass
+	#move()	
+	#if velocity.x != 0:
+	#	go_to_walk_state()
+ 	#	return                # Testa para que o player volta a se mover após o hit com o robo, pois ele fica paralisado no momento 
+		
+
+func move():
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	if is_on_floor():
-		if direction > 0:
-			anim.flip_h = false
-			anim.play("walk")
-		elif direction < 0:
-			anim.flip_h = true
-			anim.play("walk")
-		else:
-			anim.play("idle")
-			
-	else:
-		anim.play("jump")
 	
-	move_and_slide()
+	if direction < 0:
+		anim.flip_h = true
+	elif direction > 0:
+		anim.flip_h = false
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if velocity.y > 0:
+		area.get_parent(). hurt() 
+	else:
+		if status != PlayerState.damage:          # Hurt = Death    Damage = Dano   # Trocar depois para o sprite de morto damagee -> hurt 
+			go_to_damage_state()   
+
+
+func _on_reload_timer_timeout() -> void:
+	get_tree().reload_current_scene()    # Quando o plauer sofrer dano a cena é recarregada.

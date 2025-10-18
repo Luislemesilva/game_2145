@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=4 uid="uid://btrm5jobkm1rd"]
 
-[ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/player.tscn" id="2_i0qgy"]
+[ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_i0qgy"]
 [ext_resource type="Texture2D" uid="uid://t55y1jm3rsyk" path="res://Sprites/Rede fantasma/TileSet-BaseFantasma.png" id="2_ur4gt"]
 [ext_resource type="TileSet" uid="uid://bqd8gh05o2l5" path="res://Tiles/decoration_rede_fantasma.tres" id="3_i0qgy"]
 [ext_resource type="Texture2D" uid="uid://d3qaanyw075l4" path="res://Sprites/Background rede fantasma/5-sky.png" id="4_vnq6o"]
