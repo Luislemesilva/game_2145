@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://c58eo1q8kdx3m"]
+
+[ext_resource type="Texture2D" uid="uid://dkyv58huf7mmc" path="res://Sprites/Inimigos/Robo_TiroMunicao.png" id="1_2ua6v"]
+[ext_resource type="Script" uid="uid://dwahlyttxa7nb" path="res://Scripts/robot_bullet.gd" id="1_3fhc5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3fhc5"]
+radius = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7326h"]
+atlas = ExtResource("1_2ua6v")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k8rmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7326h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Robot_Bullet" type="Area2D"]
+script = ExtResource("1_3fhc5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.3714288, -0.7100896)
+shape = SubResource("CircleShape2D_3fhc5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k8rmh")

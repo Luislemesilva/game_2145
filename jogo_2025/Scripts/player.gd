@@ -5,7 +5,8 @@ enum PlayerState {      #Maquina de Estado do personagem
 	 idle,
 	 walk,
 	 jump,
-	 damage, 
+	 damage,
+	 hurt 
 	 
 }
 
@@ -39,6 +40,8 @@ func _physics_process(delta: float) -> void:
 			jump_state()
 		PlayerState.damage:
 			damage_state()
+		PlayerState.hurt:
+			hurt_state()
 			
 	move_and_slide()
 
@@ -62,6 +65,11 @@ func go_to_jump_state():
 	velocity.y = JUMP_VELOCITY
 	jump_count += 1
 
+func go_to_hurt_state():
+	status = PlayerState.hurt
+	anim.play("hurt")
+	velocity = Vector2.ZERO
+	reload_timer.start()
 
 func idle_state():
 	move()
@@ -103,7 +111,10 @@ func damage_state():
 	#if velocity.x != 0:
 	#	go_to_walk_state()
  	#	return                # Testa para que o player volta a se mover após o hit com o robo, pois ele fica paralisado no momento 
-		
+
+func hurt_state():
+	pass
+			
 
 func move():
 	var direction := Input.get_axis("Left", "Right")
@@ -120,11 +131,11 @@ func move():
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if velocity.y > 0:
-		area.get_parent(). hurt() 
+		area.get_parent().take_damage() 
 	else:
-		if status != PlayerState.damage:          # Hurt = Death    Damage = Dano   # Trocar depois para o sprite de morto damagee -> hurt 
-			go_to_damage_state()   
+		if status != PlayerState.hurt:          # Hurt = Death    Damage = Dano   # Trocar depois para o sprite de morto damagee -> hurt 
+			go_to_hurt_state()   
 
 
 func _on_reload_timer_timeout() -> void:
-	get_tree().reload_current_scene()    # Quando o plauer sofrer dano a cena é recarregada.
+	get_tree().reload_current_scene()    
