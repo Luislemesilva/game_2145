@@ -20,6 +20,11 @@ window/size/viewport_width=768
 window/size/viewport_height=432
 window/stretch/mode="canvas_items"
 
+[global_group]
+
+Enemies=""
+LethalArea=""
+
 [input]
 
 Jump={
@@ -65,6 +70,7 @@ interact={
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="level_end"
+2d_physics/layer_5="lethal_area"
 
 [rendering]
 

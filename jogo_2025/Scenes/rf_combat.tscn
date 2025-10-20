@@ -86,4 +86,4 @@ region_rect = Rect2(0, 0, 1536, 432)
 position = Vector2(140, 318)
 
 [node name="Robot2" parent="." instance=ExtResource("9_gqgb5")]
-position = Vector2(552, 294)
+position = Vector2(456, 321)

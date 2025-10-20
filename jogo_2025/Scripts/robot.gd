@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-enum RobotState {     #Maquina de Estado do Robo
+enum RobotState {    
 	idle,
 	walk,
 	attack,
@@ -108,8 +108,8 @@ func hurt_state(_delta):
 	
 	
 	
-func take_damage():             # Hurt = Death    Damage = Dano    # Desabilitar colisão depois que morrer, não aplicada ainda
-	go_to_hurt_state() # Invertido a função pois como ainda não sabemos se teremos um death, colocamos um dano até a morte do robo e ele sumiur
+func take_damage():             # Hurt = Death    Damage = Dano   
+	go_to_hurt_state() 
 
 func shoot():
 	var new_shoot = ROBOT_BULLET.instantiate()

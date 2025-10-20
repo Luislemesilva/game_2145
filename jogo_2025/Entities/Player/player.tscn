@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bofmb6kv4w42h" path="res://Sprites/Hex/Hex_Andando_Oficial-Sheet.png" id="4_prmdv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2poj3"]
-radius = 8.0
+radius = 6.0
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
@@ -245,7 +245,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pjcup")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -365,17 +365,18 @@ animations = [{
 size = Vector2(11, 23)
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_tcnsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(-0.99999994, 0)
+scale = Vector2(0.9523572, 0.9558821)
 shape = SubResource("CapsuleShape2D_2poj3")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"hurt"
-frame_progress = 0.17984585
+animation = &"damage"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 z_index = 1
@@ -384,17 +385,17 @@ limit_bottom = 432
 limit_smoothed = true
 
 [node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, 0)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
-position = Vector2(0, 0.5)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_taegk")
 debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)
 
 [node name="ReloadTimer" type="Timer" parent="."]
-wait_time = 1.5999999999999999
+wait_time = 1.6
 one_shot = true
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

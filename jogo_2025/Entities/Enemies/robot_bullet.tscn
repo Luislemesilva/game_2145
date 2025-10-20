@@ -21,7 +21,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Robot_Bullet" type="Area2D"]
+[node name="Robot_Bullet" type="Area2D" groups=["LethalArea"]]
+collision_layer = 16
+collision_mask = 3
 script = ExtResource("1_3fhc5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -30,3 +32,12 @@ shape = SubResource("CircleShape2D_3fhc5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_k8rmh")
+
+[node name="SelfDestructionTime" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructionTime" to="." method="_on_self_destruction_time_timeout"]

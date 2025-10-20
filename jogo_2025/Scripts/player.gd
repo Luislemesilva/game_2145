@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-enum PlayerState {      #Maquina de Estado do personagem
+enum PlayerState {     
 	 idle,
 	 walk,
 	 jump,
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 func go_to_damage_state():
 	status = PlayerState.damage
-	anim.play("damage")           #troca dos frames da animação de damage (olhar)
+	anim.play("damage")           
 	velocity = Vector2.ZERO
 	reload_timer.start()
 
@@ -68,7 +68,7 @@ func go_to_jump_state():
 func go_to_hurt_state():
 	status = PlayerState.hurt
 	anim.play("hurt")
-	velocity = Vector2.ZERO
+	velocity.x = 0
 	reload_timer.start()
 
 func idle_state():
@@ -130,12 +130,25 @@ func move():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Enemies"):
+		hit_enemy(area)
+	elif area.is_in_group("LethalArea"):
+		hit_lethal_area()
+	
+	
+			
+func hit_enemy(area: Area2D):
 	if velocity.y > 0:
+		# Inimigo Morre
 		area.get_parent().take_damage() 
 	else:
-		if status != PlayerState.hurt:          # Hurt = Death    Damage = Dano   # Trocar depois para o sprite de morto damagee -> hurt 
+		# Player Morre
+		if status != PlayerState.hurt:         # Hurt = Death    Damage = Dano  
 			go_to_hurt_state()   
+	
+func hit_lethal_area():
+	go_to_hurt_state() 
 
-
+ 
 func _on_reload_timer_timeout() -> void:
 	get_tree().reload_current_scene()    
