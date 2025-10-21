@@ -11,6 +11,10 @@
 radius = 6.0
 height = 26.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c2io"]
+atlas = ExtResource("2_5c2io")
+region = Rect2(0, 0, 56, 56)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
 atlas = ExtResource("2_5c2io")
 region = Rect2(112, 0, 56, 56)
@@ -30,10 +34,6 @@ region = Rect2(280, 0, 56, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4wf4l"]
 atlas = ExtResource("2_5c2io")
 region = Rect2(56, 0, 56, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5c2io"]
-atlas = ExtResource("2_5c2io")
-region = Rect2(0, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap3xn"]
 atlas = ExtResource("3_4wf4l")
@@ -199,6 +199,9 @@ region = Rect2(320, 0, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5c2io")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_01a4e")
 }, {
 "duration": 1.0,
@@ -212,11 +215,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4wf4l")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5c2io")
 }],
-"loop": false,
+"loop": true,
 "name": &"damage",
 "speed": 5.0
 }, {
@@ -364,11 +364,13 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_taegk"]
 size = Vector2(11, 23)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
+collision_mask = 9
 script = ExtResource("1_tcnsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.99999994, 0)
 scale = Vector2(0.9523572, 0.9558821)
 shape = SubResource("CapsuleShape2D_2poj3")
@@ -376,13 +378,9 @@ shape = SubResource("CapsuleShape2D_2poj3")
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -4)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"damage"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-z_index = 1
-limit_left = 0
-limit_bottom = 432
-limit_smoothed = true
+animation = &"idle"
+frame = 8
+frame_progress = 0.40880528
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -390,6 +388,7 @@ collision_layer = 2
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_taegk")
 debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)

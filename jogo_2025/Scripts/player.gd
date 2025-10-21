@@ -19,7 +19,7 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
 var jump_count = 0
-@export var max_jump_count = 2
+@export var max_jump_count = 10
 
 var status: PlayerState
 

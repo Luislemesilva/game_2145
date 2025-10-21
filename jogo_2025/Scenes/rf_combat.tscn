@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=13 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -9,12 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://7udfp0ypylc3" path="res://Sprites/Background rede fantasma/Parallax_2.png" id="7_gu8ay"]
 [ext_resource type="Texture2D" uid="uid://1aoautwgr2ai" path="res://Sprites/Background rede fantasma/Parallax_1.png" id="8_nspkn"]
 [ext_resource type="PackedScene" uid="uid://dhx27oeimwsp3" path="res://Entities/Enemies/robot.tscn" id="9_gqgb5"]
+[ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="10_0rq2b"]
+[ext_resource type="PackedScene" uid="uid://cvp8uaieaml7s" path="res://Scripts/level_end.tscn" id="11_uxbgp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
+size = Vector2(20, 137)
 
 [node name="RFCombat" type="Node2D"]
+metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
 position = Vector2(28, 371)
-collision_layer = 2
 
 [node name="Tiles" type="Node2D" parent="."]
 
@@ -87,3 +92,16 @@ position = Vector2(140, 318)
 
 [node name="Robot2" parent="." instance=ExtResource("9_gqgb5")]
 position = Vector2(456, 321)
+
+[node name="Camera2D" parent="." instance=ExtResource("10_0rq2b")]
+limit_right = 1080
+
+[node name="LevelEnd" parent="." instance=ExtResource("11_uxbgp")]
+position = Vector2(1069, -154)
+next_level = "rf_hacking"
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0"]
+position = Vector2(17, -58)
+shape = SubResource("RectangleShape2D_uxbgp")
+
+[editable path="LevelEnd"]
