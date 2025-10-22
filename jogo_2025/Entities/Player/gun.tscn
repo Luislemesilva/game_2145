@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://73uypqwft57b"]
+
+[ext_resource type="Script" uid="uid://fsa17qg7hvbh" path="res://Scripts/gun.gd" id="1_hbowu"]
+[ext_resource type="Texture2D" uid="uid://dih3kc4ve3olf" path="res://Sprites/Gun/PistolaEstatico_Hex.png" id="1_li4ub"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_hbowu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(6.4, -1.9)
+texture = ExtResource("1_li4ub")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(8.8, -3.3)

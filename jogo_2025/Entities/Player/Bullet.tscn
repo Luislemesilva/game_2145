@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp6iuxs40fxwy"]
+
+[ext_resource type="Texture2D" uid="uid://dy0vgh0p5tnkk" path="res://Sprites/Gun/TiroMunicao_PistolaHex.png" id="1_pek2g"]
+[ext_resource type="Script" uid="uid://dbe215s5u70jg" path="res://Scripts/bullet.gd" id="1_xh367"]
+
+[node name="Bullet" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_xh367")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_pek2g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(-31, 28)
+rect = Rect2(-10, -71, 81, 81)
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
