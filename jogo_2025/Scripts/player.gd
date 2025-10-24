@@ -117,16 +117,18 @@ func hurt_state():
 			
 
 func move():
+	var mouse_x = get_global_mouse_position().x
+	if mouse_x < global_position.x:
+		anim.flip_h = true
+	elif mouse_x > global_position.x:
+		anim.flip_h = false
+		
+		
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	if direction < 0:
-		anim.flip_h = true
-	elif direction > 0:
-		anim.flip_h = false
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
