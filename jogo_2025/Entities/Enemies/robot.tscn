@@ -329,7 +329,7 @@ height = 38.476967
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tywe"]
 size = Vector2(18.890766, 20.988634)
 
-[node name="Robot" type="CharacterBody2D"]
+[node name="Robot" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
 script = ExtResource("1_7tywe")
 
@@ -343,12 +343,12 @@ position = Vector2(0, 4.0000014)
 scale = Vector2(0.74707824, 0.58054954)
 shape = SubResource("CapsuleShape2D_u68jk")
 
-[node name="Hitbox" type="Area2D" parent="." groups=["Enemies"]]
+[node name="Hitbox" type="Area2D" parent="." groups=["LethalArea"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.06173134, 3.460187)
+position = Vector2(-6, 4)
 scale = Vector2(0.73456717, -1.1065911)
 shape = SubResource("RectangleShape2D_7tywe")
 debug_color = Color(0.9935954, 0.05292581, 0.14363751, 0.41960785)

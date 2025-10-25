@@ -1,14 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://73uypqwft57b"]
+[gd_scene load_steps=4 format=3 uid="uid://73uypqwft57b"]
 
 [ext_resource type="Script" uid="uid://fsa17qg7hvbh" path="res://Scripts/gun.gd" id="1_hbowu"]
 [ext_resource type="Texture2D" uid="uid://dih3kc4ve3olf" path="res://Sprites/Gun/PistolaEstatico_Hex.png" id="1_li4ub"]
 
-[node name="Gun" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbowu"]
+size = Vector2(11, 7)
+
+[node name="Gun" type="Area2D"]
+disable_mode = 2
+collision_layer = 32
+collision_mask = 9
 script = ExtResource("1_hbowu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6.4, -1.9)
 texture = ExtResource("1_li4ub")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, -1.5)
+shape = SubResource("RectangleShape2D_hbowu")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(8.8, -3.3)

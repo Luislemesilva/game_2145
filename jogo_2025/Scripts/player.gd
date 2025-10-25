@@ -6,9 +6,12 @@ enum PlayerState {
 	 walk,
 	 jump,
 	 damage,
-	 hurt 
+	 hurt,
 	 
 }
+
+const BULLET = preload("uid://dp6iuxs40fxwy")
+
 
 @onready var anim: AnimatedSprite2D = $Anim
 @onready var collision: CollisionShape2D = $Collision
@@ -19,7 +22,7 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 
 var jump_count = 0
-@export var max_jump_count = 10
+@export var max_jump_count = 2
 
 var status: PlayerState
 
@@ -42,14 +45,14 @@ func _physics_process(delta: float) -> void:
 			damage_state()
 		PlayerState.hurt:
 			hurt_state()
+
 			
 	move_and_slide()
 
 func go_to_damage_state():
 	status = PlayerState.damage
 	anim.play("damage")           
-	velocity = Vector2.ZERO
-	reload_timer.start()
+	
 
 func go_to_idle_state():
 	status = PlayerState.idle
@@ -68,8 +71,10 @@ func go_to_jump_state():
 func go_to_hurt_state():
 	status = PlayerState.hurt
 	anim.play("hurt")
-	velocity.x = 0
+	velocity = Vector2.ZERO
 	reload_timer.start()
+	
+	
 
 func idle_state():
 	move()
@@ -106,15 +111,14 @@ func jump_state():
 		return
 		
 func damage_state():
-	pass
-	#move()	
-	#if velocity.x != 0:
-	#	go_to_walk_state()
- 	#	return                # Testa para que o player volta a se mover após o hit com o robo, pois ele fica paralisado no momento 
+	pass              # Testa para que o player volta a se mover após o hit com o robo, pois ele fica paralisado no momento 
 
 func hurt_state():
 	pass
-			
+	
+	
+func shoot_state():
+	pass
 
 func move():
 	var mouse_x = get_global_mouse_position().x
@@ -137,15 +141,13 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	elif area.is_in_group("LethalArea"):
 		hit_lethal_area()
 	
-	
-			
 func hit_enemy(area: Area2D):
 	if velocity.y > 0:
 		# Inimigo Morre
 		area.get_parent().take_damage() 
 	else:
 		# Player Morre
-		if status != PlayerState.hurt:         # Hurt = Death    Damage = Dano  
+		if status != PlayerState.hurt:     
 			go_to_hurt_state()   
 	
 func hit_lethal_area():

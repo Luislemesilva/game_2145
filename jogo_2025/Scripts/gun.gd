@@ -1,9 +1,9 @@
-extends Node2D
+extends Area2D
 
 const BULLET = preload("res://Entities/Player/Bullet.tscn")
 
 @onready var muzzle: Marker2D = $Marker2D
-@onready var player: CharacterBody2D = $".."  
+@onready var player: CharacterBody2D = $".."
 
 @export var orbit_distance: float = 15.0
 
