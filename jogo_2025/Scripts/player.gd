@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@export var respawn_position: Vector2
+
 
 enum PlayerState {     
 	 idle,
@@ -27,7 +29,11 @@ var jump_count = 0
 var status: PlayerState
 
 func _ready() -> void:
+	respawn_position = global_position
+	add_to_group("Player")
 	go_to_idle_state()
+	
+
 
 func _physics_process(delta: float) -> void:
 	

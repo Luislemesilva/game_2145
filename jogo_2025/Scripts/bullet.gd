@@ -3,14 +3,10 @@ extends Area2D
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 const SPEED = 100
-var direction = 1
 
 func _process(delta: float) -> void:
-	position.x += SPEED * delta * direction
-	
-func set_direction(bullet_direction):
-	direction = bullet_direction
-	anim.flip_h = direction < 0 
+	position += transform.x * SPEED  * delta
+
 
 
 func _on_self_destruction_time_timeout() -> void:

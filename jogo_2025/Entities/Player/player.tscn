@@ -362,7 +362,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_taegk"]
-size = Vector2(2.5, 22.5)
+size = Vector2(12, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
@@ -370,16 +370,14 @@ collision_mask = 9
 script = ExtResource("1_tcnsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(1.9999999, -1)
 scale = Vector2(0.9523572, 0.9558821)
 shape = SubResource("CapsuleShape2D_2poj3")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"walk"
-frame = 5
-frame_progress = 1.0
+animation = &"damage"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -387,7 +385,7 @@ collision_layer = 2
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(5.75, 0.25)
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_taegk")
 debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)
 
