@@ -33,8 +33,6 @@ func _ready() -> void:
 	add_to_group("Player")
 	go_to_idle_state()
 	
-
-
 func _physics_process(delta: float) -> void:
 	
 	if not is_on_floor():
@@ -84,12 +82,13 @@ func go_to_hurt_state():
 
 func idle_state():
 	move()
-	if velocity.x != 0:
-		go_to_walk_state()
-		return
-		
+	
 	if Input.is_action_just_pressed("Jump"):
 		go_to_jump_state()
+		return
+	
+	if velocity.x != 0:
+		go_to_walk_state()
 		return
 		
 func walk_state():
@@ -117,7 +116,7 @@ func jump_state():
 		return
 		
 func damage_state():
-	pass              # Testa para que o player volta a se mover após o hit com o robo, pois ele fica paralisado no momento 
+	pass          
 
 func hurt_state():
 	pass
@@ -149,10 +148,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 	
 func hit_enemy(area: Area2D):
 	if velocity.y > 0:
-		# Inimigo Morre
 		area.get_parent().take_damage() 
 	else:
-		# Player Morre
 		if status != PlayerState.hurt:     
 			go_to_hurt_state()   
 	
