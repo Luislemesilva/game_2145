@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://1aoautwgr2ai" path="res://Sprites/Background rede fantasma/Parallax_1.png" id="8_nspkn"]
 [ext_resource type="PackedScene" uid="uid://dhx27oeimwsp3" path="res://Entities/Enemies/robot.tscn" id="9_gqgb5"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="10_0rq2b"]
-[ext_resource type="PackedScene" uid="uid://cvp8uaieaml7s" path="res://Scripts/level_end.tscn" id="11_uxbgp"]
+[ext_resource type="PackedScene" uid="uid://cvp8uaieaml7s" path="res://Entities/level_end.tscn" id="11_uxbgp"]
 [ext_resource type="PackedScene" uid="uid://73uypqwft57b" path="res://Entities/Player/gun.tscn" id="12_n4hu8"]
 [ext_resource type="PackedScene" uid="uid://rrneojosp7xb" path="res://Entities/rf_plataform.tscn" id="13_jopq7"]
 [ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="14_2kg1e"]
@@ -22,7 +22,7 @@ size = Vector2(20, 137)
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(514, -154)
+position = Vector2(30, 370)
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
 position = Vector2(6, 3)
@@ -116,8 +116,15 @@ position = Vector2(733, 301)
 [node name="Target" parent="RFPlataform" index="1"]
 position = Vector2(0, -144)
 
+[node name="RFPlataform2" parent="." instance=ExtResource("13_jopq7")]
+position = Vector2(262, 82)
+
+[node name="Target" parent="RFPlataform2" index="1"]
+position = Vector2(0, -144)
+
 [node name="DeathArea" parent="." instance=ExtResource("14_2kg1e")]
 position = Vector2(212, 523)
 
 [editable path="LevelEnd"]
 [editable path="RFPlataform"]
+[editable path="RFPlataform2"]
