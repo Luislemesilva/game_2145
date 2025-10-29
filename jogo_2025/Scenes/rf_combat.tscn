@@ -22,7 +22,7 @@ size = Vector2(20, 137)
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(14, 373)
+position = Vector2(514, -154)
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
 position = Vector2(6, 3)
@@ -117,7 +117,7 @@ position = Vector2(733, 301)
 position = Vector2(0, -144)
 
 [node name="DeathArea" parent="." instance=ExtResource("14_2kg1e")]
-position = Vector2(506, 493)
+position = Vector2(212, 523)
 
 [editable path="LevelEnd"]
 [editable path="RFPlataform"]

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://d2234isk5boij"]
+[gd_scene load_steps=9 format=4 uid="uid://d2234isk5boij"]
 
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="1_jkwk2"]
 [ext_resource type="Texture2D" uid="uid://bd1u1alk8qouq" path="res://Sprites/Distrito tóxico/Tileset Distrito Toxico chao.png" id="2_6rtoa"]
+[ext_resource type="PackedScene" uid="uid://73uypqwft57b" path="res://Entities/Player/gun.tscn" id="2_emgh4"]
 [ext_resource type="TileSet" uid="uid://bqd8gh05o2l5" path="res://Tiles/decoration_rede_fantasma.tres" id="3_6rtoa"]
+[ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="3_sumcf"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="4_6rtoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk6nf"]
@@ -146,7 +148,10 @@ metadata/_edit_vertical_guides_ = [1080.0]
 metadata/_edit_horizontal_guides_ = [-363.0]
 
 [node name="Player" parent="." instance=ExtResource("1_jkwk2")]
-position = Vector2(65, 368)
+position = Vector2(8, 373)
+
+[node name="Gun" parent="Player" instance=ExtResource("2_emgh4")]
+position = Vector2(6, 3)
 
 [node name="Tiles" type="Node2D" parent="."]
 position = Vector2(-1, 0)
@@ -162,3 +167,6 @@ tile_set = ExtResource("3_6rtoa")
 position = Vector2(-3, 357)
 limit_top = -360
 limit_right = 1080
+
+[node name="DeathArea" parent="." instance=ExtResource("3_sumcf")]
+position = Vector2(221, 545)
