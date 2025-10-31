@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=21 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -14,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://73uypqwft57b" path="res://Entities/Player/gun.tscn" id="12_n4hu8"]
 [ext_resource type="PackedScene" uid="uid://rrneojosp7xb" path="res://Entities/rf_plataform.tscn" id="13_jopq7"]
 [ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="14_2kg1e"]
+[ext_resource type="PackedScene" uid="uid://57w2bbnc5u5k" path="res://Entities/Npcs/luiq.tscn" id="15_3mepy"]
+[ext_resource type="PackedScene" uid="uid://bk42ixhfeiko1" path="res://Entities/Npcs/lan.tscn" id="17_2dluh"]
+[ext_resource type="PackedScene" uid="uid://tlppsk0emsdr" path="res://Entities/Npcs/dr_v.tscn" id="17_tl6ou"]
+[ext_resource type="PackedScene" uid="uid://cfymiidgostgv" path="res://Entities/Npcs/gama.tscn" id="18_ifkmj"]
+[ext_resource type="PackedScene" uid="uid://djmyvae6bpquo" path="res://Entities/Npcs/punchduca.tscn" id="19_drybi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
 size = Vector2(20, 137)
@@ -93,12 +98,6 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1536, 432)
 
-[node name="Robot" parent="." instance=ExtResource("9_gqgb5")]
-position = Vector2(149, 322)
-
-[node name="Robot2" parent="." instance=ExtResource("9_gqgb5")]
-position = Vector2(456, 321)
-
 [node name="Camera2D" parent="." instance=ExtResource("10_0rq2b")]
 limit_right = 1080
 
@@ -110,21 +109,55 @@ next_level = "d_toxico_1"
 position = Vector2(17, -58)
 shape = SubResource("RectangleShape2D_uxbgp")
 
-[node name="RFPlataform" parent="." instance=ExtResource("13_jopq7")]
-position = Vector2(733, 301)
-
-[node name="Target" parent="RFPlataform" index="1"]
-position = Vector2(0, -144)
-
-[node name="RFPlataform2" parent="." instance=ExtResource("13_jopq7")]
-position = Vector2(262, 82)
-
-[node name="Target" parent="RFPlataform2" index="1"]
-position = Vector2(0, -144)
-
 [node name="DeathArea" parent="." instance=ExtResource("14_2kg1e")]
 position = Vector2(212, 523)
 
+[node name="Plataforms" type="Node2D" parent="."]
+
+[node name="RFPlataform" parent="Plataforms" instance=ExtResource("13_jopq7")]
+position = Vector2(733, 301)
+
+[node name="Target" parent="Plataforms/RFPlataform" index="1"]
+position = Vector2(0, -144)
+
+[node name="RFPlataform2" parent="Plataforms" instance=ExtResource("13_jopq7")]
+position = Vector2(262, 82)
+
+[node name="Target" parent="Plataforms/RFPlataform2" index="1"]
+position = Vector2(0, -144)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Robot" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(405, 57)
+
+[node name="Robot2" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(910, 81)
+
+[node name="NPCs" type="Node2D" parent="."]
+
+[node name="LuIQ" parent="NPCs" instance=ExtResource("15_3mepy")]
+position = Vector2(124, 324)
+
+[node name="Lan" parent="NPCs" instance=ExtResource("17_2dluh")]
+position = Vector2(543, 301)
+
+[node name="Dr_V" parent="NPCs" instance=ExtResource("17_tl6ou")]
+position = Vector2(192, 324)
+
+[node name="Gama" parent="NPCs" instance=ExtResource("18_ifkmj")]
+position = Vector2(884, 298)
+
+[node name="Punchduca" parent="NPCs" instance=ExtResource("19_drybi")]
+position = Vector2(974, 300)
+
+[node name="AnimatedSprite2D" parent="NPCs/Punchduca" index="0"]
+flip_h = true
+
+[node name="CollisionShape2D" parent="NPCs/Punchduca" index="1"]
+position = Vector2(-1, 0)
+
 [editable path="LevelEnd"]
-[editable path="RFPlataform"]
-[editable path="RFPlataform2"]
+[editable path="Plataforms/RFPlataform"]
+[editable path="Plataforms/RFPlataform2"]
+[editable path="NPCs/Punchduca"]
