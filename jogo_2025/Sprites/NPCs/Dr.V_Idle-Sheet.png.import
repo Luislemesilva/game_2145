@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7udfp0ypylc3"
-path="res://.godot/imported/Parallax_2.png-bd31cb7eebc58908a9bb80d119c70a0e.ctex"
+uid="uid://b1700y84gh0wb"
+path="res://.godot/imported/Dr.V_Idle-Sheet.png-03b76dca1257e37734b0b20b7ca96914.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Background rede fantasma/Parallax_2.png"
-dest_files=["res://.godot/imported/Parallax_2.png-bd31cb7eebc58908a9bb80d119c70a0e.ctex"]
+source_file="res://Sprites/NPCs/Dr.V_Idle-Sheet.png"
+dest_files=["res://.godot/imported/Dr.V_Idle-Sheet.png-03b76dca1257e37734b0b20b7ca96914.ctex"]
 
 [params]
 

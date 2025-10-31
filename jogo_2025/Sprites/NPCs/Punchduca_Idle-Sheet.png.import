@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://7udfp0ypylc3"
-path="res://.godot/imported/Parallax_2.png-bd31cb7eebc58908a9bb80d119c70a0e.ctex"
+uid="uid://bw150pe4eyvq0"
+path="res://.godot/imported/Punchduca_Idle-Sheet.png-22db8fda31d4d86d45d8c427abfff957.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Background rede fantasma/Parallax_2.png"
-dest_files=["res://.godot/imported/Parallax_2.png-bd31cb7eebc58908a9bb80d119c70a0e.ctex"]
+source_file="res://Sprites/NPCs/Punchduca_Idle-Sheet.png"
+dest_files=["res://.godot/imported/Punchduca_Idle-Sheet.png-22db8fda31d4d86d45d8c427abfff957.ctex"]
 
 [params]
 
