@@ -323,14 +323,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u68jk"]
-radius = 8.0
-height = 38.476967
+radius = 9.554192
+height = 35.31124
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tywe"]
-size = Vector2(18.890766, 20.988634)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ul7hx"]
+height = 34.47853
 
 [node name="Robot" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
+collision_mask = 19
 script = ExtResource("1_7tywe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -339,8 +340,9 @@ sprite_frames = SubResource("SpriteFrames_4tvvw")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4.0000014)
-scale = Vector2(0.74707824, 0.58054954)
+position = Vector2(0, 3)
+rotation = -0.005095
+scale = Vector2(0.837318, 0.6796614)
 shape = SubResource("CapsuleShape2D_u68jk")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["LethalArea"]]
@@ -349,9 +351,9 @@ collision_layer = 4
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(-6, 4)
-scale = Vector2(0.73456717, -1.1065911)
-shape = SubResource("RectangleShape2D_7tywe")
+position = Vector2(-6, 3)
+scale = Vector2(0.73456717, -0.7540924)
+shape = SubResource("CapsuleShape2D_ul7hx")
 debug_color = Color(0.9935954, 0.05292581, 0.14363751, 0.41960785)
 
 [node name="WallDetector" type="RayCast2D" parent="."]

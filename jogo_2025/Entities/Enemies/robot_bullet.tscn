@@ -21,8 +21,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Robot_Bullet" type="Area2D" groups=["LethalArea"]]
-collision_layer = 16
+[node name="Robot_Bullet" type="Area2D" groups=["Bullet_Enemy", "LethalArea"]]
+collision_layer = 32
 collision_mask = 3
 script = ExtResource("1_3fhc5")
 
@@ -30,7 +30,7 @@ script = ExtResource("1_3fhc5")
 scale = Vector2(1.3714288, -0.7100896)
 shape = SubResource("RectangleShape2D_3fhc5")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["Bullet_Enemy"]]
 sprite_frames = SubResource("SpriteFrames_k8rmh")
 
 [node name="SelfDestructionTime" type="Timer" parent="."]

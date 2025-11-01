@@ -15,7 +15,7 @@ enum PlayerState {
 const BULLET = preload("uid://dp6iuxs40fxwy")
 
 
-@onready var anim: AnimatedSprite2D = $Anim
+@onready var anim: AnimatedSprite2D = $Visual/Anim
 @onready var collision: CollisionShape2D = $Collision
 @onready var reload_timer: Timer = $ReloadTimer
 
@@ -29,6 +29,9 @@ var jump_count = 0
 var status: PlayerState
 
 func _ready() -> void:
+	if max_jump_count == null:
+		max_jump_count = 2
+	status = PlayerState.idle
 	respawn_position = global_position
 	add_to_group("Player")
 	go_to_idle_state()
@@ -128,11 +131,10 @@ func shoot_state():
 func move():
 	var mouse_x = get_global_mouse_position().x
 	if mouse_x < global_position.x:
-		anim.flip_h = true
-	elif mouse_x > global_position.x:
-		anim.flip_h = false
-		
-		
+		$Visual.scale.x = -1  
+	else:
+		$Visual.scale.x = 1
+
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -143,7 +145,7 @@ func move():
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Enemies"):
 		hit_enemy(area)
-	elif area.is_in_group("LethalArea"):
+	elif area.is_in_group("Player"):
 		hit_lethal_area()
 	
 func hit_enemy(area: Area2D):
@@ -154,8 +156,9 @@ func hit_enemy(area: Area2D):
 			go_to_hurt_state()   
 	
 func hit_lethal_area():
+	if status == PlayerState.hurt:
+		return
 	go_to_hurt_state() 
-
  
 func _on_reload_timer_timeout() -> void:
 	get_tree().reload_current_scene()    

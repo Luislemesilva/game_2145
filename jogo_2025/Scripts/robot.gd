@@ -74,8 +74,9 @@ func go_to_damage_state():
 func go_to_hurt_state():
 	status = RobotState.hurt
 	anim.play("hurt")
-	hitbox.process_mode = Node. PROCESS_MODE_DISABLED 
-	velocity = Vector2.ZERO  
+	hitbox.process_mode = Node.PROCESS_MODE_DISABLED
+	$CollisionShape2D.disabled = true
+	velocity = Vector2.ZERO
 	
 func idle_state(_delta):
 	pass
@@ -106,9 +107,7 @@ func damage_state(_delta):
 func hurt_state(_delta):
 	pass
 	
-	
-	
-func take_damage():             # Hurt = Death    Damage = Dano   
+func take_damage():    
 	go_to_hurt_state() 
 
 func shoot():
@@ -116,8 +115,10 @@ func shoot():
 	add_sibling(new_shoot)
 	new_shoot.position = shoot_start_position.global_position
 	new_shoot.set_direction(self.direction)
-
+	
+	
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
-		go_to_walk_state()	
-		return
+		go_to_walk_state()
+	elif anim.animation == "hurt":
+		queue_free()

@@ -27,7 +27,7 @@ size = Vector2(20, 137)
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(30, 370)
+position = Vector2(862, 86)
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
 position = Vector2(6, 3)
@@ -129,10 +129,10 @@ position = Vector2(0, -144)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Robot" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(405, 57)
+position = Vector2(562, 105)
 
 [node name="Robot2" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(910, 81)
+position = Vector2(978, 81)
 
 [node name="NPCs" type="Node2D" parent="."]
 
