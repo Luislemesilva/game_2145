@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6au6rx3aryy5"
-path="res://.godot/imported/Robo_BaseFantasma_Atirando-Sheet.png-60173afd129548472826a8ad19a7d840.ctex"
+uid="uid://d4cj7411durl0"
+path="res://.godot/imported/Capanga_Toxico_Idle.png-e5783aae11f8e77e44b4fbd37cf2e284.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Atirando-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Atirando-Sheet.png-60173afd129548472826a8ad19a7d840.ctex"]
+source_file="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Idle.png"
+dest_files=["res://.godot/imported/Capanga_Toxico_Idle.png-e5783aae11f8e77e44b4fbd37cf2e284.ctex"]
 
 [params]
 

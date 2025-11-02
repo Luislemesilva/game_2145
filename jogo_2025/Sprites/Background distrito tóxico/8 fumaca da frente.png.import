@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkyv58huf7mmc"
-path="res://.godot/imported/Robo_TiroMunicao.png-21ed4067812ed6bba1089b54ec9b323a.ctex"
+uid="uid://c15mqq8c4o2op"
+path="res://.godot/imported/8 fumaca da frente.png-7dbe30f5ea199a44447e1903dbc20e0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_TiroMunicao.png"
-dest_files=["res://.godot/imported/Robo_TiroMunicao.png-21ed4067812ed6bba1089b54ec9b323a.ctex"]
+source_file="res://Sprites/Background distrito tóxico/8 fumaca da frente.png"
+dest_files=["res://.godot/imported/8 fumaca da frente.png-7dbe30f5ea199a44447e1903dbc20e0f.ctex"]
 
 [params]
 

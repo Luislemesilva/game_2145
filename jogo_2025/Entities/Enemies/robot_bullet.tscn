@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c58eo1q8kdx3m"]
 
-[ext_resource type="Texture2D" uid="uid://dkyv58huf7mmc" path="res://Sprites/Inimigos/Robo_TiroMunicao.png" id="1_2ua6v"]
+[ext_resource type="Texture2D" uid="uid://dkyv58huf7mmc" path="res://Sprites/Inimigos/Robot/Robo_TiroMunicao.png" id="1_2ua6v"]
 [ext_resource type="Script" uid="uid://dwahlyttxa7nb" path="res://Scripts/robot_bullet.gd" id="1_3fhc5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3fhc5"]

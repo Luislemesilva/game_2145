@@ -1,11 +1,11 @@
 [gd_scene load_steps=51 format=3 uid="uid://dhx27oeimwsp3"]
 
 [ext_resource type="Script" uid="uid://cjus0fyu6mt7p" path="res://Scripts/robot.gd" id="1_7tywe"]
-[ext_resource type="Texture2D" uid="uid://bwkgbarbkig56" path="res://Sprites/Inimigos/Robo_BaseFantasma_Idle-Sheet.png" id="1_vf6k1"]
-[ext_resource type="Texture2D" uid="uid://bajhexph5qyd7" path="res://Sprites/Inimigos/Robo_BaseFantasma_Machucado-Sheet.png" id="2_ul7hx"]
-[ext_resource type="Texture2D" uid="uid://6au6rx3aryy5" path="res://Sprites/Inimigos/Robo_BaseFantasma_Atirando-Sheet.png" id="3_5cy5v"]
-[ext_resource type="Texture2D" uid="uid://uln02vubhwq6" path="res://Sprites/Inimigos/Robo_BaseFantasma_Morrendo-Sheet.png" id="3_7dlcq"]
-[ext_resource type="Texture2D" uid="uid://boskdqnywi1a5" path="res://Sprites/Inimigos/Robo_BaseFantasma_Andando-Sheet.png" id="4_22ib7"]
+[ext_resource type="Texture2D" uid="uid://bwkgbarbkig56" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Idle-Sheet.png" id="1_vf6k1"]
+[ext_resource type="Texture2D" uid="uid://bajhexph5qyd7" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Machucado-Sheet.png" id="2_ul7hx"]
+[ext_resource type="Texture2D" uid="uid://6au6rx3aryy5" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Atirando-Sheet.png" id="3_5cy5v"]
+[ext_resource type="Texture2D" uid="uid://uln02vubhwq6" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Morrendo-Sheet.png" id="3_7dlcq"]
+[ext_resource type="Texture2D" uid="uid://boskdqnywi1a5" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Andando-Sheet.png" id="4_22ib7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4tvvw"]
 atlas = ExtResource("3_5cy5v")
@@ -237,7 +237,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_c3or5")
 }],
 "loop": true,
-"name": &"demage",
+"name": &"damage",
 "speed": 5.0
 }, {
 "frames": [{
@@ -337,7 +337,7 @@ script = ExtResource("1_7tywe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_4tvvw")
-animation = &"attack"
+animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)

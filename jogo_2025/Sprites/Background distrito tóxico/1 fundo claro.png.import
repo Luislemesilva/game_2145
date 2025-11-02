@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bajhexph5qyd7"
-path="res://.godot/imported/Robo_BaseFantasma_Machucado-Sheet.png-26ef8ee7c9ebad83844a3f970009e544.ctex"
+uid="uid://dmimkdsw78wla"
+path="res://.godot/imported/1 fundo claro.png-97139326300291e3a8fa6cdea6954980.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Machucado-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Machucado-Sheet.png-26ef8ee7c9ebad83844a3f970009e544.ctex"]
+source_file="res://Sprites/Background distrito tóxico/1 fundo claro.png"
+dest_files=["res://.godot/imported/1 fundo claro.png-97139326300291e3a8fa6cdea6954980.ctex"]
 
 [params]
 

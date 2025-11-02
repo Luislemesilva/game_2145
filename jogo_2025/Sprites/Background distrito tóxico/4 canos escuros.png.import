@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boskdqnywi1a5"
-path="res://.godot/imported/Robo_BaseFantasma_Andando-Sheet.png-360d2bf019b633fd82fd40718e8fda48.ctex"
+uid="uid://bwx30ewn01ohl"
+path="res://.godot/imported/4 canos escuros.png-5f7af0b880da27450df5c344399f311f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Andando-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Andando-Sheet.png-360d2bf019b633fd82fd40718e8fda48.ctex"]
+source_file="res://Sprites/Background distrito tóxico/4 canos escuros.png"
+dest_files=["res://.godot/imported/4 canos escuros.png-5f7af0b880da27450df5c344399f311f.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwkgbarbkig56"
-path="res://.godot/imported/Robo_BaseFantasma_Idle-Sheet.png-415a57e25ea6747751bca7324472b342.ctex"
+uid="uid://inmaq7p8jeqp"
+path="res://.godot/imported/5 fumaca.png-a7dd5034ae67e4a44858cc68e626605e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Idle-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Idle-Sheet.png-415a57e25ea6747751bca7324472b342.ctex"]
+source_file="res://Sprites/Background distrito tóxico/5 fumaca.png"
+dest_files=["res://.godot/imported/5 fumaca.png-a7dd5034ae67e4a44858cc68e626605e.ctex"]
 
 [params]
 

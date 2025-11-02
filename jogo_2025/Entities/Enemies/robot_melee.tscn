@@ -1,10 +1,10 @@
 [gd_scene load_steps=52 format=3 uid="uid://yfj5ud2dfqh"]
 
-[ext_resource type="Texture2D" uid="uid://6au6rx3aryy5" path="res://Sprites/Inimigos/Robo_BaseFantasma_Atirando-Sheet.png" id="2_g1jme"]
-[ext_resource type="Texture2D" uid="uid://bajhexph5qyd7" path="res://Sprites/Inimigos/Robo_BaseFantasma_Machucado-Sheet.png" id="3_wobfl"]
-[ext_resource type="Texture2D" uid="uid://uln02vubhwq6" path="res://Sprites/Inimigos/Robo_BaseFantasma_Morrendo-Sheet.png" id="4_6811i"]
-[ext_resource type="Texture2D" uid="uid://bwkgbarbkig56" path="res://Sprites/Inimigos/Robo_BaseFantasma_Idle-Sheet.png" id="5_ec18f"]
-[ext_resource type="Texture2D" uid="uid://boskdqnywi1a5" path="res://Sprites/Inimigos/Robo_BaseFantasma_Andando-Sheet.png" id="6_cxeak"]
+[ext_resource type="Texture2D" uid="uid://6au6rx3aryy5" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Atirando-Sheet.png" id="2_g1jme"]
+[ext_resource type="Texture2D" uid="uid://bajhexph5qyd7" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Machucado-Sheet.png" id="3_wobfl"]
+[ext_resource type="Texture2D" uid="uid://uln02vubhwq6" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Morrendo-Sheet.png" id="4_6811i"]
+[ext_resource type="Texture2D" uid="uid://bwkgbarbkig56" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Idle-Sheet.png" id="5_ec18f"]
+[ext_resource type="Texture2D" uid="uid://boskdqnywi1a5" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Andando-Sheet.png" id="6_cxeak"]
 
 [sub_resource type="GDScript" id="GDScript_c6yxh"]
 script/source = "extends CharacterBody2D

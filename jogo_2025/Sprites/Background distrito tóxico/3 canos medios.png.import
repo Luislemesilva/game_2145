@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uln02vubhwq6"
-path="res://.godot/imported/Robo_BaseFantasma_Morrendo-Sheet.png-014c67778a00e6ca06688b81aabe891b.ctex"
+uid="uid://b2rmtmaoq80a4"
+path="res://.godot/imported/3 canos medios.png-cb7518e33ef582ed9cd5c2cd8ba5411c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Morrendo-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Morrendo-Sheet.png-014c67778a00e6ca06688b81aabe891b.ctex"]
+source_file="res://Sprites/Background distrito tóxico/3 canos medios.png"
+dest_files=["res://.godot/imported/3 canos medios.png-cb7518e33ef582ed9cd5c2cd8ba5411c.ctex"]
 
 [params]
 
