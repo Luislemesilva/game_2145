@@ -28,7 +28,7 @@ metadata/_edit_vertical_guides_ = [1080.0]
 metadata/_edit_horizontal_guides_ = [-215.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(24, 367)
+position = Vector2(890, 85)
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
 position = Vector2(6, 3)
