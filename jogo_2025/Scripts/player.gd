@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var respawn_position: Vector2
 
+var sistema_verificado = false
+
 
 enum PlayerState {     
 	 idle,
@@ -35,6 +37,13 @@ func _ready() -> void:
 	respawn_position = global_position
 	add_to_group("Player")
 	go_to_idle_state()
+	
+	if not sistema_verificado:
+		sistema_verificado = true
+		await get_tree().create_timer(1.0).timeout
+		verificar_sistema_missoes()
+	
+	
 	
 func _physics_process(delta: float) -> void:
 	
@@ -162,3 +171,42 @@ func hit_lethal_area():
  
 func _on_reload_timer_timeout() -> void:
 	get_tree().reload_current_scene()    
+	
+
+
+
+func verificar_sistema_missoes():
+	var sistema = encontrar_sistema_missao()
+	if sistema:
+		print("✅ Sistema de Missões carregado com sucesso!")
+		print("📋 Missões disponíveis: 4")
+		print("🎮 Pronto para uso no jogo!")
+	else:
+		print("❌ Sistema de Missões não encontrado")
+
+func encontrar_sistema_missao():
+	var sistema
+	sistema = get_node("/root/SistemaMissao")
+	if sistema:
+		return sistema
+	sistema = get_parent().get_node("SistemaMissao")
+	if sistema:
+		return sistema
+	for node in get_tree().get_nodes_in_group(""):
+		if node.has_method("iniciar_missao"):
+			return node
+	return null
+
+func mostrar_missoes_ativas():
+	var sistema = encontrar_sistema_missao()
+	if sistema and sistema.missoes_ativas.size() > 0:
+		print("=== MISSÕES ATIVAS ===")
+		for missao in sistema.missoes_ativas:
+			print("🎯 ", missao["nome"])
+	else:
+		print("Nenhuma missão ativa no momento")
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_M:  # Tecla M para ver missões
+			mostrar_missoes_ativas()

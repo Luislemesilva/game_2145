@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=22 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://tlppsk0emsdr" path="res://Entities/Npcs/dr_v.tscn" id="17_tl6ou"]
 [ext_resource type="PackedScene" uid="uid://cfymiidgostgv" path="res://Entities/Npcs/gama.tscn" id="18_ifkmj"]
 [ext_resource type="PackedScene" uid="uid://djmyvae6bpquo" path="res://Entities/Npcs/punchduca.tscn" id="19_drybi"]
+[ext_resource type="Script" uid="uid://jd028gonhu3" path="res://Scripts/systems/sistema_missao.gd" id="20_drybi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
 size = Vector2(20, 137)
@@ -174,6 +175,9 @@ flip_h = true
 
 [node name="CollisionShape2D" parent="NPCs/Punchduca" index="1"]
 position = Vector2(-1, 0)
+
+[node name="SistemaMissao" type="Node" parent="."]
+script = ExtResource("20_drybi")
 
 [editable path="LevelEnd"]
 [editable path="Plataforms/RFPlataform"]
