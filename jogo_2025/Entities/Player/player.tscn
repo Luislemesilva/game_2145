@@ -8,16 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bofmb6kv4w42h" path="res://Sprites/Hex/Hex_Andando_Oficial-Sheet.png" id="4_prmdv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2poj3"]
-radius = 6.8251705
-height = 23.01539
+radius = 6.0
+height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c2io"]
 atlas = ExtResource("2_5c2io")
 region = Rect2(0, 0, 56, 56)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4wf4l"]
-atlas = ExtResource("2_5c2io")
-region = Rect2(56, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_01a4e"]
 atlas = ExtResource("2_5c2io")
@@ -34,6 +30,10 @@ region = Rect2(224, 0, 56, 56)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1y6q"]
 atlas = ExtResource("2_5c2io")
 region = Rect2(280, 0, 56, 56)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4wf4l"]
+atlas = ExtResource("2_5c2io")
+region = Rect2(56, 0, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ap3xn"]
 atlas = ExtResource("3_4wf4l")
@@ -202,9 +202,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_5c2io")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4wf4l")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_01a4e")
 }, {
 "duration": 1.0,
@@ -215,6 +212,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x1y6q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4wf4l")
 }],
 "loop": false,
 "name": &"damage",
@@ -361,36 +361,32 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4wf4l"]
-radius = 6.0
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_taegk"]
+size = Vector2(12, 22)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 37
+collision_mask = 9
 script = ExtResource("1_tcnsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(2.5, 0)
+position = Vector2(1.9999999, -1)
 scale = Vector2(0.9523572, 0.9558821)
 shape = SubResource("CapsuleShape2D_2poj3")
 
-[node name="Visual" type="Node2D" parent="."]
-
-[node name="Anim" type="AnimatedSprite2D" parent="Visual"]
+[node name="Anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"walk"
-offset = Vector2(0, -5)
+animation = &"damage"
 
-[node name="Hitbox" type="Area2D" parent="." groups=["LethalArea"]]
-position = Vector2(2, 0)
-scale = Vector2(1, 0.93276095)
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(1, 0)
 collision_layer = 2
-collision_mask = 36
+collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0.5, 0)
-shape = SubResource("CapsuleShape2D_4wf4l")
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_taegk")
 debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)
 
 [node name="ReloadTimer" type="Timer" parent="."]

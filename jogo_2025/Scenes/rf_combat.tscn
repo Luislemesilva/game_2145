@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=21 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -19,17 +19,15 @@
 [ext_resource type="PackedScene" uid="uid://tlppsk0emsdr" path="res://Entities/Npcs/dr_v.tscn" id="17_tl6ou"]
 [ext_resource type="PackedScene" uid="uid://cfymiidgostgv" path="res://Entities/Npcs/gama.tscn" id="18_ifkmj"]
 [ext_resource type="PackedScene" uid="uid://djmyvae6bpquo" path="res://Entities/Npcs/punchduca.tscn" id="19_drybi"]
-[ext_resource type="Script" uid="uid://jd028gonhu3" path="res://Scripts/systems/sistema_missao.gd" id="20_drybi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
 size = Vector2(20, 137)
 
 [node name="RFCombat" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1080.0]
-metadata/_edit_horizontal_guides_ = [-215.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(890, 85)
+position = Vector2(30, 370)
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
 position = Vector2(6, 3)
@@ -41,7 +39,6 @@ tile_map_data = PackedByteArray("AAAAABEAAAABAAIAAAAAABIAAAABAAMAAAABABEAAAACAAI
 tile_set = ExtResource("2_4kbmg")
 
 [node name="Decoration" type="TileMapLayer" parent="Tiles"]
-tile_map_data = PackedByteArray("AAABAAgAAAAAAAEAAAABAAkAAAAAAAMAAAABAAsAAAAAAAMAAAABAAoAAAAAAAMAAAABAAwAAAAHAAMAAAAAAAwAAAAFAAAAAAATAAkAAAAAAAEAAAATAAoAAAAAAAIAAAATAAsAAAAAAAMAAAATAAwAAAAGAAYAAAAUAAwAAAAFAAAAAAAVAAwAAAAIAAMAAAAVAA0AAAAAAAIAAAAVAAsAAAAGAAUAAAAWAAsAAAAHAAYAAAAWAAoAAAAAAAMAAAAWAAkAAAAAAAEAAAAWAAwAAAAFAAAAAAAXAAwAAAAFAAAAAAAZAAwAAAAFAAAAAAAYAAwAAAACAAQAAAAaAAwAAAAHAAUAAAAaAA0AAAAAAAMAAAAaAA4AAAAAAAIAAAACAAwAAAAFAAAAAAADAAwAAAAFAAAAAAAEAAwAAAAFAAAAAAAFAAwAAAAFAAAAAAAGAAwAAAAIAAMAAAAGAAsAAAAAAAMAAAAGAA4AAAAAAAIAAAAGAA0AAAAAAAIAAAAGAAgAAAAAAAEAAAAGAAkAAAAAAAMAAAAGAAoAAAAAAAMAAAAHAAwAAAAFAAAAAAAIAAwAAAAFAAAAAAAJAAwAAAAFAAAAAAAKAAwAAAAFAAAAAAALAAwAAAAHAAUAAAALAA0AAAAAAAMAAAALAA4AAAAAAAIAAAABAA8AAAAAAAIAAAABAA4AAAAAAAMAAAABAA0AAAAAAAMAAAAoAAoAAAAHAAMAAAApAAoAAAAFAAAAAAAnAAoAAAAFAAAAAAAoAAkAAAAAAAEAAAAoAAsAAAAAAAMAAAAoAAwAAAAGAAYAAAApAAwAAAAHAAAAAAAqAAoAAAAFAAAAAAArAAoAAAAFAAAAAAAsAAoAAAAFAAAAAAAtAAoAAAAFAAAAAAAuAAoAAAAHAAAAAAAmAAoAAAAGAAYAAAAmAAkAAAAAAAEAAAAqAAAAAAAAAAEAAAAqAAEAAAAIAAMAAAArAAEAAAAHAAUAAAArAAIAAAAAAAMAAAArAAMAAAAAAAIAAAAqAAIAAAAHAAYAAAApAAIAAAAGAAUAAAApAAMAAAAAAAIAAAAoAAEAAAAFAAAAAAAnAAEAAAAFAAAAAAApAAEAAAAFAAAAAAAmAAEAAAAFAAAAAAAlAAEAAAAFAAAAAAAkAAEAAAAFAAAAAAAjAAEAAAAFAAAAAAAiAAEAAAAFAAAAAAAhAAEAAAAFAAAAAAAgAAEAAAAFAAAAAAAfAAEAAAAFAAAAAAAeAAEAAAAFAAAAAAAdAAEAAAAFAAAAAAAcAAEAAAAFAAAAAAAbAAEAAAAFAAAAAAAaAAEAAAAFAAAAAAAZAAEAAAAFAAAAAAAYAAEAAAAFAAAAAAAXAAEAAAAFAAAAAAASAAEAAAAFAAAAAAARAAEAAAAFAAAAAAAQAAEAAAAFAAAAAAAPAAEAAAAFAAAAAAAOAAEAAAAFAAAAAAANAAEAAAAFAAAAAAAMAAEAAAAFAAAAAAALAAEAAAAFAAAAAAAKAAEAAAAFAAAAAAAJAAEAAAAFAAAAAAAIAAEAAAAFAAAAAAAHAAEAAAAFAAAAAAAGAAEAAAAFAAAAAAATAAEAAAAFAAAAAAAUAAEAAAAHAAMAAAAVAAEAAAAFAAAAAAAWAAEAAAAFAAAAAAAFAAEAAAAGAAAAAAAUAAAAAAAAAAMAAAAUAP//AAAGAAUAAAAVAP//AAAHAAYAAAAUAAIAAAAAAAIAAAA=")
 tile_set = ExtResource("3_mbt0q")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
@@ -102,7 +99,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 1536, 432)
 
 [node name="Camera2D" parent="." instance=ExtResource("10_0rq2b")]
-limit_top = -215
 limit_right = 1080
 
 [node name="LevelEnd" parent="." instance=ExtResource("11_uxbgp")]
@@ -133,25 +129,10 @@ position = Vector2(0, -144)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Robot" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(562, 105)
+position = Vector2(405, 57)
 
 [node name="Robot2" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(978, 81)
-
-[node name="Robot3" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(401, 58)
-
-[node name="Robot4" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(133, 57)
-
-[node name="Robot5" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(324, -110)
-
-[node name="Robot6" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(494, -159)
-
-[node name="Robot7" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(801, -159)
+position = Vector2(910, 81)
 
 [node name="NPCs" type="Node2D" parent="."]
 
@@ -175,9 +156,6 @@ flip_h = true
 
 [node name="CollisionShape2D" parent="NPCs/Punchduca" index="1"]
 position = Vector2(-1, 0)
-
-[node name="SistemaMissao" type="Node" parent="."]
-script = ExtResource("20_drybi")
 
 [editable path="LevelEnd"]
 [editable path="Plataforms/RFPlataform"]
