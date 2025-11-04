@@ -236,8 +236,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c3or5")
 }],
-"loop": true,
-"name": &"demage",
+"loop": false,
+"name": &"damage",
 "speed": 5.0
 }, {
 "frames": [{
@@ -337,7 +337,7 @@ script = ExtResource("1_7tywe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_4tvvw")
-animation = &"attack"
+animation = &"damage"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.0000014)

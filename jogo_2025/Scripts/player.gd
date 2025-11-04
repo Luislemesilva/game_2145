@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var respawn_position: Vector2
+@export var max_health := 3
+var current_health := max_health
 
 
 enum PlayerState {     
@@ -22,7 +24,6 @@ const BULLET = preload("uid://dp6iuxs40fxwy")
 
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
-
 var jump_count = 0
 @export var max_jump_count = 2
 
@@ -33,8 +34,30 @@ func _ready() -> void:
 	add_to_group("Player")
 	go_to_idle_state()
 	
-func _physics_process(delta: float) -> void:
+func take_damage(_amount: int = 1) -> void:
+	if status == PlayerState.damage:
+		return
+
+	current_health -= 1
+	anim.play("damage")
+	status = PlayerState.damage
+
+	if current_health <= 0:
+		die()
+	else:
+		await anim.animation_finished
+		go_to_idle_state()
+		
+func die():
+	status = PlayerState.hurt
+	anim.play("hurt")
+	velocity = Vector2.ZERO
+	reload_timer.start()
 	
+func _on_reload_timer_timeout() -> void:
+	get_tree().reload_current_scene()   
+	
+func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
@@ -55,17 +78,23 @@ func _physics_process(delta: float) -> void:
 
 func go_to_damage_state():
 	status = PlayerState.damage
-	anim.play("damage")           
+	anim.play("damage")
+	velocity = Vector2.ZERO        
 	
-
+	await anim.animation_finished
+	if Input.get_axis("Left", "Right") == 0:
+		go_to_idle_state()
+	else:
+		go_to_walk_state()
+		
 func go_to_idle_state():
 	status = PlayerState.idle
 	anim.play("idle")
-	
+
 func go_to_walk_state():
 	status = PlayerState.walk
 	anim.play("walk")
-	
+
 func go_to_jump_state():
 	status = PlayerState.jump
 	anim.play("jump")
@@ -84,38 +113,29 @@ func go_to_hurt_state():
 
 func idle_state():
 	move()
-	
 	if Input.is_action_just_pressed("Jump"):
 		go_to_jump_state()
-		return
-	
 	if velocity.x != 0:
 		go_to_walk_state()
-		return
-		
+
 func walk_state():
 	move()
 	if velocity.x == 0:
 		go_to_idle_state()
-		return
-		
 	if Input.is_action_just_pressed("Jump"):
 		go_to_jump_state()
-		return
-	
+
 func jump_state():
 	move()
-	
-	if Input.is_action_just_pressed("Jump") && jump_count < max_jump_count:
+	if Input.is_action_just_pressed("Jump") and jump_count < max_jump_count:
 		go_to_jump_state()
-	
 	if is_on_floor():
 		jump_count = 0
 		if velocity.x == 0:
 			go_to_idle_state()
 		else:
 			go_to_walk_state()
-		return
+
 		
 func damage_state():
 	pass          
@@ -130,13 +150,10 @@ func shoot_state():
 func move():
 	var mouse_x = get_global_mouse_position().x
 	if mouse_x < global_position.x:
-		anim.flip_h = true
-		$Collision.position.x = -abs($Collision.position.x)
-	elif mouse_x > global_position.x:
-		anim.flip_h = false
-		$Collision.position.x = abs($Collision.position.x)
-		
-		
+		$Anim.scale.x = -1  
+	else:
+		$Anim.scale.x = 1
+
 	var direction := Input.get_axis("Left", "Right")
 	if direction:
 		velocity.x = direction * SPEED
@@ -145,10 +162,8 @@ func move():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Enemies"):
-		hit_enemy(area)
-	elif area.is_in_group("LethalArea"):
-		hit_lethal_area()
+	if area.is_in_group("Enemies") or area.is_in_group("EnemyBullets"):
+		take_damage()
 	
 func hit_enemy(area: Area2D):
 	if velocity.y > 0:
@@ -161,5 +176,4 @@ func hit_lethal_area():
 	go_to_hurt_state() 
 
  
-func _on_reload_timer_timeout() -> void:
-	get_tree().reload_current_scene()    
+ 

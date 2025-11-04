@@ -23,6 +23,9 @@ const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
 const SPEED = 30.0
 const JUMP_VELOCITY = -400.0
 
+@export var max_health := 3
+var current_health := max_health
+
 
 var status: RobotState
 
@@ -69,7 +72,14 @@ func go_to_attack_state():
 	
 func go_to_damage_state():
 	status = RobotState.damage
-	anim.play("damage") 
+	anim.play("damage")
+	velocity = Vector2.ZERO
+
+	await anim.animation_finished
+	if player_detector.is_colliding():
+		go_to_attack_state()
+	else:
+		go_to_walk_state()
 	
 func go_to_hurt_state():
 	status = RobotState.hurt
@@ -109,14 +119,25 @@ func hurt_state(_delta):
 	
 	
 	
-func take_damage():             # Hurt = Death    Damage = Dano   
-	go_to_hurt_state() 
+func take_damage(amount: int = 1) -> void:
+	if status == RobotState.hurt or status == RobotState.damage:
+		return
+
+	current_health -= amount
+	print("Robô tomou dano! Vida restante: ", current_health)
+
+	if current_health > 0:
+		go_to_damage_state()
+	else:
+		go_to_hurt_state()
+
 
 func shoot():
 	var new_shoot = ROBOT_BULLET.instantiate()
 	add_sibling(new_shoot)
 	new_shoot.position = shoot_start_position.global_position
 	new_shoot.set_direction(self.direction)
+
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
