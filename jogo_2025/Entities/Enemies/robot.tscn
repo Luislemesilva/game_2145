@@ -331,6 +331,7 @@ size = Vector2(18.890766, 20.988634)
 
 [node name="Robot" type="CharacterBody2D" groups=["Enemies"]]
 collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_7tywe")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -73,6 +73,8 @@ func go_to_jump_state():
 	jump_count += 1
 
 func go_to_hurt_state():
+	if status == PlayerState.hurt:
+		return
 	status = PlayerState.hurt
 	anim.play("hurt")
 	velocity = Vector2.ZERO
@@ -129,8 +131,10 @@ func move():
 	var mouse_x = get_global_mouse_position().x
 	if mouse_x < global_position.x:
 		anim.flip_h = true
+		$Collision.position.x = -abs($Collision.position.x)
 	elif mouse_x > global_position.x:
 		anim.flip_h = false
+		$Collision.position.x = abs($Collision.position.x)
 		
 		
 	var direction := Input.get_axis("Left", "Right")

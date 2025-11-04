@@ -73,7 +73,8 @@ interact={
 2d_physics/layer_3="enemies"
 2d_physics/layer_4="level_end"
 2d_physics/layer_5="lethal_area"
-2d_physics/layer_6="object"
+2d_physics/layer_6="enemy_bullets"
+2d_physics/layer_7="player_bullets"
 
 [rendering]
 

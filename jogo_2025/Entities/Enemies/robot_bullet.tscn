@@ -22,7 +22,7 @@ animations = [{
 }]
 
 [node name="Robot_Bullet" type="Area2D" groups=["LethalArea"]]
-collision_layer = 16
+collision_layer = 32
 collision_mask = 3
 script = ExtResource("1_3fhc5")
 
