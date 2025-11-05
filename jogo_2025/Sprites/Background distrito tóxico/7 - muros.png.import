@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bliowweqqtnre"
-path="res://.godot/imported/7 muros.png-0e4f80a37a2c71569a1949d0497dcd3c.ctex"
+uid="uid://fx8016siarh8"
+path="res://.godot/imported/7 - muros.png-76e440831069c5d35b3d60240348cfe2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Background distrito tóxico/7 muros.png"
-dest_files=["res://.godot/imported/7 muros.png-0e4f80a37a2c71569a1949d0497dcd3c.ctex"]
+source_file="res://Sprites/Background distrito tóxico/7 - muros.png"
+dest_files=["res://.godot/imported/7 - muros.png-76e440831069c5d35b3d60240348cfe2.ctex"]
 
 [params]
 
