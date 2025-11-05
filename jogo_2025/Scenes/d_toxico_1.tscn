@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://d2234isk5boij"]
+[gd_scene load_steps=19 format=4 uid="uid://d2234isk5boij"]
 
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="1_jkwk2"]
 [ext_resource type="Texture2D" uid="uid://bd1u1alk8qouq" path="res://Sprites/Distrito tóxico/Tileset Distrito Toxico chao.png" id="2_6rtoa"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://ceq4lxtka18q7" path="res://Sprites/Background distrito tóxico/6 grades claras.png" id="13_q4yjh"]
 [ext_resource type="Texture2D" uid="uid://fx8016siarh8" path="res://Sprites/Background distrito tóxico/7 - muros.png" id="14_87mp6"]
 [ext_resource type="Texture2D" uid="uid://c15mqq8c4o2op" path="res://Sprites/Background distrito tóxico/8 fumaca da frente.png" id="15_gukyq"]
+[ext_resource type="PackedScene" uid="uid://b0d8mf2rigo87" path="res://Entities/Enemies/toxicminion.tscn" id="16_1csop"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk6nf"]
 texture = ExtResource("2_6rtoa")
@@ -308,6 +309,32 @@ texture = ExtResource("15_gukyq")
 centered = false
 region_enabled = true
 region_rect = Rect2(0, 0, 1536, 432)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="toxicminion" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(418, 324)
+
+[node name="toxicminion2" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(731, 324)
+
+[node name="toxicminion3" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(444, 132)
+
+[node name="toxicminion4" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(13, 180)
+
+[node name="toxicminion5" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(14, 12)
+
+[node name="toxicminion6" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(537, -60)
+
+[node name="toxicminion7" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(657, -108)
+
+[node name="toxicminion8" parent="Enemies" instance=ExtResource("16_1csop")]
+position = Vector2(945, -132)
 
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]

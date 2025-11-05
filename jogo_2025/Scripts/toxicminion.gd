@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
-enum ToxicminionState {    
+enum ToxicMinionState {    
 	idle,
 	walk,
+	attack,
 	damage,
 	hurt,
+	
 }
-
-const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
+# const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -21,8 +22,11 @@ const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
 const SPEED = 30.0
 const JUMP_VELOCITY = -400.0
 
+@export var max_health := 3
+var current_health := max_health
 
-var status: ToxicminionState
+
+var status: ToxicMinionState
 
 var direction = 1
 var can_shoot = true
@@ -38,35 +42,50 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	match status:
-		ToxicminionState.idle:
+		ToxicMinionState.idle:
 			idle_state(delta)
-		ToxicminionState.walk:
+		ToxicMinionState.walk:
 			walk_state(delta)
-		ToxicminionState.damage:
+		#ToxicMinionState.attack:
+			#attack_state(delta)
+		ToxicMinionState.damage:
 			damage_state(delta)
-		ToxicminionState.hurt:
+		ToxicMinionState.hurt:
 			hurt_state(delta)
 		
 	move_and_slide()
 	
 func go_to_idle_state():
-	status = ToxicminionState.idle
+	status = ToxicMinionState.idle
 	anim.play("idle")
 	
 func go_to_walk_state():
-	status = ToxicminionState.walk
+	status = ToxicMinionState.walk
 	anim.play("walk")
 	
+func go_to_attack_state():
+	status = ToxicMinionState.attack
+	anim.play("attack")
+	velocity = Vector2.ZERO
+	can_shoot = true
+	
 func go_to_damage_state():
-	status = ToxicminionState.damage
-	anim.play("damage") 
+	status = ToxicMinionState.damage
+	anim.play("damage")
+	velocity = Vector2.ZERO
+
+	await anim.animation_finished
+	if player_detector.is_colliding():
+		go_to_attack_state()
+	else:
+		go_to_walk_state()
 	
 func go_to_hurt_state():
-	status = ToxicminionState.hurt
+	status = ToxicMinionState.hurt
 	anim.play("hurt")
-	hitbox.process_mode = Node.PROCESS_MODE_DISABLED
-	$CollisionShape2D.disabled = true
-	velocity = Vector2.ZERO
+	hitbox.monitoring = false
+	hitbox.get_node("CollisionShape2D").disabled = true
+	velocity = Vector2.ZERO 
 	
 func idle_state(_delta):
 	pass
@@ -82,10 +101,14 @@ func walk_state(_delta):
 		scale.x *= -1
 		direction *= -1
 		
-func attack_state(_delta):
-	if anim.frame == 5 && can_shoot:
-		shoot()
-		can_shoot = false
+	if player_detector.is_colliding():
+		go_to_attack_state()
+		return
+		
+#func attack_state(_delta):
+	#if anim.frame == 5 && can_shoot:
+		#shoot()
+		#can_shoot = false
 	
 func damage_state(_delta):
 	pass
@@ -93,16 +116,28 @@ func damage_state(_delta):
 func hurt_state(_delta):
 	pass
 	
-func take_damage():    
-	go_to_hurt_state() 
+	
+	
+func take_damage(amount: int = 1) -> void:
+	if status == ToxicMinionState.hurt or status == ToxicMinionState.damage:
+		return
 
-func shoot():
-	var new_shoot = ROBOT_BULLET.instantiate()
-	add_sibling(new_shoot)
-	new_shoot.position = shoot_start_position.global_position
-	new_shoot.set_direction(self.direction)
-	
-	
+	current_health -= amount
+	print("Robô tomou dano! Vida restante: ", current_health)
+
+	if current_health > 0:
+		go_to_damage_state()
+	else:
+		go_to_hurt_state()
+
+
+# func shoot():
+	#var new_shoot = ROBOT_BULLET.instantiate()
+	#add_sibling(new_shoot)
+	#new_shoot.position = shoot_start_position.global_position
+	#new_shoot.set_direction(self.direction) 
+
+
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
 		go_to_walk_state()

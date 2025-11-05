@@ -27,7 +27,7 @@ size = Vector2(20, 137)
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(869, 85)
+position = Vector2(13, 372)
 collision_mask = 45
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
@@ -130,10 +130,28 @@ position = Vector2(0, -144)
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Robot" parent="Enemies" instance=ExtResource("9_gqgb5")]
-position = Vector2(405, 57)
+position = Vector2(398, 57)
 
 [node name="Robot2" parent="Enemies" instance=ExtResource("9_gqgb5")]
 position = Vector2(910, 81)
+
+[node name="Robot3" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(565, 105)
+
+[node name="Robot4" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(131, 57)
+
+[node name="Robot5" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(11, 9)
+
+[node name="Robot6" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(328, -112)
+
+[node name="Robot7" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(493, -160)
+
+[node name="Robot8" parent="Enemies" instance=ExtResource("9_gqgb5")]
+position = Vector2(806, -160)
 
 [node name="NPCs" type="Node2D" parent="."]
 

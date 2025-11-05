@@ -207,7 +207,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k5mpo")
 }],
-"loop": true,
+"loop": false,
 "name": &"damage",
 "speed": 10.0
 }, {
@@ -236,7 +236,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dj5ei")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 7.0
 }, {
@@ -289,7 +289,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_iothp")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 12.0
 }, {
@@ -331,12 +331,15 @@ height = 24.0
 radius = 9.529421
 height = 31.826336
 
-[node name="toxicminion" type="CharacterBody2D"]
+[node name="toxicminion" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_05awh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x8x1n")
-animation = &"idle"
+animation = &"walk"
+autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ivcgq")
@@ -368,3 +371,5 @@ collision_mask = 2
 
 [node name="ShootStartPosition" type="Node2D" parent="."]
 position = Vector2(5, 5)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
