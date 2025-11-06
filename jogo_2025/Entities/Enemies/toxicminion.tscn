@@ -1,10 +1,11 @@
-[gd_scene load_steps=51 format=3 uid="uid://b0d8mf2rigo87"]
+[gd_scene load_steps=52 format=3 uid="uid://b0d8mf2rigo87"]
 
 [ext_resource type="Script" uid="uid://cay1bu77c1vsh" path="res://Scripts/toxicminion.gd" id="1_05awh"]
 [ext_resource type="Texture2D" uid="uid://csfu2j7wcujcu" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Machucado.png" id="1_72a3n"]
 [ext_resource type="Texture2D" uid="uid://d4cj7411durl0" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Idle.png" id="1_ust0s"]
 [ext_resource type="Texture2D" uid="uid://wqlm7yoh5f8e" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Morrendo.png" id="2_05awh"]
 [ext_resource type="Texture2D" uid="uid://bei0sgfrt2t11" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Andando.png" id="2_nk2u2"]
+[ext_resource type="PackedScene" uid="uid://73uypqwft57b" path="res://Entities/Player/gun.tscn" id="6_n420t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i2qww"]
 atlas = ExtResource("1_72a3n")
@@ -342,6 +343,7 @@ animation = &"walk"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CapsuleShape2D_ivcgq")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["LethalArea"]]
@@ -350,6 +352,7 @@ collision_layer = 4
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(-6, 3)
 scale = Vector2(0.73456717, -0.7540924)
 shape = SubResource("CapsuleShape2D_72a3n")
@@ -371,5 +374,8 @@ collision_mask = 2
 
 [node name="ShootStartPosition" type="Node2D" parent="."]
 position = Vector2(5, 5)
+
+[node name="Gun" parent="." instance=ExtResource("6_n420t")]
+position = Vector2(3, 3)
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

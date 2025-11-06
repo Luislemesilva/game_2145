@@ -27,7 +27,7 @@ size = Vector2(20, 137)
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("2_d643p")]
-position = Vector2(13, 372)
+position = Vector2(1054, -155)
 collision_mask = 45
 
 [node name="Gun" parent="Player" instance=ExtResource("12_n4hu8")]
