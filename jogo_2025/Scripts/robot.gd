@@ -124,7 +124,6 @@ func take_damage(amount: int = 1) -> void:
 		return
 
 	current_health -= amount
-	print("Robô tomou dano! Vida restante: ", current_health)
 
 	if current_health > 0:
 		go_to_damage_state()

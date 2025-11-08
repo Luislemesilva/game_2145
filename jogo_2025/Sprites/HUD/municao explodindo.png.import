@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vsgie4lhcam7"
-path="res://.godot/imported/healthbarUnder.png-b464d58ec896a34abb1b1480be060008.ctex"
+uid="uid://du1sgq5nsc0gq"
+path="res://.godot/imported/municao explodindo.png-01da5079ff5e1c82e2000314dd134524.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HUD/healthbarUnder.png"
-dest_files=["res://.godot/imported/healthbarUnder.png-b464d58ec896a34abb1b1480be060008.ctex"]
+source_file="res://Sprites/HUD/municao explodindo.png"
+dest_files=["res://.godot/imported/municao explodindo.png-01da5079ff5e1c82e2000314dd134524.ctex"]
 
 [params]
 

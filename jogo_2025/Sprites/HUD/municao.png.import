@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gbd4yxbceaqa"
-path="res://.godot/imported/healthbarProgress.png-db4fde682914a4ad0d202abe08771e92.ctex"
+uid="uid://cbqt621mryrrt"
+path="res://.godot/imported/municao.png-ee0b2340dffa779c893f2f6f222561a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HUD/healthbarProgress.png"
-dest_files=["res://.godot/imported/healthbarProgress.png-db4fde682914a4ad0d202abe08771e92.ctex"]
+source_file="res://Sprites/HUD/municao.png"
+dest_files=["res://.godot/imported/municao.png-ee0b2340dffa779c893f2f6f222561a3.ctex"]
 
 [params]
 

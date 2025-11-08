@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://0vkneyuyp00i"
-path="res://.godot/imported/download (2).png-f8e125457617fd5d1603678fe861fc06.ctex"
+uid="uid://c353b0fj4h5bl"
+path="res://.godot/imported/coracao 12x12.png-e291d71df08e29428db009c78364f428.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HUD/download (2).png"
-dest_files=["res://.godot/imported/download (2).png-f8e125457617fd5d1603678fe861fc06.ctex"]
+source_file="res://Sprites/HUD/coracao 12x12.png"
+dest_files=["res://.godot/imported/coracao 12x12.png-e291d71df08e29428db009c78364f428.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=41 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -19,9 +19,141 @@
 [ext_resource type="PackedScene" uid="uid://tlppsk0emsdr" path="res://Entities/Npcs/dr_v.tscn" id="17_tl6ou"]
 [ext_resource type="PackedScene" uid="uid://cfymiidgostgv" path="res://Entities/Npcs/gama.tscn" id="18_ifkmj"]
 [ext_resource type="PackedScene" uid="uid://djmyvae6bpquo" path="res://Entities/Npcs/punchduca.tscn" id="19_drybi"]
+[ext_resource type="Texture2D" uid="uid://lvqiylly02nt" path="res://Sprites/HUD/coracao 12x12 explodindo.png" id="20_4hasr"]
+[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/hud.gd" id="20_dqnwe"]
+[ext_resource type="Texture2D" uid="uid://c353b0fj4h5bl" path="res://Sprites/HUD/coracao 12x12.png" id="21_dqnwe"]
+[ext_resource type="Texture2D" uid="uid://du1sgq5nsc0gq" path="res://Sprites/HUD/municao explodindo.png" id="22_4or1e"]
+[ext_resource type="Texture2D" uid="uid://cbqt621mryrrt" path="res://Sprites/HUD/municao.png" id="23_xrp3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
 size = Vector2(20, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr1fe"]
+atlas = ExtResource("20_4hasr")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mhg5"]
+atlas = ExtResource("20_4hasr")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tinc"]
+atlas = ExtResource("20_4hasr")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhee4"]
+atlas = ExtResource("20_4hasr")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n300"]
+atlas = ExtResource("20_4hasr")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch07x"]
+atlas = ExtResource("20_4hasr")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkv2h"]
+atlas = ExtResource("21_dqnwe")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ppcet"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr1fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mhg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tinc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhee4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n300")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch07x")
+}],
+"loop": false,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkv2h")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5nx0"]
+atlas = ExtResource("22_4or1e")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi6j"]
+atlas = ExtResource("22_4or1e")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukql1"]
+atlas = ExtResource("22_4or1e")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ngw4"]
+atlas = ExtResource("22_4or1e")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr41p"]
+atlas = ExtResource("22_4or1e")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_karhr"]
+atlas = ExtResource("23_xrp3o")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nirwr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5nx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mi6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukql1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ngw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr41p")
+}],
+"loop": false,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_karhr")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="RFCombat" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1080.0]
@@ -175,6 +307,72 @@ flip_h = true
 
 [node name="CollisionShape2D" parent="NPCs/Punchduca" index="1"]
 position = Vector2(-1, 0)
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("20_dqnwe")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(16, 19)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"break"
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(33, 19)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(50, 19)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
+[node name="BulletsContainer" type="HBoxContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bullet1" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(92, 12)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet2" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(109, 12)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet3" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(126, 12)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet4" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(143, 12)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet5" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(92, 25)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet6" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(109, 25)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet7" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(126, 25)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
+
+[node name="Bullet8" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(143, 25)
+sprite_frames = SubResource("SpriteFrames_nirwr")
+animation = &"idle"
 
 [editable path="LevelEnd"]
 [editable path="Plataforms/RFPlataform"]
