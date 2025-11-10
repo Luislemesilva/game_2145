@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6au6rx3aryy5"
-path="res://.godot/imported/Robo_BaseFantasma_Atirando-Sheet.png-60173afd129548472826a8ad19a7d840.ctex"
+uid="uid://gmu4pu3ud1mt"
+path="res://.godot/imported/Pocao_QuebrandoVeneno-Sheet.png-e649aa8760775f2d3d7fbf23946d5f65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Atirando-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Atirando-Sheet.png-60173afd129548472826a8ad19a7d840.ctex"]
+source_file="res://Sprites/Inimigos/Dra Lys/Pocao_QuebrandoVeneno-Sheet.png"
+dest_files=["res://.godot/imported/Pocao_QuebrandoVeneno-Sheet.png-e649aa8760775f2d3d7fbf23946d5f65.ctex"]
 
 [params]
 

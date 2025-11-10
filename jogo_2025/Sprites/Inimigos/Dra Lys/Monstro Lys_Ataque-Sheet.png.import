@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwkgbarbkig56"
-path="res://.godot/imported/Robo_BaseFantasma_Idle-Sheet.png-415a57e25ea6747751bca7324472b342.ctex"
+uid="uid://bx5754ulbhwrb"
+path="res://.godot/imported/Monstro Lys_Ataque-Sheet.png-3cdbd14ed5e5320166e5c9ecf8d13d4c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Idle-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Idle-Sheet.png-415a57e25ea6747751bca7324472b342.ctex"]
+source_file="res://Sprites/Inimigos/Dra Lys/Monstro Lys_Ataque-Sheet.png"
+dest_files=["res://.godot/imported/Monstro Lys_Ataque-Sheet.png-3cdbd14ed5e5320166e5c9ecf8d13d4c.ctex"]
 
 [params]
 

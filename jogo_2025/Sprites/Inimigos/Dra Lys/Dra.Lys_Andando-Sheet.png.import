@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bajhexph5qyd7"
-path="res://.godot/imported/Robo_BaseFantasma_Machucado-Sheet.png-26ef8ee7c9ebad83844a3f970009e544.ctex"
+uid="uid://domxbtx65eb38"
+path="res://.godot/imported/Dra.Lys_Andando-Sheet.png-4b6511e731353c980d49a95e0802f970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Machucado-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Machucado-Sheet.png-26ef8ee7c9ebad83844a3f970009e544.ctex"]
+source_file="res://Sprites/Inimigos/Dra Lys/Dra.Lys_Andando-Sheet.png"
+dest_files=["res://.godot/imported/Dra.Lys_Andando-Sheet.png-4b6511e731353c980d49a95e0802f970.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkyv58huf7mmc"
-path="res://.godot/imported/Robo_TiroMunicao.png-21ed4067812ed6bba1089b54ec9b323a.ctex"
+uid="uid://li3splpufquj"
+path="res://.godot/imported/Monstro Lys_Idle-Sheet.png-05d73e5b2d8beb5e6cd0c767c8a1b3b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_TiroMunicao.png"
-dest_files=["res://.godot/imported/Robo_TiroMunicao.png-21ed4067812ed6bba1089b54ec9b323a.ctex"]
+source_file="res://Sprites/Inimigos/Dra Lys/Monstro Lys_Idle-Sheet.png"
+dest_files=["res://.godot/imported/Monstro Lys_Idle-Sheet.png-05d73e5b2d8beb5e6cd0c767c8a1b3b0.ctex"]
 
 [params]
 

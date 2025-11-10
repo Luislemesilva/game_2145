@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://duyu05ve660tt"]
+[gd_scene load_steps=17 format=4 uid="uid://duyu05ve660tt"]
 
 [ext_resource type="Texture2D" uid="uid://dg3a52ks3dier" path="res://Sprites/Distrito tóxico/Tileset toxico laboratorio.png" id="1_mq4mc"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="2_i1co6"]
@@ -7,15 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://bndgu8ofiq4u" path="res://Sprites/Background distrito tóxico/2 canos claros.png" id="4_562xm"]
 [ext_resource type="Texture2D" uid="uid://b2rmtmaoq80a4" path="res://Sprites/Background distrito tóxico/3 canos medios.png" id="5_hw2ng"]
 [ext_resource type="Texture2D" uid="uid://bwx30ewn01ohl" path="res://Sprites/Background distrito tóxico/4 canos escuros.png" id="6_1j2e2"]
-[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/hud.gd" id="6_n7nhq"]
 [ext_resource type="Texture2D" uid="uid://inmaq7p8jeqp" path="res://Sprites/Background distrito tóxico/5 fumaca.png" id="7_64gr7"]
-[ext_resource type="Texture2D" uid="uid://lvqiylly02nt" path="res://Sprites/HUD/coracao 12x12 explodindo.png" id="7_542t8"]
 [ext_resource type="Texture2D" uid="uid://ceq4lxtka18q7" path="res://Sprites/Background distrito tóxico/6 grades claras.png" id="8_sxmm1"]
-[ext_resource type="Texture2D" uid="uid://c353b0fj4h5bl" path="res://Sprites/HUD/coracao 12x12.png" id="8_vcl2n"]
-[ext_resource type="Texture2D" uid="uid://du1sgq5nsc0gq" path="res://Sprites/HUD/municao explodindo.png" id="9_aj7k7"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="10_mq4mc"]
 [ext_resource type="Texture2D" uid="uid://c15mqq8c4o2op" path="res://Sprites/Background distrito tóxico/8 fumaca da frente.png" id="10_n7nhq"]
-[ext_resource type="Texture2D" uid="uid://cbqt621mryrrt" path="res://Sprites/HUD/municao.png" id="10_v83p2"]
 [ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="11_i1co6"]
 [ext_resource type="PackedScene" uid="uid://oyrdlyokex8" path="res://Entities/dt_plataform.tscn" id="13_562xm"]
 [ext_resource type="PackedScene" uid="uid://68k4b6pgcpmh" path="res://Entities/Enemies/dra_lys.tscn" id="14_hw2ng"]
@@ -72,138 +67,11 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_542t8")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tr1fe"]
-atlas = ExtResource("7_542t8")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3mhg5"]
-atlas = ExtResource("7_542t8")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6tinc"]
-atlas = ExtResource("7_542t8")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vhee4"]
-atlas = ExtResource("7_542t8")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6n300"]
-atlas = ExtResource("7_542t8")
-region = Rect2(96, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ch07x"]
-atlas = ExtResource("7_542t8")
-region = Rect2(120, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vkv2h"]
-atlas = ExtResource("8_vcl2n")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qf5rf"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tr1fe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3mhg5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6tinc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vhee4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6n300")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ch07x")
-}],
-"loop": false,
-"name": &"break",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": false,
-"name": &"empty",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vkv2h")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b5nx0"]
-atlas = ExtResource("9_aj7k7")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6mi6j"]
-atlas = ExtResource("9_aj7k7")
-region = Rect2(24, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ukql1"]
-atlas = ExtResource("9_aj7k7")
-region = Rect2(48, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3ngw4"]
-atlas = ExtResource("9_aj7k7")
-region = Rect2(72, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vr41p"]
-atlas = ExtResource("9_aj7k7")
-region = Rect2(96, 0, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_karhr"]
-atlas = ExtResource("10_v83p2")
-region = Rect2(0, 0, 24, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ltebd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b5nx0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6mi6j")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ukql1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3ngw4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vr41p")
-}],
-"loop": false,
-"name": &"break",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": false,
-"name": &"empty",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_karhr")
-}],
-"loop": false,
-"name": &"idle",
-"speed": 5.0
-}]
-
 [node name="DToxico_2" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("10_mq4mc")]
-position = Vector2(843, -131)
+position = Vector2(25, 324)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_y4i5m")]
 
@@ -325,76 +193,8 @@ position = Vector2(226, -6.5)
 [node name="CollisionShape2D" parent="Plataforms/DTPlataform2" index="2"]
 position = Vector2(-8, -6.5)
 
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("6_n7nhq")
-
-[node name="HeartsContainer" type="HBoxContainer" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Heart1" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
-position = Vector2(16, 19)
-sprite_frames = SubResource("SpriteFrames_qf5rf")
-animation = &"break"
-
-[node name="Heart2" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
-position = Vector2(33, 19)
-sprite_frames = SubResource("SpriteFrames_qf5rf")
-animation = &"idle"
-
-[node name="Heart3" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
-position = Vector2(50, 19)
-sprite_frames = SubResource("SpriteFrames_qf5rf")
-animation = &"idle"
-
-[node name="BulletsContainer" type="HBoxContainer" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Bullet1" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(92, 12)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet2" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(109, 12)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet3" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(126, 12)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet4" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(143, 12)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet5" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(92, 25)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet6" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(109, 25)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet7" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(126, 25)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
-[node name="Bullet8" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
-position = Vector2(143, 25)
-sprite_frames = SubResource("SpriteFrames_ltebd")
-animation = &"idle"
-
 [node name="Dra Lys" parent="." instance=ExtResource("14_hw2ng")]
-position = Vector2(925, -134)
+position = Vector2(127, 320)
 
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]

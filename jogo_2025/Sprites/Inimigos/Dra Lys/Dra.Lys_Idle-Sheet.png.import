@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uln02vubhwq6"
-path="res://.godot/imported/Robo_BaseFantasma_Morrendo-Sheet.png-014c67778a00e6ca06688b81aabe891b.ctex"
+uid="uid://bi3dh6xq8wwwl"
+path="res://.godot/imported/Dra.Lys_Idle-Sheet.png-b77728bb21e60c1205c6b7b5f029e2f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Inimigos/Robo_BaseFantasma_Morrendo-Sheet.png"
-dest_files=["res://.godot/imported/Robo_BaseFantasma_Morrendo-Sheet.png-014c67778a00e6ca06688b81aabe891b.ctex"]
+source_file="res://Sprites/Inimigos/Dra Lys/Dra.Lys_Idle-Sheet.png"
+dest_files=["res://.godot/imported/Dra.Lys_Idle-Sheet.png-b77728bb21e60c1205c6b7b5f029e2f3.ctex"]
 
 [params]
 

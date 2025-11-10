@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bofmb6kv4w42h" path="res://Sprites/Hex/Hex_Andando_Oficial-Sheet.png" id="4_prmdv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2poj3"]
-radius = 6.0
+radius = 7.060838
 height = 26.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5c2io"]
@@ -370,16 +370,14 @@ collision_mask = 9
 script = ExtResource("1_tcnsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(1.9999999, -1)
-scale = Vector2(0.9523572, 0.9558821)
+position = Vector2(3, -2)
+scale = Vector2(0.9404964, 1.0085747)
 shape = SubResource("CapsuleShape2D_2poj3")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(0.4, -4.5)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"hurt"
-frame = 7
-frame_progress = 1.0
+animation = &"idle"
 
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2(1, 0)
@@ -387,6 +385,7 @@ collision_layer = 2
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_taegk")
 debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)
