@@ -9,7 +9,7 @@ const BULLET = preload("res://Entities/Player/Bullet.tscn")
 
 @export var orbit_distance: float = 15.0
 @export var max_ammo := 8
-@export var reload_time := 3.0
+@export var reload_time := 1.5
 
 var current_ammo := max_ammo
 var can_shoot := true

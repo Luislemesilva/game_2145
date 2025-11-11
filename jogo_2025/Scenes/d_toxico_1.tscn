@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://d2234isk5boij"]
+[gd_scene load_steps=41 format=4 uid="uid://d2234isk5boij"]
 
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="1_jkwk2"]
 [ext_resource type="Texture2D" uid="uid://bd1u1alk8qouq" path="res://Sprites/Distrito tóxico/Tileset Distrito Toxico chao.png" id="2_6rtoa"]
@@ -16,6 +16,12 @@
 [ext_resource type="Texture2D" uid="uid://fx8016siarh8" path="res://Sprites/Background distrito tóxico/7 - muros.png" id="14_87mp6"]
 [ext_resource type="Texture2D" uid="uid://c15mqq8c4o2op" path="res://Sprites/Background distrito tóxico/8 fumaca da frente.png" id="15_gukyq"]
 [ext_resource type="PackedScene" uid="uid://b0d8mf2rigo87" path="res://Entities/Enemies/toxicminion.tscn" id="16_1csop"]
+[ext_resource type="PackedScene" uid="uid://cvp8uaieaml7s" path="res://Entities/level_end.tscn" id="17_hfyx4"]
+[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/hud.gd" id="18_odhg7"]
+[ext_resource type="Texture2D" uid="uid://lvqiylly02nt" path="res://Sprites/HUD/coracao 12x12 explodindo.png" id="19_wj1db"]
+[ext_resource type="Texture2D" uid="uid://c353b0fj4h5bl" path="res://Sprites/HUD/coracao 12x12.png" id="20_xljyc"]
+[ext_resource type="Texture2D" uid="uid://du1sgq5nsc0gq" path="res://Sprites/HUD/municao explodindo.png" id="21_r3cff"]
+[ext_resource type="Texture2D" uid="uid://cbqt621mryrrt" path="res://Sprites/HUD/municao.png" id="22_swmsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk6nf"]
 texture = ExtResource("2_6rtoa")
@@ -152,6 +158,136 @@ tile_size = Vector2i(24, 24)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 6
 sources/0 = SubResource("TileSetAtlasSource_bk6nf")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywrgi"]
+size = Vector2(20, 137)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr1fe"]
+atlas = ExtResource("19_wj1db")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mhg5"]
+atlas = ExtResource("19_wj1db")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tinc"]
+atlas = ExtResource("19_wj1db")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vhee4"]
+atlas = ExtResource("19_wj1db")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6n300"]
+atlas = ExtResource("19_wj1db")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ch07x"]
+atlas = ExtResource("19_wj1db")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkv2h"]
+atlas = ExtResource("20_xljyc")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q3tb8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr1fe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mhg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tinc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vhee4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6n300")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ch07x")
+}],
+"loop": false,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkv2h")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5nx0"]
+atlas = ExtResource("21_r3cff")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mi6j"]
+atlas = ExtResource("21_r3cff")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukql1"]
+atlas = ExtResource("21_r3cff")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ngw4"]
+atlas = ExtResource("21_r3cff")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vr41p"]
+atlas = ExtResource("21_r3cff")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_karhr"]
+atlas = ExtResource("22_swmsv")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o1n0p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5nx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mi6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukql1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ngw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vr41p")
+}],
+"loop": false,
+"name": &"break",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_karhr")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [node name="DToxico_1" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1080.0]
@@ -337,6 +473,81 @@ position = Vector2(657, -108)
 [node name="toxicminion8" parent="Enemies" instance=ExtResource("16_1csop")]
 position = Vector2(945, -132)
 
+[node name="LevelEnd" parent="." instance=ExtResource("17_hfyx4")]
+position = Vector2(1069, -154)
+next_level = "d_toxico_2"
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0"]
+position = Vector2(17, -32)
+shape = SubResource("RectangleShape2D_ywrgi")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("18_odhg7")
+
+[node name="HeartsContainer" type="HBoxContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Heart1" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(16, 19)
+sprite_frames = SubResource("SpriteFrames_q3tb8")
+animation = &"break"
+
+[node name="Heart2" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(33, 19)
+sprite_frames = SubResource("SpriteFrames_q3tb8")
+animation = &"idle"
+
+[node name="Heart3" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(50, 19)
+sprite_frames = SubResource("SpriteFrames_q3tb8")
+animation = &"idle"
+
+[node name="BulletsContainer" type="HBoxContainer" parent="HUD"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bullet1" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(92, 12)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet2" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(109, 12)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet3" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(126, 12)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet4" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(143, 12)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet5" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(92, 25)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet6" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(109, 25)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet7" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(126, 25)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
+[node name="Bullet8" type="AnimatedSprite2D" parent="HUD/BulletsContainer"]
+position = Vector2(143, 25)
+sprite_frames = SubResource("SpriteFrames_o1n0p")
+animation = &"idle"
+
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]
 [editable path="Plataforms/DTPlataform3"]
+[editable path="LevelEnd"]
