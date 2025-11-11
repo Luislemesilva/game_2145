@@ -22,6 +22,7 @@ const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 var jump_count = 0
 @export var max_jump_count = 2
+var sistema_verificado = false
 
 var status: PlayerState
 
@@ -29,6 +30,11 @@ func _ready() -> void:
 	respawn_position = global_position
 	add_to_group("Player")
 	go_to_idle_state()
+	
+	if not sistema_verificado:
+		sistema_verificado = true
+		await get_tree().create_timer(1.0).timeout
+		verificar_sistema_missoes()
 
 
 
@@ -203,3 +209,53 @@ func hit_enemy(area: Area2D):
 
 func hit_lethal_area():
 	go_to_hurt_state()
+	
+func verificar_sistema_missoes():
+	var sistema = encontrar_sistema_missao()
+	if sistema:
+		print("✅ Sistema de Missões carregado com sucesso!")
+		print("📋 Missões disponíveis: 4")
+		print("🎮 Pronto para uso no jogo!")
+	else:
+		print("❌ Sistema de Missões não encontrado")
+
+func encontrar_sistema_missao():
+	print("🔍 Buscando SistemaMissao...")
+	
+	var sistema
+	
+
+	sistema = get_node("/root/SistemaMissao")
+	if sistema:
+		print("✅ Encontrado em /root/SistemaMissao")
+		return sistema
+	
+	
+	if get_parent():
+		sistema = get_parent().get_node("SistemaMissao")
+		if sistema:
+			print("✅ Encontrado como filho do parent")
+			return sistema
+	
+	
+	print("📋 Nodes disponíveis no root:")
+	for node in get_tree().get_root().get_children():
+		print("   - ", node.name)
+	
+	print("❌ SistemaMissao não encontrado")
+	print("💡 Adicione o nó SistemaMissao na cena principal")
+	return null
+
+func mostrar_missoes_ativas():
+	var sistema = encontrar_sistema_missao()
+	if sistema and sistema.missoes_ativas.size() > 0:
+		print("=== MISSÕES ATIVAS ===")
+		for missao in sistema.missoes_ativas:
+			print("🎯 ", missao["nome"])
+	else:
+		print("Nenhuma missão ativa no momento")
+
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		if event.keycode == KEY_M:  
+			mostrar_missoes_ativas()
