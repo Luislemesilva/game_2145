@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bqd8gh05o2l5"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bqd8gh05o2l5"]
 
 [ext_resource type="Texture2D" uid="uid://t55y1jm3rsyk" path="res://Sprites/Rede fantasma/TileSet-BaseFantasma.png" id="1_a512v"]
+[ext_resource type="Texture2D" uid="uid://s8mjv34lrdoq" path="res://Sprites/Distrito tóxico/Tileset dis toxico decoracao.png" id="2_g1qt2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5huhx"]
 texture = ExtResource("1_a512v")
@@ -36,6 +37,76 @@ texture_region_size = Vector2i(24, 24)
 0:3/0/texture_origin = Vector2i(-1, 0)
 0:3/0/z_index = -1
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1qt2"]
+texture = ExtResource("2_g1qt2")
+texture_region_size = Vector2i(24, 24)
+0:0/0 = 0
+0:0/0/z_index = -1
+2:0/0 = 0
+2:0/0/z_index = -1
+3:0/0 = 0
+3:0/0/z_index = -1
+4:0/0 = 0
+4:0/0/z_index = -1
+5:0/0 = 0
+5:0/0/z_index = -1
+6:0/0 = 0
+6:0/0/z_index = -1
+0:1/0 = 0
+0:1/0/z_index = -1
+4:1/0 = 0
+4:1/0/z_index = -1
+5:1/0 = 0
+5:1/0/z_index = -1
+6:1/0 = 0
+6:1/0/z_index = -1
+0:2/0 = 0
+0:2/0/z_index = -1
+4:2/0 = 0
+4:2/0/z_index = -1
+5:2/0 = 0
+5:2/0/z_index = -1
+6:2/0 = 0
+6:2/0/z_index = -1
+4:3/0 = 0
+4:3/0/texture_origin = Vector2i(0, -1)
+4:3/0/z_index = -1
+5:3/0 = 0
+5:3/0/texture_origin = Vector2i(0, -1)
+5:3/0/z_index = -1
+6:3/0 = 0
+6:3/0/z_index = -1
+4:4/0 = 0
+4:4/0/z_index = -1
+5:4/0 = 0
+5:4/0/texture_origin = Vector2i(0, 1)
+5:4/0/z_index = -1
+6:4/0 = 0
+6:4/0/z_index = -1
+0:6/0 = 0
+1:6/size_in_atlas = Vector2i(2, 1)
+1:6/0 = 0
+3:5/size_in_atlas = Vector2i(4, 2)
+3:5/0 = 0
+2:3/size_in_atlas = Vector2i(1, 2)
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, -13)
+2:3/0/z_index = -1
+0:3/size_in_atlas = Vector2i(2, 2)
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, -13)
+0:3/0/z_index = -1
+3:1/size_in_atlas = Vector2i(1, 2)
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, -13)
+3:1/0/z_index = -1
+1:1/size_in_atlas = Vector2i(2, 2)
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -13)
+1:1/0/z_index = -1
+
 [resource]
 tile_size = Vector2i(24, 24)
+physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5huhx")
+sources/2 = SubResource("TileSetAtlasSource_g1qt2")

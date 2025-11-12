@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://br8gqhb8ymoah"]
+
+[ext_resource type="Texture2D" uid="uid://s8mjv34lrdoq" path="res://Sprites/Distrito tóxico/Tileset dis toxico decoracao.png" id="1_byu0g"]
+[ext_resource type="Script" uid="uid://c7wv7jslfccf" path="res://Entities/poison_cloud_1.gd" id="1_krly3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byu0g"]
+size = Vector2(20, 54.575375)
+
+[node name="PoisonCloud1" type="Area2D" groups=["LethalArea"]]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_krly3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+texture = ExtResource("1_byu0g")
+region_enabled = true
+region_rect = Rect2(24, 144, 48, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2.0000005)
+scale = Vector2(1.7733322, 0.3664657)
+shape = SubResource("RectangleShape2D_byu0g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://duyu05ve660tt"]
+[gd_scene load_steps=39 format=4 uid="uid://duyu05ve660tt"]
 
 [ext_resource type="Texture2D" uid="uid://dg3a52ks3dier" path="res://Sprites/Distrito tóxico/Tileset toxico laboratorio.png" id="1_mq4mc"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="2_i1co6"]
@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="11_i1co6"]
 [ext_resource type="PackedScene" uid="uid://oyrdlyokex8" path="res://Entities/dt_plataform.tscn" id="13_562xm"]
 [ext_resource type="PackedScene" uid="uid://68k4b6pgcpmh" path="res://Entities/Enemies/dra_lys.tscn" id="14_hw2ng"]
+[ext_resource type="PackedScene" uid="uid://b0d8mf2rigo87" path="res://Entities/Enemies/toxicminion.tscn" id="20_542t8"]
+[ext_resource type="Script" uid="uid://jd028gonhu3" path="res://Scripts/systems/sistema_missao.gd" id="21_vcl2n"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_542t8"]
 texture = ExtResource("1_mq4mc")
@@ -203,7 +205,7 @@ animations = [{
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("10_mq4mc")]
-position = Vector2(843, -131)
+position = Vector2(15, 325)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_y4i5m")]
 
@@ -395,6 +397,32 @@ animation = &"idle"
 
 [node name="Dra Lys" parent="." instance=ExtResource("14_hw2ng")]
 position = Vector2(925, -134)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="toxicminion" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(363, 348)
+
+[node name="toxicminion2" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(534, 300)
+
+[node name="toxicminion3" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(898, 300)
+
+[node name="toxicminion4" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(1069, 252)
+
+[node name="toxicminion5" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(10, 12)
+
+[node name="toxicminion6" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(182, 60)
+
+[node name="toxicminion7" parent="Enemies" instance=ExtResource("20_542t8")]
+position = Vector2(467, -108)
+
+[node name="SistemaMissao" type="Node" parent="."]
+script = ExtResource("21_vcl2n")
 
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]
