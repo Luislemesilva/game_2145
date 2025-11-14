@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://rrneojosp7xb"]
 
-[ext_resource type="Script" uid="uid://55b4iw4vjyye" path="res://Scripts/rf_plataform.gd" id="1_66k4d"]
+[ext_resource type="Script" uid="uid://55b4iw4vjyye" path="res://Scripts/Scenes objects/rf_plataform.gd" id="1_66k4d"]
 [ext_resource type="Texture2D" uid="uid://t55y1jm3rsyk" path="res://Sprites/Rede fantasma/TileSet-BaseFantasma.png" id="1_tc5ub"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uim8"]

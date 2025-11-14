@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://br8gqhb8ymoah"]
 
 [ext_resource type="Texture2D" uid="uid://s8mjv34lrdoq" path="res://Sprites/Distrito tóxico/Tileset dis toxico decoracao.png" id="1_byu0g"]
-[ext_resource type="Script" uid="uid://c7wv7jslfccf" path="res://Scripts/poison_cloud_1.gd" id="1_krly3"]
+[ext_resource type="Script" uid="uid://c7wv7jslfccf" path="res://Scripts/Scenes objects/poison_cloud_1.gd" id="1_krly3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byu0g"]
 size = Vector2(20, 54.575375)

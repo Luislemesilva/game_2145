@@ -4,9 +4,8 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 const lines: Array[String] = [
-	"Come uma banana!",
-	"Ela esta deliciosa hoje.",
-	"Volte sempre!"
+	"Seloko!",
+
 ]
 
 func _unhandled_input(event):

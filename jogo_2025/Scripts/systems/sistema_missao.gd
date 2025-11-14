@@ -96,7 +96,7 @@ func encontrar_missao(nome: String) -> Dictionary:
 	return {}
 	
 	
-func _process(delta):
+func _process(_delta):
 	pass
 
 

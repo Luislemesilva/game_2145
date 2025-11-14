@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bu7fveosx18h5"]
 
-[ext_resource type="Script" uid="uid://1qbbwpjnsn33" path="res://Scripts/dialog_box.gd" id="1_27vd5"]
-[ext_resource type="Texture2D" uid="uid://dlif8c65xhnpt" path="res://Sprites/UI/Dialog_box.jpg" id="1_xpmbc"]
+[ext_resource type="Script" uid="uid://1qbbwpjnsn33" path="res://Scripts/Scenes objects/dialog_box.gd" id="1_27vd5"]
 [ext_resource type="FontFile" uid="uid://bv7qr3r7ku8n6" path="res://Sprites/Fonts/at01.ttf" id="2_27vd5"]
+[ext_resource type="Texture2D" uid="uid://cv7qwm115ho7l" path="res://Sprites/HUD/Balão de fala.png" id="2_p0kgi"]
 
 [node name="Dialog_box" type="MarginContainer"]
 offset_right = 40.0
@@ -11,12 +11,12 @@ script = ExtResource("1_27vd5")
 
 [node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_xpmbc")
+texture = ExtResource("2_p0kgi")
 region_rect = Rect2(0, 0, 16, 16)
-patch_margin_left = 4
-patch_margin_top = 4
-patch_margin_right = 4
-patch_margin_bottom = 4
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
 
 [node name="Label_margin" type="MarginContainer" parent="."]
 layout_mode = 2

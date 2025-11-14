@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://oyrdlyokex8"]
 
-[ext_resource type="Script" uid="uid://djiadvermta2b" path="res://Scripts/dt_plataform.gd" id="1_parsd"]
+[ext_resource type="Script" uid="uid://djiadvermta2b" path="res://Scripts/Scenes objects/dt_plataform.gd" id="1_parsd"]
 [ext_resource type="Texture2D" uid="uid://ddwf3ovs2weia" path="res://Sprites/Distrito tóxico/Tileset Distrito Toxico plataformas.png" id="1_xw7od"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_parsd"]

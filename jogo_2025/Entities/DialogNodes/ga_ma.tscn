@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqr0oqlmpqubt"]
+
+[ext_resource type="Script" uid="uid://c63m8vh3nra53" path="res://Scripts/ga_ma.gd" id="1_047oj"]
+[ext_resource type="Texture2D" uid="uid://motcrdy5m2sq" path="res://Sprites/HUD/Balao de fala_ letra E.png" id="2_q0ox6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0ox6"]
+size = Vector2(33, 26)
+
+[node name="GaMa" type="Node2D"]
+script = ExtResource("1_047oj")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -22)
+texture = ExtResource("2_q0ox6")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_q0ox6")

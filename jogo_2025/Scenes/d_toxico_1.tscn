@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c15mqq8c4o2op" path="res://Sprites/Background distrito tóxico/8 fumaca da frente.png" id="15_gukyq"]
 [ext_resource type="PackedScene" uid="uid://b0d8mf2rigo87" path="res://Entities/Enemies/toxicminion.tscn" id="16_1csop"]
 [ext_resource type="PackedScene" uid="uid://cvp8uaieaml7s" path="res://Entities/level_end.tscn" id="17_hfyx4"]
-[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/hud.gd" id="18_odhg7"]
+[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/Scenes objects/hud.gd" id="18_odhg7"]
 [ext_resource type="Texture2D" uid="uid://lvqiylly02nt" path="res://Sprites/HUD/coracao 12x12 explodindo.png" id="19_wj1db"]
 [ext_resource type="Texture2D" uid="uid://c353b0fj4h5bl" path="res://Sprites/HUD/coracao 12x12.png" id="20_xljyc"]
 [ext_resource type="Texture2D" uid="uid://du1sgq5nsc0gq" path="res://Sprites/HUD/municao explodindo.png" id="21_r3cff"]

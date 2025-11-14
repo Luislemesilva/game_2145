@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bndgu8ofiq4u" path="res://Sprites/Background distrito tóxico/2 canos claros.png" id="4_562xm"]
 [ext_resource type="Texture2D" uid="uid://b2rmtmaoq80a4" path="res://Sprites/Background distrito tóxico/3 canos medios.png" id="5_hw2ng"]
 [ext_resource type="Texture2D" uid="uid://bwx30ewn01ohl" path="res://Sprites/Background distrito tóxico/4 canos escuros.png" id="6_1j2e2"]
-[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/hud.gd" id="6_n7nhq"]
+[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/Scenes objects/hud.gd" id="6_n7nhq"]
 [ext_resource type="Texture2D" uid="uid://inmaq7p8jeqp" path="res://Sprites/Background distrito tóxico/5 fumaca.png" id="7_64gr7"]
 [ext_resource type="Texture2D" uid="uid://lvqiylly02nt" path="res://Sprites/HUD/coracao 12x12 explodindo.png" id="7_542t8"]
 [ext_resource type="Texture2D" uid="uid://ceq4lxtka18q7" path="res://Sprites/Background distrito tóxico/6 grades claras.png" id="8_sxmm1"]

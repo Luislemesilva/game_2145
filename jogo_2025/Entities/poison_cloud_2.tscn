@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpjdmwsbhlid2"]
 
-[ext_resource type="Script" uid="uid://drplvr8cvbul2" path="res://Scripts/poison_cloud_2.gd" id="1_rorjk"]
+[ext_resource type="Script" uid="uid://drplvr8cvbul2" path="res://Scripts/Scenes objects/poison_cloud_2.gd" id="1_rorjk"]
 [ext_resource type="Texture2D" uid="uid://s8mjv34lrdoq" path="res://Sprites/Distrito tóxico/Tileset dis toxico decoracao.png" id="1_ufsio"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rorjk"]

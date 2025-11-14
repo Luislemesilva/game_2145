@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bl1250srydc63"]
+
+[ext_resource type="Script" uid="uid://dg5c4fv1dwlu1" path="res://Scripts/lan.gd" id="1_i7big"]
+[ext_resource type="Texture2D" uid="uid://motcrdy5m2sq" path="res://Sprites/HUD/Balao de fala_ letra E.png" id="2_pov1r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pov1r"]
+size = Vector2(33, 26)
+
+[node name="Lan" type="Node2D"]
+script = ExtResource("1_i7big")
+
+[node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -21)
+texture = ExtResource("2_pov1r")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_pov1r")

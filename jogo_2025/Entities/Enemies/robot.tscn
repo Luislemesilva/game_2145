@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://dhx27oeimwsp3"]
 
-[ext_resource type="Script" uid="uid://cjus0fyu6mt7p" path="res://Scripts/robot.gd" id="1_7tywe"]
+[ext_resource type="Script" uid="uid://cjus0fyu6mt7p" path="res://Scripts/Enemies/robot.gd" id="1_7tywe"]
 [ext_resource type="Texture2D" uid="uid://6au6rx3aryy5" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Atirando-Sheet.png" id="2_ul7hx"]
 [ext_resource type="Texture2D" uid="uid://bajhexph5qyd7" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Machucado-Sheet.png" id="3_7dlcq"]
 [ext_resource type="Texture2D" uid="uid://uln02vubhwq6" path="res://Sprites/Inimigos/Robot/Robo_BaseFantasma_Morrendo-Sheet.png" id="4_jirw0"]

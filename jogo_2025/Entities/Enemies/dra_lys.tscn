@@ -1,6 +1,6 @@
 [gd_scene load_steps=78 format=3 uid="uid://68k4b6pgcpmh"]
 
-[ext_resource type="Script" uid="uid://bpmfo2m34bsil" path="res://Scripts/dra_lys.gd" id="1_c6uyb"]
+[ext_resource type="Script" uid="uid://bpmfo2m34bsil" path="res://Scripts/Enemies/dra_lys.gd" id="1_c6uyb"]
 [ext_resource type="Texture2D" uid="uid://bx5754ulbhwrb" path="res://Sprites/Inimigos/Dra Lys/Monstro Lys_Ataque-Sheet.png" id="2_rcbdm"]
 [ext_resource type="Texture2D" uid="uid://deemcnk2iqk0u" path="res://Sprites/Inimigos/Dra Lys/Monstro Lys_Machucada-Sheet.png" id="3_g015f"]
 [ext_resource type="Texture2D" uid="uid://bi3dh6xq8wwwl" path="res://Sprites/Inimigos/Dra Lys/Dra.Lys_Idle-Sheet.png" id="3_wqtgv"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://b0d8mf2rigo87"]
 
-[ext_resource type="Script" uid="uid://cay1bu77c1vsh" path="res://Scripts/toxicminion.gd" id="1_05awh"]
+[ext_resource type="Script" uid="uid://cay1bu77c1vsh" path="res://Scripts/Enemies/toxicminion.gd" id="1_05awh"]
 [ext_resource type="Texture2D" uid="uid://csfu2j7wcujcu" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Machucado.png" id="1_72a3n"]
 [ext_resource type="Texture2D" uid="uid://d4cj7411durl0" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Idle.png" id="1_ust0s"]
 [ext_resource type="Texture2D" uid="uid://wqlm7yoh5f8e" path="res://Sprites/Inimigos/Toxicminion/Capanga_Toxico_Morrendo.png" id="2_05awh"]

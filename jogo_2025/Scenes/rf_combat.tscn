@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=47 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -20,12 +20,16 @@
 [ext_resource type="PackedScene" uid="uid://cfymiidgostgv" path="res://Entities/Npcs/gama.tscn" id="18_ifkmj"]
 [ext_resource type="PackedScene" uid="uid://djmyvae6bpquo" path="res://Entities/Npcs/punchduca.tscn" id="19_drybi"]
 [ext_resource type="Texture2D" uid="uid://lvqiylly02nt" path="res://Sprites/HUD/coracao 12x12 explodindo.png" id="20_4hasr"]
-[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/hud.gd" id="20_dqnwe"]
+[ext_resource type="Script" uid="uid://c8locu5xkfero" path="res://Scripts/Scenes objects/hud.gd" id="20_dqnwe"]
 [ext_resource type="Texture2D" uid="uid://c353b0fj4h5bl" path="res://Sprites/HUD/coracao 12x12.png" id="21_dqnwe"]
 [ext_resource type="Texture2D" uid="uid://du1sgq5nsc0gq" path="res://Sprites/HUD/municao explodindo.png" id="22_4or1e"]
 [ext_resource type="Texture2D" uid="uid://cbqt621mryrrt" path="res://Sprites/HUD/municao.png" id="23_xrp3o"]
 [ext_resource type="Script" uid="uid://jd028gonhu3" path="res://Scripts/systems/sistema_missao.gd" id="25_4or1e"]
-[ext_resource type="PackedScene" uid="uid://8driklaicyfd" path="res://Entities/DialogNodes/lu_iq.tscn" id="26_xrp3o"]
+[ext_resource type="PackedScene" uid="uid://daym7cj3ou62v" path="res://Entities/DialogNodes/lu_iq.tscn" id="26_xrp3o"]
+[ext_resource type="PackedScene" uid="uid://cs24maht7ysf3" path="res://Entities/DialogNodes/dr_v.tscn" id="27_tr1fe"]
+[ext_resource type="PackedScene" uid="uid://bl1250srydc63" path="res://Entities/DialogNodes/lan.tscn" id="28_vhee4"]
+[ext_resource type="PackedScene" uid="uid://bqr0oqlmpqubt" path="res://Entities/DialogNodes/ga_ma.tscn" id="29_6n300"]
+[ext_resource type="PackedScene" uid="uid://6tardn855vxg" path="res://Entities/DialogNodes/punchduca.tscn" id="30_ch07x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
 size = Vector2(20, 137)
@@ -297,7 +301,7 @@ position = Vector2(543, 301)
 position = Vector2(192, 324)
 
 [node name="Gama" parent="NPCs" instance=ExtResource("18_ifkmj")]
-position = Vector2(884, 298)
+position = Vector2(884, 300)
 
 [node name="Punchduca" parent="NPCs" instance=ExtResource("19_drybi")]
 position = Vector2(974, 300)
@@ -379,10 +383,18 @@ script = ExtResource("25_4or1e")
 [node name="LuIQ" parent="DialogNodes" instance=ExtResource("26_xrp3o")]
 position = Vector2(144, 325)
 
-[node name="Texture" parent="DialogNodes/LuIQ" index="0"]
-visible = false
+[node name="DrV" parent="DialogNodes" instance=ExtResource("27_tr1fe")]
+position = Vector2(194, 326)
+
+[node name="Lan" parent="DialogNodes" instance=ExtResource("28_vhee4")]
+position = Vector2(544, 300)
+
+[node name="GaMa" parent="DialogNodes" instance=ExtResource("29_6n300")]
+position = Vector2(885, 300)
+
+[node name="Punchduca" parent="DialogNodes" instance=ExtResource("30_ch07x")]
+position = Vector2(976, 300)
 
 [editable path="LevelEnd"]
 [editable path="Plataforms/RFPlataform"]
 [editable path="Plataforms/RFPlataform2"]
-[editable path="DialogNodes/LuIQ"]

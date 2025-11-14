@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://4t3m7evc6hpm"]
 
-[ext_resource type="Script" uid="uid://b2t370yekb0ox" path="res://Scripts/camera.gd" id="1_0di3w"]
+[ext_resource type="Script" uid="uid://b2t370yekb0ox" path="res://Scripts/Scenes objects/camera.gd" id="1_0di3w"]
 
 [node name="Camera2D" type="Camera2D"]
 limit_left = 0
