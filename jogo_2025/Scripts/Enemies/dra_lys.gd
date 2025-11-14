@@ -37,7 +37,7 @@ var float_height := 15.0
 var float_timer := 0.0
 var float_origin_y := 0.0
 
-
+var sistema_missao = null
 
 func _ready() -> void:
 	current_health = max_health
@@ -51,12 +51,24 @@ func _ready() -> void:
 	hitbox_monster.monitoring = false
 	hitbox_monster.visible = false
 
+	sistema_missao = encontrar_sistema_missao()
 
 	await get_tree().create_timer(human_duration).timeout
 	_start_transformation()
 
 
-
+func encontrar_sistema_missao():
+	var sistema
+	sistema = get_node("/root/SistemaMissao")
+	if sistema:
+		return sistema
+	sistema = get_parent().get_node("SistemaMissao")
+	if sistema:
+		return sistema
+	for node in get_tree().get_nodes_in_group(""):
+		if node.has_method("iniciar_missao"):
+			return node
+	return null
 
 func _start_transformation():
 	if state == LysState.dead:
@@ -174,6 +186,17 @@ func _die() -> void:
 
 	fall_speed = 0
 	on_ground = false
+	
+	if sistema_missao:
+		sistema_missao.completar_missao("Derrotar A Dra. Lys")
+		print(" MISSÃO CONCLUÍDA: Dra. Lys derrotada!")
+		print(" Chave 1 obtida!")
+	else:
+		print(" Sistema de Missões não encontrado")
+	
+	await get_tree().create_timer(2.0).timeout
+	
+	queue_free()
 
 
 
