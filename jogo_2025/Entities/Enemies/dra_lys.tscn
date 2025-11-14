@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://68k4b6pgcpmh"]
+[gd_scene load_steps=74 format=3 uid="uid://68k4b6pgcpmh"]
 
 [ext_resource type="Script" uid="uid://bpmfo2m34bsil" path="res://Scripts/Enemies/dra_lys.gd" id="1_c6uyb"]
 [ext_resource type="Texture2D" uid="uid://bx5754ulbhwrb" path="res://Sprites/Inimigos/Dra Lys/Monstro Lys_Ataque-Sheet.png" id="2_rcbdm"]
@@ -72,22 +72,6 @@ region = Rect2(192, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_ku514"]
 atlas = ExtResource("3_g015f")
 region = Rect2(288, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7rxun"]
-atlas = ExtResource("3_g015f")
-region = Rect2(384, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hc1rl"]
-atlas = ExtResource("3_g015f")
-region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dug4f"]
-atlas = ExtResource("3_g015f")
-region = Rect2(576, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ks7v7"]
-atlas = ExtResource("3_g015f")
-region = Rect2(672, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxs4k"]
 atlas = ExtResource("3_g015f")
@@ -330,18 +314,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_ku514")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7rxun")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hc1rl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dug4f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ks7v7")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_dxs4k")
 }, {
 "duration": 1.0,
@@ -532,20 +504,20 @@ color = Color(0, 0, 0, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_ihin8")
-animation = &"death"
-frame = 7
-frame_progress = 1.0
+animation = &"damage"
 flip_h = true
 
 [node name="Hitboxes" type="Node2D" parent="."]
 
-[node name="HitboxHuman" type="Area2D" parent="Hitboxes"]
+[node name="HitboxHuman" type="Area2D" parent="Hitboxes" groups=["Enemies"]]
+collision_layer = 4
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/HitboxHuman"]
 scale = Vector2(0.8721207, 0.94634444)
 shape = SubResource("CapsuleShape2D_rcbdm")
 
-[node name="HitboxMonster" type="Area2D" parent="Hitboxes"]
+[node name="HitboxMonster" type="Area2D" parent="Hitboxes" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("8_wrwsb")

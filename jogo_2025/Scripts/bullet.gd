@@ -8,9 +8,12 @@ func _process(delta: float) -> void:
 	position += transform.x * SPEED  * delta
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Enemies"):
-		area.get_parent().take_damage(1)
-	queue_free()
+	if area.is_in_group("enemies"):
+		# sobe um nível para encontrar o dono (Boss)
+		var boss = area.get_parent()
+		if boss and boss.has_method("take_damage"):
+			boss.take_damage(1)
+		queue_free()
 	
 
 
