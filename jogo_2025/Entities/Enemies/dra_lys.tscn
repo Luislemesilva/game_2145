@@ -298,7 +298,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -504,7 +504,9 @@ color = Color(0, 0, 0, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_ihin8")
-animation = &"damage"
+animation = &"attack"
+frame = 11
+frame_progress = 1.0
 flip_h = true
 
 [node name="Hitboxes" type="Node2D" parent="."]
@@ -528,12 +530,19 @@ scale = Vector2(2.2190638, 2.3118765)
 shape = SubResource("CapsuleShape2D_scy1s")
 debug_color = Color(0.90149796, 0.2842707, 0.33225986, 0.41960785)
 
-[node name="ShootOrigin" type="Marker2D" parent="."]
-
 [node name="Timer_Attack" type="Timer" parent="."]
 
 [node name="FloatPosition" type="Marker2D" parent="."]
-position = Vector2(31, -64)
+position = Vector2(63, -68)
 
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+position = Vector2(1, 56)
+target_position = Vector2(-264, 0)
+collision_mask = 2
+
+[node name="PotionPosition" type="Node2D" parent="."]
+position = Vector2(-37, -6)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="area_entered" from="Hitboxes/HitboxMonster" to="." method="_on_hitbox_monster_area_entered"]
 [connection signal="area_entered" from="Hitboxes/HitboxMonster" to="." method="_on_hitbox_area_entered"]

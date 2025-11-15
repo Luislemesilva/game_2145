@@ -396,7 +396,7 @@ sprite_frames = SubResource("SpriteFrames_ltebd")
 animation = &"idle"
 
 [node name="Dra Lys" parent="." instance=ExtResource("14_hw2ng")]
-position = Vector2(925, -134)
+position = Vector2(977, -134)
 
 [node name="Enemies" type="Node2D" parent="."]
 

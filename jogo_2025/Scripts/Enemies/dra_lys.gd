@@ -11,6 +11,7 @@ enum LysState {
 }
 
 var state := LysState.idle_human
+var can_throw = true
 
 
 
@@ -30,7 +31,9 @@ var on_ground := false
 @onready var fade: ColorRect = $ScreenFade
 @onready var attack_timer: Timer = $Timer_Attack
 @onready var float_marker: Marker2D = $FloatPosition
-
+@onready var player_detector: RayCast2D = $PlayerDetector
+@onready var potion_position: Node2D = $PotionPosition
+const POTION = preload("uid://cwmjb5t4fn1d6")
 
 var float_speed := 2.0
 var float_height := 15.0
@@ -114,23 +117,36 @@ func _physics_process(delta: float) -> void:
 	match state:
 
 		LysState.dead:
-			_apply_gravity(delta)
+			dead_state(delta)
 
 		LysState.idle_monster:
-			_float_motion(delta)
+			idle_state(delta)
 
 		LysState.attack:
-			_float_motion(delta)
+			attack_state(delta)
 
 
 
-func _float_motion(delta: float) -> void:
+func idle_state(delta: float) -> void:
 	float_timer += delta * float_speed
 	position.y = float_origin_y + sin(float_timer) * float_height
+	
+	if player_detector.is_colliding():
+		go_to_attack_state()
+		return
+		
+		
+	
+func attack_state(_delta):
+	if anim.frame == 8 && can_throw:
+		throw_potion()
+		can_throw = false
+	
+	
 
 
 
-func _apply_gravity(delta: float) -> void:
+func dead_state(delta: float) -> void:
 	if on_ground:
 		return
 
@@ -153,7 +169,6 @@ func take_damage(amount: int = 1) -> void:
 
 	current_health -= amount
 
-
 	modulate = Color(1, 0.3, 0.3)
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color.WHITE
@@ -168,14 +183,10 @@ func take_damage(amount: int = 1) -> void:
 		_die()
 		return
 
-
 	state = LysState.idle_monster
 	anim.play("idle_monster")
 
 
-
-
-# MORTE
 
 func _die() -> void:
 	state = LysState.dead
@@ -198,11 +209,6 @@ func _die() -> void:
 	
 	queue_free()
 
-
-
-
-#ANIMAÇÃO DE MORTE
-
 func _play_death_animation() -> void:
 	if "death" in anim.sprite_frames.get_animation_names():
 		anim.play("death")
@@ -212,23 +218,25 @@ func _play_death_animation() -> void:
 
 
 
-#  ATAQUE
-
-func _on_Timer_Attack_timeout() -> void:
-	if state != LysState.idle_monster:
-		return
-
+func go_to_attack_state():
 	state = LysState.attack
 	anim.play("attack")
-	await anim.animation_finished
-
-	anim.play("idle_monster")
+	velocity = Vector2.ZERO
+	can_throw = true
+	
+func go_to_idle_state():
 	state = LysState.idle_monster
+	anim.play("idle_monster")
+	
+func throw_potion():
+	var new_potion = POTION.instantiate()
+	add_sibling(new_potion)
+	new_potion.position = potion_position.global_position
+	var player = get_tree().get_nodes_in_group("Player")
+	if player.size() > 0:
+		new_potion.target = player[0]
 
 
-
-
-#HITBOX DA POÇÃO / TIRO
 
 func _on_hitbox_monster_area_entered(area: Area2D) -> void:
 	if area.is_in_group("LethalArea"):
@@ -236,3 +244,9 @@ func _on_hitbox_monster_area_entered(area: Area2D) -> void:
 
 	if area.has_method("queue_free"):
 		area.queue_free()
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if anim.animation == "attack":
+		go_to_idle_state()
+		return

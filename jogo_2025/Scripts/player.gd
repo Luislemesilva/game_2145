@@ -21,6 +21,7 @@ const BULLET = preload("uid://dp6iuxs40fxwy")
 const SPEED = 200.0
 const JUMP_VELOCITY = -300.0
 var jump_count = 0
+var can_move := true
 @export var max_jump_count = 2
 var sistema_verificado = false
 
@@ -96,6 +97,11 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+	if not can_move:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		return
+	
 	match status:
 		PlayerState.idle:
 			idle_state()
@@ -197,7 +203,7 @@ func move():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Enemies") or area.is_in_group("EnemyBullets"):
+	if area.is_in_group("Enemies") or area.is_in_group("LethalArea"):
 		take_damage()
 
 func hit_enemy(area: Area2D):
@@ -205,7 +211,7 @@ func hit_enemy(area: Area2D):
 		area.get_parent().take_damage() 
 	else:
 		if status != PlayerState.hurt:
-			go_to_hurt_state()   
+			go_to_hurt_state()    
 
 func hit_lethal_area():
 	go_to_hurt_state()

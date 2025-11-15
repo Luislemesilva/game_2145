@@ -218,7 +218,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"damage",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -247,7 +247,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hurt",
-"speed": 10.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -370,22 +370,21 @@ collision_mask = 9
 script = ExtResource("1_tcnsb")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(3, -2)
-scale = Vector2(0.9404964, 1.0085747)
+position = Vector2(1, -1.9999998)
+scale = Vector2(0.9404964, 0.99963737)
 shape = SubResource("CapsuleShape2D_2poj3")
 
 [node name="Anim" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.4, -4.5)
 sprite_frames = SubResource("SpriteFrames_ka26g")
-animation = &"idle"
+animation = &"damage"
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2(1, 0)
+scale = Vector2(1.0761718, 1)
 collision_layer = 2
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-visible = false
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_taegk")
 debug_color = Color(0.9973132, 0, 0.17841592, 0.41960785)
