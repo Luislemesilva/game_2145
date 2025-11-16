@@ -133,6 +133,7 @@ sprite_frames = SubResource("SpriteFrames_qxhni")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.867128
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_ikxdc")

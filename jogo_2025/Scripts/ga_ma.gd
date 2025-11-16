@@ -4,7 +4,10 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 const lines: Array[String] = [
-	"Calvo aos 20 anos"
+	"Olha só quem voltou dos mortos. Nosso ex-funcionário preferido do Magnus Veyne! Chega mais, Hex.",
+	"O LuIQ já te entregou a pistola, então vamos ao básico: mire e atire nos robôs. ",
+	"Três tiros e eles vão pro ferro-velho. Não precisa economizar munição",
+	"A gente arrumou um jeito de recarregar automaticamente."
 ]
 
 func _unhandled_input(event):

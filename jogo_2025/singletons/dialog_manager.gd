@@ -27,8 +27,9 @@ func show_text():
 	dialog_box = dialog_box_scene.instantiate()
 	dialog_box.text_display_finished.connect(_on_all_text_displayed)
 
-	get_tree().root.add_child(dialog_box)
-	dialog_box.global_position = dialog_box_position
+	get_tree().current_scene.add_child(dialog_box)
+	dialog_box.position = dialog_box_position + Vector2(0, -50)
+
 
 	dialog_box.display_text(message_lines[current_line])
 	can_advance_message = false

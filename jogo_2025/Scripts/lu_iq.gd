@@ -4,9 +4,14 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 const lines: Array[String] = [
-	"Come uma banana!",
-	"Ela esta deliciosa hoje.",
-	"Volte sempre!"
+	"Hex! Finalmente. Eu sou o LuIQ e, em nome da Rede Fantasma, seja muito bem-vindo.",
+	"Sua experiência como ex-técnico da Syndicore e, principalmente, sua coragem… Nós vamos precisar de tudo isso.",
+	"A Syndicore está apertando o cerco. Para salvar Neo Kairosaka, precisamos ativar o Projeto Solaris.",
+	"A única fonte de energia limpa capaz de quebrar o monopólio de Magnus Veyne.",
+	"Mas o desgraçado trancou o reator atrás de Cripto Chaves",
+	"Seu objetivo é recuperá-las. Mas antes disso, você precisa treinar.",
+	"Pegamos alguns robôs do Distrito da Vigilância. Demos uma reprogramada, mas… Eles ainda sabem machucar.",
+	"O Dr. V está logo ali. Ele vai te preparar para o que te espera lá fora."
 ]
 
 func _unhandled_input(event):

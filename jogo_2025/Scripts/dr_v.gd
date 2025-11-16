@@ -4,7 +4,15 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 const lines: Array[String] = [
-	"RPG de mesa"
+	"Hex! Que bom ver você em carne, osso e coragem. Eu sou o Dr. V.",
+	"Voce já sabe como a cidade está…",
+	"A elite vive acima das nuvens, respirando ar puro, enquanto o resto da população enfrenta favelas tecnológicas e toxinas no ar.",
+	"Magnus vende a doença e também a cura. Talvez isso seja o mais cruel de tudo.",
+	"Preste atencao: você nao é indestrutivel. Tomou dano demais, missão encerrada.",
+	"As nuvens tóxicas drenam sua vida em segundos. Então, evite-as sempre que puder.",
+	"Para ajudar, espalhei meus Packs de Cura por Neo Kairosaka.",
+	"Se estiver a beira da morte, procure um. Eles podem te salvar.",
+	"A Lan te espera ali na frente — ela vai te explicar sua primeira missão."
 ]
 
 func _unhandled_input(event):

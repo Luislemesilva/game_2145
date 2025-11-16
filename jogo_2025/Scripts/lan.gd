@@ -4,8 +4,15 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 const lines: Array[String] = [
-	"Linguica salsicha!",
-	
+	"E aí, Hex. O pessoal ja te recepcionou direitinho, né? Bom… agora e comigo.",
+	"O objetivo é simples de falar, dificil de executar: precisamos das Cripto Chaves para reativar o Sistema Eo-Helion e liberar o Projeto Solaris.",
+	"Isso abre o reator, isso derruba Magnus, isso salva a cidade.",
+	"Sua primeira parada é o Distrito Tóxico, onde fica o laboratório da Dra. Lys. Ela protege a primeira chave.",
+	"Vou fazer o possível para te guiar daqui da base.",
+	"Fique atento: você vai encontrar capangas da Syndicore e talvez até O Vigia — a IA que controla quase toda a cidade.",
+	"Não tente enfrentar tudo. Concentre-se nas chaves.",
+	"A prioridade máxima é chegar ate Magnus Veyne com as duas em mãos.",
+	"Agora vá. Punchduca e GaMa estão na seção de treino esperando você."
 ]
 
 func _unhandled_input(event):

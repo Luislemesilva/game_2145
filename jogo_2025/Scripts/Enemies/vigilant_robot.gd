@@ -1,0 +1,151 @@
+extends CharacterBody2D
+
+enum VigilantRobotState {    
+	idle,
+	walk,
+	attack,
+	damage,
+	hurt,
+	
+}
+
+const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
+
+
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitbox: Area2D = $Hitbox
+@onready var wall_detector: RayCast2D = $WallDetector
+@onready var ground_detector: RayCast2D = $GroundDetector
+@onready var player_detector: RayCast2D = $PlayerDetector
+@onready var shoot_start_position: Node2D = $ShootStartPosition
+
+
+const SPEED = 30.0
+const JUMP_VELOCITY = -400.0
+
+@export var max_health := 3
+var current_health := max_health
+
+
+var status: VigilantRobotState
+
+var direction = 1
+var can_shoot = true
+
+func _ready() -> void:
+	go_to_walk_state()
+
+
+func _physics_process(delta: float) -> void:
+
+
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	match status:
+		VigilantRobotState.idle:
+			idle_state(delta)
+		VigilantRobotState.walk:
+			walk_state(delta)
+		VigilantRobotState.attack:
+			attack_state(delta)
+		VigilantRobotState.damage:
+			damage_state(delta)
+		VigilantRobotState.hurt:
+			hurt_state(delta)
+		
+	move_and_slide()
+	
+func go_to_idle_state():
+	status = VigilantRobotState.idle
+	anim.play("idle")
+	
+func go_to_walk_state():
+	status = VigilantRobotState.walk
+	anim.play("walk")
+	print(
+	"WALL:", wall_detector.is_colliding(),
+	"GROUND:", ground_detector.is_colliding(),
+	"DIR:", direction
+)
+
+	
+func go_to_attack_state():
+	status = VigilantRobotState.attack
+	anim.play("attack")
+	velocity = Vector2.ZERO
+	can_shoot = true
+	
+func go_to_damage_state():
+	status = VigilantRobotState.damage
+	anim.play("damage")
+	velocity = Vector2.ZERO
+
+	await anim.animation_finished
+	if player_detector.is_colliding():
+		go_to_attack_state()
+	else:
+		go_to_walk_state()
+	
+func go_to_hurt_state():
+	status = VigilantRobotState.hurt
+	anim.play("hurt")
+	hitbox.monitoring = false
+	hitbox.get_node("CollisionShape2D").disabled = true
+	velocity = Vector2.ZERO 
+	
+func idle_state(_delta):
+	pass
+	
+func walk_state(_delta):
+	velocity.x = SPEED * direction
+	
+	if wall_detector.is_colliding():
+		scale.x *= -1
+		direction *= -1
+		
+	if not ground_detector.is_colliding():
+		scale.x *= -1
+		direction *= -1
+		
+	if player_detector.is_colliding():
+		go_to_attack_state()
+		return
+		
+func attack_state(_delta):
+	if anim.frame == 5 && can_shoot:
+		shoot()
+		can_shoot = false
+	
+func damage_state(_delta):
+	pass
+		
+func hurt_state(_delta):
+	pass
+	
+	
+	
+func take_damage(amount: int = 1) -> void:
+	if status == VigilantRobotState.hurt or status == VigilantRobotState.damage:
+		return
+
+	current_health -= amount
+
+	if current_health > 0:
+		go_to_damage_state()
+	else:
+		go_to_hurt_state()
+
+
+func shoot():
+	var new_shoot = ROBOT_BULLET.instantiate()
+	add_sibling(new_shoot)
+	new_shoot.position = shoot_start_position.global_position
+	new_shoot.set_direction(self.direction)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if anim.animation == "attack":
+		go_to_walk_state()
+	elif anim.animation == "hurt":
+		queue_free()
