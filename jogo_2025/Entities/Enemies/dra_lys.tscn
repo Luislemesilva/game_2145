@@ -504,9 +504,7 @@ color = Color(0, 0, 0, 1)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, 2)
 sprite_frames = SubResource("SpriteFrames_ihin8")
-animation = &"attack"
-frame = 11
-frame_progress = 1.0
+animation = &"idle_human"
 flip_h = true
 
 [node name="Hitboxes" type="Node2D" parent="."]

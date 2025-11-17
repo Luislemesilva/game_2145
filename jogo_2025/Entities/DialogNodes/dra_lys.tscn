@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://betgwtwl1dxqw"]
+
+[ext_resource type="Texture2D" uid="uid://motcrdy5m2sq" path="res://Sprites/HUD/Balao de fala_ letra E.png" id="1_7f2t7"]
+[ext_resource type="Script" uid="uid://c13lsyq1od4uh" path="res://Scripts/dra_lys.gd" id="1_ykxah"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ko5o"]
+size = Vector2(74.5, 24)
+
+[node name="DraLys" type="Node2D"]
+script = ExtResource("1_ykxah")
+
+[node name="Texture" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-4, -25)
+texture = ExtResource("1_7f2t7")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_1ko5o")

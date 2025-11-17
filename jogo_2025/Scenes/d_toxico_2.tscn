@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://duyu05ve660tt"]
+[gd_scene load_steps=42 format=4 uid="uid://duyu05ve660tt"]
 
 [ext_resource type="Texture2D" uid="uid://dg3a52ks3dier" path="res://Sprites/Distrito tóxico/Tileset toxico laboratorio.png" id="1_mq4mc"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="2_i1co6"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://b0d8mf2rigo87" path="res://Entities/Enemies/toxicminion.tscn" id="20_542t8"]
 [ext_resource type="Script" uid="uid://jd028gonhu3" path="res://Scripts/systems/sistema_missao.gd" id="21_vcl2n"]
 [ext_resource type="PackedScene" uid="uid://cvp8uaieaml7s" path="res://Entities/level_end.tscn" id="22_aj7k7"]
+[ext_resource type="PackedScene" uid="uid://betgwtwl1dxqw" path="res://Entities/DialogNodes/dra_lys.tscn" id="23_v83p2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_542t8"]
 texture = ExtResource("1_mq4mc")
@@ -435,6 +436,9 @@ next_level = "d_vigilância"
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(17, -35)
 shape = SubResource("RectangleShape2D_v83p2")
+
+[node name="DraLys" parent="." instance=ExtResource("23_v83p2")]
+position = Vector2(975, -132)
 
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]

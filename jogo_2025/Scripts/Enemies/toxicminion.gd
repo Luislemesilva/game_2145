@@ -8,7 +8,8 @@ enum ToxicMinionState {
 	hurt,
 	
 }
-# const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
+
+const ROBOT_BULLET = preload("uid://c58eo1q8kdx3m")
 
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
@@ -46,8 +47,8 @@ func _physics_process(delta: float) -> void:
 			idle_state(delta)
 		ToxicMinionState.walk:
 			walk_state(delta)
-		#ToxicMinionState.attack:
-			#attack_state(delta)
+		ToxicMinionState.attack:
+			attack_state(delta)
 		ToxicMinionState.damage:
 			damage_state(delta)
 		ToxicMinionState.hurt:
@@ -65,7 +66,7 @@ func go_to_walk_state():
 	
 func go_to_attack_state():
 	status = ToxicMinionState.attack
-	anim.play("attack")
+	anim.play("idle")
 	velocity = Vector2.ZERO
 	can_shoot = true
 	
@@ -105,10 +106,10 @@ func walk_state(_delta):
 		go_to_attack_state()
 		return
 		
-#func attack_state(_delta):
-	#if anim.frame == 5 && can_shoot:
-		#shoot()
-		#can_shoot = false
+func attack_state(_delta):
+	if anim.frame == 5 && can_shoot:
+		shoot()
+		can_shoot = false
 	
 func damage_state(_delta):
 	pass
@@ -131,15 +132,15 @@ func take_damage(amount: int = 1) -> void:
 		go_to_hurt_state()
 
 
-# func shoot():
-	#var new_shoot = ROBOT_BULLET.instantiate()
-	#add_sibling(new_shoot)
-	#new_shoot.position = shoot_start_position.global_position
-	#new_shoot.set_direction(self.direction) 
+func shoot():
+	var new_shoot = ROBOT_BULLET.instantiate()
+	add_sibling(new_shoot)
+	new_shoot.position = shoot_start_position.global_position
+	new_shoot.set_direction(self.direction) 
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if anim.animation == "attack":
+	if anim.animation == "idle":
 		go_to_walk_state()
 	elif anim.animation == "hurt":
 		queue_free()
