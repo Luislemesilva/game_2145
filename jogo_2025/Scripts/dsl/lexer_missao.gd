@@ -1,4 +1,3 @@
-# scripts/dsl/lexer_missao.gd
 extends RefCounted
 class_name LexerMissao
 
@@ -16,7 +15,6 @@ func tokenizar(codigo: String) -> Array:
 		tokenizar_linha(linha.strip_edges(), numero_linha)
 		numero_linha += 1
 	
-	# Adiciona token de fim de arquivo
 	tokens.append({"tipo": "EOF", "valor": "", "linha": numero_linha, "coluna": 1})
 	
 	return tokens
@@ -32,7 +30,6 @@ func tokenizar_linha(linha: String, numero_linha: int):
 	while i < linha_length:
 		var char_atual = linha[i]
 		
-		# Ignora espaços em branco
 		if char_atual == " " or char_atual == "\t":
 			i += 1
 			coluna += 1
@@ -48,7 +45,6 @@ func tokenizar_linha(linha: String, numero_linha: int):
 				i += 1
 				coluna += 1
 			'"':
-				# String
 				var inicio = i
 				i += 1
 				coluna += 1
@@ -63,7 +59,6 @@ func tokenizar_linha(linha: String, numero_linha: int):
 				else:
 					erros.append({"linha": numero_linha, "mensagem": "String não fechada"})
 			_:
-				# Identificador ou palavra-chave
 				if _is_letra(char_atual):
 					var inicio = i
 					while i < linha_length and _is_letra_ou_underscore(linha[i]):
@@ -71,7 +66,6 @@ func tokenizar_linha(linha: String, numero_linha: int):
 						coluna += 1
 					var valor = linha.substr(inicio, i - inicio)
 					
-					# ✅ CORREÇÃO: "tipo" agora é TIPO (não TIPO_PALAVRA)
 					match valor:
 						"missao": adicionar_token("MISSAO", valor, numero_linha, coluna - valor.length())
 						"objetivos": adicionar_token("OBJETIVOS", valor, numero_linha, coluna - valor.length())
@@ -91,7 +85,6 @@ func tokenizar_linha(linha: String, numero_linha: int):
 					var valor = linha.substr(inicio, i - inicio)
 					adicionar_token("NUMERO", valor, numero_linha, coluna - valor.length())
 				else:
-					# Caractere não reconhecido
 					erros.append({
 						"linha": numero_linha, 
 						"mensagem": "Caractere não reconhecido: '" + char_atual + "'"
@@ -99,7 +92,6 @@ func tokenizar_linha(linha: String, numero_linha: int):
 					i += 1
 					coluna += 1
 
-# Funções auxiliares (mantidas iguais)
 func _is_letra(char: String) -> bool:
 	return (char >= "a" and char <= "z") or (char >= "A" and char <= "Z")
 

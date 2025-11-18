@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var max_health := 3
 var current_health := max_health
 
+
 enum PlayerState {     
 	idle,
 	walk,
@@ -25,20 +26,30 @@ var can_move := true
 @export var max_jump_count = 2
 var sistema_verificado = false
 
+var npcs_conversados := []
+var robos_derrotados := 0
+var missao_treinamento_ativa := false
+var npcs_detectados := {}
+
 var status: PlayerState
 
 func _ready() -> void:
 	respawn_position = global_position
 	add_to_group("Player")
 	go_to_idle_state()
+
 	
 	if not sistema_verificado:
 		sistema_verificado = true
 		await get_tree().create_timer(1.0).timeout
 		verificar_sistema_missoes()
 
+	
+	await get_tree().create_timer(3.0).timeout
+	iniciar_missao_treinamento()
 
 
+		
 func take_damage(amount: int = 1) -> void:
 	if status == PlayerState.damage or status == PlayerState.hurt:
 		return 
@@ -94,6 +105,7 @@ func _on_reload_timer_timeout() -> void:
 
 
 func _physics_process(delta: float) -> void:
+	detectar_npcs_proximos()
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -116,7 +128,24 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
+func detectar_npcs_proximos():
+	if not missao_treinamento_ativa:
+		return
+	
+	# Detecta NPCs por nome
+	var punchduka = get_tree().get_nodes_in_group("Punchduka")
+	var lan = get_tree().get_nodes_in_group("Lan")
+	var dr_v = get_tree().get_nodes_in_group("DrV")
+	
+	# Verifica proximidade
+	if punchduka.size() > 0 and punchduka[0].global_position.distance_to(global_position) < 100:
+		conversar_com_npc("Punchduka")
+	
+	if lan.size() > 0 and lan[0].global_position.distance_to(global_position) < 100:
+		conversar_com_npc("Lan")
+		
+	if dr_v.size() > 0 and dr_v[0].global_position.distance_to(global_position) < 100:
+		conversar_com_npc("Dr. V")
 func go_to_damage_state():
 	status = PlayerState.damage
 	anim.play("damage")
@@ -217,44 +246,44 @@ func hit_lethal_area():
 	go_to_hurt_state()
 	
 func verificar_sistema_missoes():
-	print("🔍 INICIANDO verificação do sistema...")
+	print(" INICIANDO verificação do sistema...")
 	var sistema = encontrar_sistema_missao()
 	if sistema:
-		print("✅ Sistema encontrado, verificando missões...")
-		# ❌ REMOVA QUALQUER CHAMADA DE completar_missao() DAQUI
+		print(" Sistema encontrado, verificando missões...")
+		
 	else:
-		print("❌ Sistema não encontrado")
+		print(" Sistema não encontrado")
 
 func encontrar_sistema_missao():
-	print("🔍 Buscando SistemaMissao...")
+	print(" Buscando SistemaMissao...")
 	
 	var sistema
 	
-	# ✅ PROCURA PELO NOME ORIGINAL
+
 	sistema = get_node("/root/SistemaMissao")
 	if sistema:
-		print("✅ Encontrado em /root/SistemaMissao")
+		print(" Encontrado em /root/SistemaMissao")
 		return sistema
 	
-	# ✅ PROCURA COMO FILHO DO PARENT
+	
 	if get_parent():
 		sistema = get_parent().get_node("SistemaMissao")
 		if sistema:
-			print("✅ Encontrado como filho do parent")
+			print(" Encontrado como filho do parent")
 			return sistema
 	
-	# ✅ PROCURA EM OUTROS LOCAIS
+	
 	sistema = get_tree().get_first_node_in_group("SistemaMissao")
 	if sistema:
-		print("✅ Encontrado no grupo SistemaMissao")
+		print(" Encontrado no grupo SistemaMissao")
 		return sistema
 	
-	print("📋 Nodes disponíveis no root:")
+	print(" Nodes disponíveis no root:")
 	for node in get_tree().get_root().get_children():
 		print("   - ", node.name)
 	
-	print("❌ SistemaMissao não encontrado")
-	print("💡 Adicione o nó SistemaMissao na cena principal")
+	print(" SistemaMissao não encontrado")
+	print(" Adicione o nó SistemaMissao na cena principal")
 	return null
 
 func mostrar_missoes_ativas():
@@ -262,11 +291,104 @@ func mostrar_missoes_ativas():
 	if sistema and sistema.missoes_ativas.size() > 0:
 		print("=== MISSÕES ATIVAS ===")
 		for missao in sistema.missoes_ativas:
-			print("🎯 ", missao["nome"])
+			print(" ", missao["nome"])
 	else:
 		print("Nenhuma missão ativa no momento")
 
 func _input(event):
 	if event is InputEventKey and event.pressed:
-		if event.keycode == KEY_M:  
-			mostrar_missoes_ativas()
+		match event.keycode:
+			KEY_M:  
+				mostrar_missoes_ativas()
+			
+			KEY_1:
+				print(" TESTE: Conversando com Punchduka...")
+				conversar_com_npc("Punchduka")
+			KEY_2:
+				print(" TESTE: Conversando com Lan...")
+				conversar_com_npc("Lan")
+			KEY_3:
+				print(" TESTE: Conversando com Dr. V...")
+				conversar_com_npc("Dr. V")
+			KEY_4:
+				print(" TESTE: Derrotando robô...")
+				derrotar_robo()
+			
+			KEY_5:
+				print(" TESTE: Reiniciando missão de treinamento...")
+				iniciar_missao_treinamento()
+			
+func iniciar_missao_treinamento():
+	missao_treinamento_ativa = true
+	npcs_conversados.clear()
+	robos_derrotados = 0
+	npcs_detectados = {
+		"Punchduka": false,
+		"Lan": false, 
+		"Dr. V": false
+	}
+	
+	var sistema = encontrar_sistema_missao()
+	if sistema:
+		sistema.iniciar_missao("Treinamento na base")
+		print("🎯 Missão de treinamento iniciada!")
+		print("   Objetivos:")
+		print("   - Falar com Punchduka (Combate)")
+		print("   - Falar com Lan (Hacking)") 
+		print("   - Falar com Dr. V (Cura)")
+		print("   - Derrotar 1 robô de treinamento")
+
+
+func detectar_npc_proximo(nome_npc: String):
+	if not missao_treinamento_ativa:
+		return
+	
+	if nome_npc in ["Punchduka", "Lan", "Dr. V"] and not npcs_detectados[nome_npc]:
+		npcs_detectados[nome_npc] = true
+		conversar_com_npc(nome_npc)
+
+func conversar_com_npc(nome_npc: String):
+	if not missao_treinamento_ativa:
+		return
+	
+	if nome_npc in ["Punchduka", "Lan", "Dr. V"]:
+		if nome_npc not in npcs_conversados:
+			npcs_conversados.append(nome_npc)
+			print(" Conversou com: " + nome_npc)
+			verificar_progresso_treinamento()
+
+func derrotar_robo():
+	if not missao_treinamento_ativa:
+		return
+	
+	robos_derrotados += 1
+	print(" Robôs derrotados: " + str(robos_derrotados))
+	verificar_progresso_treinamento()
+
+func verificar_progresso_treinamento():
+	if not missao_treinamento_ativa:
+		return
+	
+	var sistema = encontrar_sistema_missao()
+	if not sistema:
+		return
+	
+	print("🔍 Verificando progresso da missão...")
+	print("   NPCs conversados: " + str(npcs_conversados.size()) + "/3")
+	print("   Robôs derrotados: " + str(robos_derrotados) + "/1")
+	
+	if "Punchduka" in npcs_conversados:
+		sistema.completar_objetivo("Treinamento na base", 0)  # Combate
+		print(" Objetivo 0 completado: Punchduka")
+	
+	if "Lan" in npcs_conversados:
+		sistema.completar_objetivo("Treinamento na base", 1)  # Hacking
+		print(" Objetivo 1 completado: Lan")
+	
+	if "Dr. V" in npcs_conversados:
+		sistema.completar_objetivo("Treinamento na base", 2)  # Cura
+		print(" Objetivo 2 completado: Dr. V")
+	
+	if robos_derrotados >= 1:
+		sistema.completar_objetivo("Treinamento na base", 3)  # Robô
+		print(" Objetivo 3 completado: Robô")

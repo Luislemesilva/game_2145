@@ -4,13 +4,13 @@ class_name DSLMissao
 var missao: Dictionary
 
 func _init():
-	# Inicializa com estrutura completa
+	
 	missao = {
 		"id": "",
 		"nome": "",
 		"tipo": "",
 		"objetivos": [],
-		"recompensas": [],  # ✅ CORREÇÃO: Agora é um array para múltiplas recompensas
+		"recompensas": [],  
 		"completa": false,
 		"ativa": false
 	}
@@ -20,7 +20,7 @@ func criar(nome: String, tipo: String) -> DSLMissao:
 	missao["nome"] = nome
 	missao["tipo"] = tipo
 	missao["objetivos"] = []
-	missao["recompensas"] = []  # ✅ Reset apropriado
+	missao["recompensas"] = []  
 	missao["completa"] = false
 	missao["ativa"] = false
 	return self
@@ -32,7 +32,6 @@ func objetivo(descricao: String) -> DSLMissao:
 	})
 	return self
 
-# ✅ CORREÇÃO CRÍTICA: Agora adiciona em vez de substituir
 func recompensa_habilidade(nome_habilidade: String) -> DSLMissao:
 	missao["recompensas"].append({
 		"tipo": "habilidade",
@@ -40,7 +39,6 @@ func recompensa_habilidade(nome_habilidade: String) -> DSLMissao:
 	})
 	return self
 
-# ✅ CORREÇÃO CRÍTICA: Agora adiciona em vez de substituir
 func recompensa_chave(numero: int) -> DSLMissao:
 	missao["recompensas"].append({
 		"tipo": "chave",
@@ -48,7 +46,6 @@ func recompensa_chave(numero: int) -> DSLMissao:
 	})
 	return self
 
-# Método auxiliar para adicionar qualquer tipo de recompensa
 func recompensa(tipo: String, valor) -> DSLMissao:
 	match tipo:
 		"habilidade":
@@ -62,7 +59,6 @@ func recompensa(tipo: String, valor) -> DSLMissao:
 func construir() -> Dictionary:
 	return missao.duplicate(true)
 
-# Métodos utilitários para facilitar o uso
 func ativar() -> DSLMissao:
 	missao["ativa"] = true
 	return self
@@ -71,7 +67,6 @@ func completar() -> DSLMissao:
 	missao["completa"] = true
 	return self
 
-# Retorna estatísticas da missão (útil para debug)
 func get_estatisticas() -> Dictionary:
 	return {
 		"objetivos_total": missao["objetivos"].size(),

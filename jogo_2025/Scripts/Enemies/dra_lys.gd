@@ -49,28 +49,43 @@ func _ready() -> void:
 	anim.play("idle_human")
 	state = LysState.idle_human
 
-
 	hitbox_human.monitoring = true
 	hitbox_monster.monitoring = false
 	hitbox_monster.visible = false
 
 	sistema_missao = encontrar_sistema_missao()
 
+	if sistema_missao:
+		await get_tree().create_timer(0.5).timeout
+		sistema_missao.iniciar_missao("Derrotar A Dra. Lys")
+		print(" Missão da Dra. Lys disponível!")
+
 	await get_tree().create_timer(human_duration).timeout
 	_start_transformation()
 
 
 func encontrar_sistema_missao():
+	print("🔍 Boss procurando SistemaMissao...")
+	
 	var sistema
+	
 	sistema = get_node("/root/SistemaMissao")
 	if sistema:
+		print(" Boss encontrou SistemaMissao em /root")
 		return sistema
-	sistema = get_parent().get_node("SistemaMissao")
-	if sistema:
-		return sistema
+	
+	if get_parent():
+		sistema = get_parent().get_node("SistemaMissao")
+		if sistema:
+			print(" Boss encontrou SistemaMissao no parent")
+			return sistema
+	
 	for node in get_tree().get_nodes_in_group(""):
 		if node.has_method("iniciar_missao"):
+			print(" Boss encontrou SistemaMissao por método")
 			return node
+	
+	print(" Boss não encontrou SistemaMissao")
 	return null
 
 func _start_transformation():
@@ -189,6 +204,9 @@ func take_damage(amount: int = 1) -> void:
 
 
 func _die() -> void:
+	if state == LysState.dead:
+		return
+	
 	state = LysState.dead
 	attack_timer.stop()
 
@@ -199,11 +217,16 @@ func _die() -> void:
 	on_ground = false
 	
 	if sistema_missao:
-		sistema_missao.completar_missao("Derrotar A Dra. Lys")
-		print(" MISSÃO CONCLUÍDA: Dra. Lys derrotada!")
-		print(" Chave 1 obtida!")
-	else:
-		print(" Sistema de Missões não encontrado")
+		var missao_ja_completa = false
+		for missao in sistema_missao.missoes_completas:
+			if missao["nome"] == "Derrotar A Dra. Lys":
+				missao_ja_completa = true
+				break
+		
+		if not missao_ja_completa:
+			sistema_missao.completar_missao("Derrotar A Dra. Lys")
+			print(" MISSÃO CONCLUÍDA: Dra. Lys derrotada!")
+			print("🔑 Chave 1 obtida!")
 	
 	await get_tree().create_timer(2.0).timeout
 	

@@ -26,7 +26,7 @@ const JUMP_VELOCITY = -400.0
 @export var max_health := 3
 var current_health := max_health
 
-
+var ja_notificou = false
 var status: RobotState
 
 var direction = 1
@@ -88,6 +88,9 @@ func go_to_hurt_state():
 	hitbox.get_node("CollisionShape2D").disabled = true
 	velocity = Vector2.ZERO 
 	
+	# ✅ NOTIFICA O SISTEMA DE MISSÕES QUE O ROBÔ MORREU
+	notificar_missao_robo_derrotado()
+	
 func idle_state(_delta):
 	pass
 	
@@ -137,9 +140,25 @@ func shoot():
 	new_shoot.position = shoot_start_position.global_position
 	new_shoot.set_direction(self.direction)
 
+func notificar_missao_robo_derrotado():
+	if ja_notificou:
+		return
+	
+	ja_notificou = true
+	
+	# Procura por qualquer player na cena
+	var players = get_tree().get_nodes_in_group("Player")
+	if players.size() > 0:
+		var player = players[0]
+		if player.has_method("derrotar_robo"):
+			player.derrotar_robo()
+			print("🤖 Robô notificou o sistema de missões!")
+
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
 		go_to_walk_state()
 	elif anim.animation == "hurt":
+		# ✅ GARANTE QUE A NOTIFICAÇÃO FOI FEITA ANTES DE MORRER
+		notificar_missao_robo_derrotado()
 		queue_free()
