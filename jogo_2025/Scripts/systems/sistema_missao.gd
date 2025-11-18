@@ -47,7 +47,7 @@ func iniciar_missao_automatica_mapa():
 	var arquivo_cena = cena_atual.scene_file_path
 	print("Verificando missões automáticas para: ", arquivo_cena)
 	
--	if "d_toxico_2" in str(arquivo_cena):
+	if "d_toxico_2" in str(arquivo_cena):
 		print(" Mapa DToxico_2 detectado - Iniciando missão da Dra Lys...")
 		await get_tree().create_timer(1.0).timeout
 		
