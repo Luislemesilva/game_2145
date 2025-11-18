@@ -217,32 +217,37 @@ func hit_lethal_area():
 	go_to_hurt_state()
 	
 func verificar_sistema_missoes():
+	print("🔍 INICIANDO verificação do sistema...")
 	var sistema = encontrar_sistema_missao()
 	if sistema:
-		print("✅ Sistema de Missões carregado com sucesso!")
-		print("📋 Missões disponíveis: 4")
-		print("🎮 Pronto para uso no jogo!")
+		print("✅ Sistema encontrado, verificando missões...")
+		# ❌ REMOVA QUALQUER CHAMADA DE completar_missao() DAQUI
 	else:
-		print("❌ Sistema de Missões não encontrado")
+		print("❌ Sistema não encontrado")
 
 func encontrar_sistema_missao():
 	print("🔍 Buscando SistemaMissao...")
 	
 	var sistema
 	
-
+	# ✅ PROCURA PELO NOME ORIGINAL
 	sistema = get_node("/root/SistemaMissao")
 	if sistema:
 		print("✅ Encontrado em /root/SistemaMissao")
 		return sistema
 	
-	
+	# ✅ PROCURA COMO FILHO DO PARENT
 	if get_parent():
 		sistema = get_parent().get_node("SistemaMissao")
 		if sistema:
 			print("✅ Encontrado como filho do parent")
 			return sistema
 	
+	# ✅ PROCURA EM OUTROS LOCAIS
+	sistema = get_tree().get_first_node_in_group("SistemaMissao")
+	if sistema:
+		print("✅ Encontrado no grupo SistemaMissao")
+		return sistema
 	
 	print("📋 Nodes disponíveis no root:")
 	for node in get_tree().get_root().get_children():
