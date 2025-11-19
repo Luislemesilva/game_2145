@@ -1,25 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://br8gqhb8ymoah"]
+[gd_scene load_steps=10 format=3 uid="uid://br8gqhb8ymoah"]
 
-[ext_resource type="Texture2D" uid="uid://s8mjv34lrdoq" path="res://Sprites/Distrito tóxico/Tileset dis toxico decoracao.png" id="1_byu0g"]
 [ext_resource type="Script" uid="uid://c7wv7jslfccf" path="res://Scripts/Scenes objects/poison_cloud_1.gd" id="1_krly3"]
+[ext_resource type="Texture2D" uid="uid://day74r0rm8ktm" path="res://Sprites/Distrito tóxico/Nuvens de Veneno pequeno-Sheet.png" id="2_krly3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_byu0g"]
-size = Vector2(20, 54.575375)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt6ee"]
+atlas = ExtResource("2_krly3")
+region = Rect2(0, 0, 48, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qghur"]
+atlas = ExtResource("2_krly3")
+region = Rect2(48, 0, 48, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hi4a"]
+atlas = ExtResource("2_krly3")
+region = Rect2(96, 0, 48, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_stl1x"]
+atlas = ExtResource("2_krly3")
+region = Rect2(144, 0, 48, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvel4"]
+atlas = ExtResource("2_krly3")
+region = Rect2(192, 0, 48, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gwy8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt6ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qghur")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hi4a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_stl1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvel4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w1p5b"]
+radius = 7.3308315
 
 [node name="PoisonCloud1" type="Area2D" groups=["LethalArea"]]
+z_index = -1
 collision_layer = 16
 collision_mask = 3
 script = ExtResource("1_krly3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = -1
-texture = ExtResource("1_byu0g")
-region_enabled = true
-region_rect = Rect2(24, 144, 48, 24)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2gwy8")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.33230412
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, 2.0000005)
-scale = Vector2(1.7733322, 0.3664657)
-shape = SubResource("RectangleShape2D_byu0g")
+position = Vector2(-2.9999995, 5)
+scale = Vector2(1.7733322, 0.846466)
+shape = SubResource("CircleShape2D_w1p5b")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct0yco3a5km2b"
-path="res://.godot/imported/8 - parede branca do laboratorio.png-3d7906522fa4503b59f4c17505e38e1a.ctex"
+uid="uid://crg3hupuhymwh"
+path="res://.godot/imported/8 - muro metal quebrado lab.png-7d7cb66fdccce5df939b0b426b5243f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Background distrito tóxico/8 - parede branca do laboratorio.png"
-dest_files=["res://.godot/imported/8 - parede branca do laboratorio.png-3d7906522fa4503b59f4c17505e38e1a.ctex"]
+source_file="res://Sprites/Background distrito tóxico/8 - muro metal quebrado lab.png"
+dest_files=["res://.godot/imported/8 - muro metal quebrado lab.png-7d7cb66fdccce5df939b0b426b5243f3.ctex"]
 
 [params]
 

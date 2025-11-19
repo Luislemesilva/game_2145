@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x4skrsq4oie2"
-path="res://.godot/imported/Tela GAME OVER.png-a455599077ce93de67169f98fe7b34a8.ctex"
+uid="uid://cfj3sufbfg5af"
+path="res://.godot/imported/muro metal quebrado dra lys lab AQUI LANNA.png-3eaff1d5ff24ebe50cd3b0b4e084b7e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/HUD/Tela GAME OVER.png"
-dest_files=["res://.godot/imported/Tela GAME OVER.png-a455599077ce93de67169f98fe7b34a8.ctex"]
+source_file="res://Sprites/Background distrito tóxico/muro metal quebrado dra lys lab AQUI LANNA.png"
+dest_files=["res://.godot/imported/muro metal quebrado dra lys lab AQUI LANNA.png-3eaff1d5ff24ebe50cd3b0b4e084b7e3.ctex"]
 
 [params]
 

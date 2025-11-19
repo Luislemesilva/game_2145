@@ -1,25 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpjdmwsbhlid2"]
+[gd_scene load_steps=10 format=3 uid="uid://bpjdmwsbhlid2"]
 
 [ext_resource type="Script" uid="uid://drplvr8cvbul2" path="res://Scripts/Scenes objects/poison_cloud_2.gd" id="1_rorjk"]
-[ext_resource type="Texture2D" uid="uid://s8mjv34lrdoq" path="res://Sprites/Distrito tóxico/Tileset dis toxico decoracao.png" id="1_ufsio"]
+[ext_resource type="Texture2D" uid="uid://bduguvkrg2ao1" path="res://Sprites/Distrito tóxico/Nuvens de Veneno medio-Sheet.png" id="2_rorjk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6bt1"]
+atlas = ExtResource("2_rorjk")
+region = Rect2(0, 0, 72, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jyul"]
+atlas = ExtResource("2_rorjk")
+region = Rect2(72, 0, 72, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6816"]
+atlas = ExtResource("2_rorjk")
+region = Rect2(144, 0, 72, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w038i"]
+atlas = ExtResource("2_rorjk")
+region = Rect2(216, 0, 72, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ougis"]
+atlas = ExtResource("2_rorjk")
+region = Rect2(288, 0, 72, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lp4jd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6bt1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jyul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6816")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w038i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ougis")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rorjk"]
-radius = 12.083958
+radius = 14.252455
 
 [node name="PoisonCloud2" type="Area2D" groups=["LethalArea"]]
 collision_layer = 16
 collision_mask = 2
 script = ExtResource("1_rorjk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = -1
-texture = ExtResource("1_ufsio")
-region_enabled = true
-region_rect = Rect2(72, 120, 96, 48)
+sprite_frames = SubResource("SpriteFrames_lp4jd")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.91212785
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3, 11)
-scale = Vector2(3.2399995, 1.8800006)
+position = Vector2(-0.99999976, 7)
+scale = Vector2(1.9599974, 0.63999987)
 shape = SubResource("CircleShape2D_rorjk")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
