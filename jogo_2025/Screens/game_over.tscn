@@ -1,7 +1,94 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck05uaoknsstk"]
+[gd_scene load_steps=19 format=3 uid="uid://ck05uaoknsstk"]
 
-[ext_resource type="Texture2D" uid="uid://clfyd8h730yts" path="res://Sprites/HUD/texto game over 256x72-Sheet.png" id="1_onka8"]
+[ext_resource type="Script" uid="uid://m6ipv6oqpx72" path="res://Scripts/game_over.gd" id="1_3kj0l"]
+[ext_resource type="Texture2D" uid="uid://bbu4rh7i2ekcy" path="res://Sprites/HUD/Game Over Title.png" id="1_rqsc4"]
 [ext_resource type="FontFile" uid="uid://bw1ygok3fipei" path="res://Sprites/Fonts/PixelifySans-VariableFont_wght.ttf" id="2_3kj0l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4syb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_onka8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3kj0l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1af0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5hii8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5dqdo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vjis"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vgfo5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oeefe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4dqi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pyt2c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vifss"]
+
+[sub_resource type="Animation" id="Animation_onka8"]
+resource_name = "Fade_in"
+length = 2.0
+step = 30.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.9052677, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3kj0l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5dqdo"]
+_data = {
+&"Fade_in": SubResource("Animation_onka8"),
+&"RESET": SubResource("Animation_3kj0l")
+}
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -10,8 +97,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3kj0l")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,16 +110,55 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -62.5
+offset_right = 128.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="GameOverTitle" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
-texture = ExtResource("1_onka8")
+texture = ExtResource("1_rqsc4")
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_j4syb")
 
 [node name="RestartBtn" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.28627452, 0.14901961, 0.36862746, 1)
+theme_override_colors/font_focus_color = Color(0.3647059, 0.20392157, 0.42745098, 1)
+theme_override_colors/font_pressed_color = Color(0.6039216, 0.39215687, 0.65882355, 1)
+theme_override_colors/font_hover_color = Color(0.6039216, 0.39215687, 0.65882355, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.6039216, 0.39215687, 0.65882355, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_fonts/font = ExtResource("2_3kj0l")
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_onka8")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_3kj0l")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h1af0")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5hii8")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_5dqdo")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_8vjis")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_vgfo5")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_oeefe")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_x4dqi")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_pyt2c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vifss")
 text = "RESTART"
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5dqdo")
+}
+
+[connection signal="pressed" from="VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]

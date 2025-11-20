@@ -98,7 +98,6 @@ func die():
 	await anim.animation_finished
 	reload_timer.start()
 
-
 func _on_reload_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 
@@ -177,8 +176,6 @@ func go_to_hurt_state():
 	anim.play("hurt")
 	velocity = Vector2.ZERO
 	reload_timer.start()
-
-
 
 func idle_state():
 	move()

@@ -12,6 +12,8 @@ var letter_display_timer := 0.02
 var space_display_timer := 0.05
 var punctuaction_display_timer := 0.02
 
+var is_typing := false  
+
 signal text_display_finished()
 
 func display_text(text_to_display: String):
@@ -31,14 +33,19 @@ func display_text(text_to_display: String):
 	global_position.x -= final_size.x / 2
 	global_position.y -= final_size.y + 24
 
-
 	text_label.text = ""
 	letter_index = 0
+	is_typing = true  
+
 	display_letter()
 
+
 func display_letter():
+	if not is_typing:
+		return
 
 	if letter_index >= text.length():
+		is_typing = false
 		text_display_finished.emit()
 		return
 
@@ -46,6 +53,7 @@ func display_letter():
 	letter_index += 1
 
 	if letter_index >= text.length():
+		is_typing = false
 		text_display_finished.emit()
 		return
 
@@ -57,5 +65,16 @@ func display_letter():
 		_:
 			letter_timer_display.start(letter_display_timer)
 
+func complete_text(): 
+	text_label.text = text
+	letter_index = text.length()
+	is_typing = false
+	text_display_finished.emit()
+
 func _on_letter_timer_display_timeout() -> void:
 	display_letter()
+	
+func _unhandled_input(event):  
+	if event.is_action_pressed("Interact") and is_typing:
+		complete_text()
+		accept_event()  
