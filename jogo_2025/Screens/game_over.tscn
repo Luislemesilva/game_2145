@@ -160,5 +160,6 @@ text = "RESTART"
 libraries = {
 &"": SubResource("AnimationLibrary_5dqdo")
 }
+autoplay = "Fade_in"
 
 [connection signal="pressed" from="VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
