@@ -336,7 +336,7 @@ script = ExtResource("1_3rem2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ck8ko")
-animation = &"walk"
+animation = &"attack"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -365,7 +365,7 @@ target_position = Vector2(0, 20)
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
 position = Vector2(0, 13)
-target_position = Vector2(48, 0)
+target_position = Vector2(65, 0)
 collision_mask = 2
 
 [node name="ShootStartPosition" type="Node2D" parent="."]

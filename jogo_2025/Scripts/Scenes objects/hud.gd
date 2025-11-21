@@ -1,10 +1,13 @@
 extends CanvasLayer
 
-@onready var hearts = [
-	$HeartsContainer/Heart1,
-	$HeartsContainer/Heart2,
-	$HeartsContainer/Heart3
-]
+var hearts := []
+
+func _ready():
+	hearts = [
+		$HeartsContainer.get_node_or_null("Heart1"),
+		$HeartsContainer.get_node_or_null("Heart2"),
+		$HeartsContainer.get_node_or_null("Heart3")
+	]
 
 @onready var bullets = [
 	$BulletsContainer/Bullet1,

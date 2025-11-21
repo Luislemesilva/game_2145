@@ -349,6 +349,21 @@ position = Vector2(50, 19)
 sprite_frames = SubResource("SpriteFrames_ppcet")
 animation = &"idle"
 
+[node name="Heart4" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(16, 34)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
+[node name="Heart5" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(34, 34)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
+[node name="Heart6" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(50, 34)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
 [node name="BulletsContainer" type="HBoxContainer" parent="HUD"]
 offset_right = 40.0
 offset_bottom = 40.0

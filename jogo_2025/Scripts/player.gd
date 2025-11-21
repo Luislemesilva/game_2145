@@ -33,11 +33,18 @@ var npcs_detectados := {}
 
 var status: PlayerState
 
+
+
 func _ready() -> void:
 	respawn_position = global_position
 	add_to_group("Player")
 	go_to_idle_state()
-
+	
+	var hud = get_tree().get_current_scene().get_node_or_null("HUD")
+	if hud:
+		hud.max_health = max_health
+		hud.current_health = current_health
+		hud.update_hearts(current_health)
 	
 	if not sistema_verificado:
 		sistema_verificado = true
@@ -99,7 +106,7 @@ func die():
 	reload_timer.start()
 
 func _on_reload_timer_timeout() -> void:
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://Entities/game_over.tscn")
 
 
 
@@ -131,12 +138,10 @@ func detectar_npcs_proximos():
 	if not missao_treinamento_ativa:
 		return
 	
-	# Detecta NPCs por nome
 	var punchduka = get_tree().get_nodes_in_group("Punchduka")
 	var lan = get_tree().get_nodes_in_group("Lan")
 	var dr_v = get_tree().get_nodes_in_group("DrV")
 	
-	# Verifica proximidade
 	if punchduka.size() > 0 and punchduka[0].global_position.distance_to(global_position) < 100:
 		conversar_com_npc("Punchduka")
 	
@@ -145,6 +150,8 @@ func detectar_npcs_proximos():
 		
 	if dr_v.size() > 0 and dr_v[0].global_position.distance_to(global_position) < 100:
 		conversar_com_npc("Dr. V")
+		
+		
 func go_to_damage_state():
 	status = PlayerState.damage
 	anim.play("damage")
@@ -241,6 +248,10 @@ func hit_enemy(area: Area2D):
 
 func hit_lethal_area():
 	go_to_hurt_state()
+	
+	
+	
+	
 	
 func verificar_sistema_missoes():
 	print(" INICIANDO verificação do sistema...")
@@ -375,17 +386,17 @@ func verificar_progresso_treinamento():
 	print("   Robôs derrotados: " + str(robos_derrotados) + "/1")
 	
 	if "Punchduka" in npcs_conversados:
-		sistema.completar_objetivo("Treinamento na base", 0)  # Combate
+		sistema.completar_objetivo("Treinamento na base", 0)  
 		print(" Objetivo 0 completado: Punchduka")
 	
 	if "Lan" in npcs_conversados:
-		sistema.completar_objetivo("Treinamento na base", 1)  # Hacking
+		sistema.completar_objetivo("Treinamento na base", 1)  
 		print(" Objetivo 1 completado: Lan")
 	
 	if "Dr. V" in npcs_conversados:
-		sistema.completar_objetivo("Treinamento na base", 2)  # Cura
+		sistema.completar_objetivo("Treinamento na base", 2)  
 		print(" Objetivo 2 completado: Dr. V")
 	
 	if robos_derrotados >= 1:
-		sistema.completar_objetivo("Treinamento na base", 3)  # Robô
+		sistema.completar_objetivo("Treinamento na base", 3)  
 		print(" Objetivo 3 completado: Robô")

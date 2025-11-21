@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cf16hk4k5r3w4"]
+[gd_scene load_steps=16 format=3 uid="uid://cf16hk4k5r3w4"]
 
 [ext_resource type="Texture2D" uid="uid://dfvsvto57nk3k" path="res://Sprites/Pack de Cura/Pacote de cura.png" id="1_pjls5"]
+[ext_resource type="Script" uid="uid://dbsk76deu6e4d" path="res://Scripts/pack.gd" id="1_q1cv7"]
 [ext_resource type="Texture2D" uid="uid://b1um4oady7ve8" path="res://Sprites/Pack de Cura/Pacote de cura_Consumo-Sheet.png" id="2_k8ely"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k8ely"]
@@ -73,9 +74,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_45k0e")
 }],
-"loop": true,
+"loop": false,
 "name": &"get",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -91,14 +92,20 @@ radius = 5.999999
 height = 11.999998
 
 [node name="Pack" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_q1cv7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q1cv7")
-animation = &"idle"
+animation = &"get"
 autoplay = "idle"
-frame_progress = 0.26552585
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 3)
 scale = Vector2(0.9306202, 1)
 shape = SubResource("CapsuleShape2D_l1qsa")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

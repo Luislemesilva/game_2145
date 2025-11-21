@@ -9,7 +9,6 @@ func _process(delta: float) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("enemies"):
-		# sobe um nível para encontrar o dono (Boss)
 		var boss = area.get_parent()
 		if boss and boss.has_method("take_damage"):
 			boss.take_damage(1)

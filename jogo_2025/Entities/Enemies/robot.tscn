@@ -215,7 +215,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -337,7 +337,7 @@ script = ExtResource("1_7tywe")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_4tvvw")
-animation = &"walk"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4.0000014)
@@ -366,7 +366,7 @@ target_position = Vector2(0, 16)
 
 [node name="PlayerDetector" type="RayCast2D" parent="."]
 position = Vector2(0, 13)
-target_position = Vector2(48, 0)
+target_position = Vector2(65, 0)
 collision_mask = 2
 
 [node name="ShootStartPosition" type="Node2D" parent="."]
