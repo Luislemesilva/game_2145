@@ -1,10 +1,10 @@
 extends Area2D
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-@export var speed := 90.0
+@export var speed := 70.0
 @export var rotation_speed := 6.0
 
-var lifetime := 2.5 
+var lifetime := 2.5
 var life_timer := 0.0
 var target: Node2D = null
 var is_breaking := false

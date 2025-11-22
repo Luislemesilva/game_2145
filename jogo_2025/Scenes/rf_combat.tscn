@@ -331,8 +331,10 @@ position = Vector2(925, 300)
 script = ExtResource("20_dqnwe")
 
 [node name="HeartsContainer" type="HBoxContainer" parent="HUD"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -2.0
+offset_top = -6.0
+offset_right = 38.0
+offset_bottom = 34.0
 
 [node name="Heart1" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
 position = Vector2(16, 19)
@@ -346,6 +348,16 @@ animation = &"idle"
 
 [node name="Heart3" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
 position = Vector2(50, 19)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
+[node name="Heart4" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(24, 33)
+sprite_frames = SubResource("SpriteFrames_ppcet")
+animation = &"idle"
+
+[node name="Heart5" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(43, 33)
 sprite_frames = SubResource("SpriteFrames_ppcet")
 animation = &"idle"
 

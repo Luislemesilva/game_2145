@@ -88,7 +88,6 @@ func go_to_hurt_state():
 	hitbox.get_node("CollisionShape2D").disabled = true
 	velocity = Vector2.ZERO 
 	
-	# ✅ NOTIFICA O SISTEMA DE MISSÕES QUE O ROBÔ MORREU
 	notificar_missao_robo_derrotado()
 	
 func idle_state(_delta):
@@ -146,7 +145,7 @@ func notificar_missao_robo_derrotado():
 	
 	ja_notificou = true
 	
-	# Procura por qualquer player na cena
+
 	var players = get_tree().get_nodes_in_group("Player")
 	if players.size() > 0:
 		var player = players[0]
@@ -159,6 +158,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
 		go_to_walk_state()
 	elif anim.animation == "hurt":
-		# ✅ GARANTE QUE A NOTIFICAÇÃO FOI FEITA ANTES DE MORRER
+
 		notificar_missao_robo_derrotado()
 		queue_free()

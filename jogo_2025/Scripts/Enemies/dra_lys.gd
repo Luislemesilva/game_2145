@@ -1,6 +1,5 @@
 extends CharacterBody2D
 
-
 enum LysState {
 	idle_human,
 	idle_monster,
@@ -13,8 +12,6 @@ enum LysState {
 var state := LysState.idle_human
 var can_throw = true
 
-
-
 @export var human_duration := 3.0
 @export var max_health := 1
 var current_health := max_health
@@ -23,7 +20,6 @@ var is_monster := false
 var gravity := 300.0
 var fall_speed := 0.0
 var on_ground := false
-
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitbox_human: Area2D = $Hitboxes/HitboxHuman
@@ -60,33 +56,52 @@ func _ready() -> void:
 		sistema_missao.iniciar_missao("Derrotar A Dra. Lys")
 		print(" Missão da Dra. Lys disponível!")
 
-	await get_tree().create_timer(human_duration).timeout
-	_start_transformation()
+
+	var dm = DialogManager  
+	if dm:
+		if not dm.is_connected("dialog_finished", Callable(self, "start_transformation_from_dialog")):
+			dm.connect("dialog_finished", Callable(self, "start_transformation_from_dialog"))
+	else:
+		print("⚠️ DialogManager não encontrado como autoload.")
 
 
 func encontrar_sistema_missao():
 	print("🔍 Boss procurando SistemaMissao...")
-	
 	var sistema
-	
-	sistema = get_node("/root/SistemaMissao")
+
+	sistema = get_node_or_null("/root/SistemaMissao")
 	if sistema:
 		print(" Boss encontrou SistemaMissao em /root")
 		return sistema
-	
+
 	if get_parent():
-		sistema = get_parent().get_node("SistemaMissao")
+		sistema = get_parent().get_node_or_null("SistemaMissao")
 		if sistema:
 			print(" Boss encontrou SistemaMissao no parent")
 			return sistema
-	
-	for node in get_tree().get_nodes_in_group(""):
-		if node.has_method("iniciar_missao"):
-			print(" Boss encontrou SistemaMissao por método")
-			return node
-	
+
 	print(" Boss não encontrou SistemaMissao")
 	return null
+
+
+# ============================================
+#  TRANSFORMAÇÃO DISPARADA PELO DIÁLOGO
+# ============================================
+
+func start_transformation_from_dialog() -> void:
+	if state != LysState.idle_human:
+		return
+	
+
+	await get_tree().create_timer(3.0).timeout
+
+	if state == LysState.idle_human:
+		_start_transformation()
+
+
+# ============================================
+#               TRANSFORMAÇÃO
+# ============================================
 
 func _start_transformation():
 	if state == LysState.dead:
@@ -109,7 +124,6 @@ func _start_transformation():
 	hitbox_monster.monitoring = true
 	hitbox_monster.visible = true
 
-
 	if float_marker:
 		global_position = float_marker.global_position
 		float_origin_y = global_position.y
@@ -117,49 +131,46 @@ func _start_transformation():
 	anim.play("idle_monster")
 	is_monster = true
 
+	# fade out
 	var tween2 = create_tween()
 	tween2.tween_property(fade, "modulate:a", 0.0, 1.0)
 	await tween2.finished
 
 	state = LysState.idle_monster
-
 	attack_timer.start()
 
 
+# ============================================
+#               ESTADOS
+# ============================================
 
 func _physics_process(delta: float) -> void:
-
 	match state:
-
 		LysState.dead:
 			dead_state(delta)
-
 		LysState.idle_monster:
 			idle_state(delta)
-
 		LysState.attack:
 			attack_state(delta)
-
 
 
 func idle_state(delta: float) -> void:
 	float_timer += delta * float_speed
 	position.y = float_origin_y + sin(float_timer) * float_height
-	
+
 	if player_detector.is_colliding():
 		go_to_attack_state()
-		return
-		
-		
-	
+
+
 func attack_state(_delta):
-	if anim.frame == 8 && can_throw:
+	if anim.frame == 8 and can_throw:
 		throw_potion()
 		can_throw = false
-	
-	
 
 
+# ============================================
+#               MORTE
+# ============================================
 
 func dead_state(delta: float) -> void:
 	if on_ground:
@@ -174,10 +185,6 @@ func dead_state(delta: float) -> void:
 		_play_death_animation()
 
 
-
-
-# DANO
-
 func take_damage(amount: int = 1) -> void:
 	if state in [LysState.transforming, LysState.dead, LysState.idle_human]:
 		return
@@ -187,7 +194,6 @@ func take_damage(amount: int = 1) -> void:
 	modulate = Color(1, 0.3, 0.3)
 	await get_tree().create_timer(0.1).timeout
 	modulate = Color.WHITE
-
 
 	if "damage" in anim.sprite_frames.get_animation_names():
 		state = LysState.damage
@@ -202,11 +208,10 @@ func take_damage(amount: int = 1) -> void:
 	anim.play("idle_monster")
 
 
-
 func _die() -> void:
 	if state == LysState.dead:
 		return
-	
+
 	state = LysState.dead
 	attack_timer.stop()
 
@@ -215,22 +220,15 @@ func _die() -> void:
 
 	fall_speed = 0
 	on_ground = false
-	
+
 	if sistema_missao:
-		var missao_ja_completa = false
-		for missao in sistema_missao.missoes_completas:
-			if missao["nome"] == "Derrotar A Dra. Lys":
-				missao_ja_completa = true
-				break
-		
-		if not missao_ja_completa:
-			sistema_missao.completar_missao("Derrotar A Dra. Lys")
-			print(" MISSÃO CONCLUÍDA: Dra. Lys derrotada!")
-			print("🔑 Chave 1 obtida!")
-	
+		sistema_missao.completar_missao("Derrotar A Dra. Lys")
+		print(" MISSÃO CONCLUÍDA: Dra. Lys derrotada!")
+		print("🔑 Chave 1 obtida!")
+
 	await get_tree().create_timer(2.0).timeout
-	
 	queue_free()
+
 
 func _play_death_animation() -> void:
 	if "death" in anim.sprite_frames.get_animation_names():
@@ -240,17 +238,20 @@ func _play_death_animation() -> void:
 	queue_free()
 
 
+# ============================================
+#              ATAQUE
+# ============================================
 
 func go_to_attack_state():
 	state = LysState.attack
 	anim.play("attack")
 	velocity = Vector2.ZERO
 	can_throw = true
-	
+
 func go_to_idle_state():
 	state = LysState.idle_monster
 	anim.play("idle_monster")
-	
+
 func throw_potion():
 	var new_potion = POTION.instantiate()
 	add_sibling(new_potion)
@@ -258,7 +259,6 @@ func throw_potion():
 	var player = get_tree().get_nodes_in_group("Player")
 	if player.size() > 0:
 		new_potion.target = player[0]
-
 
 
 func _on_hitbox_monster_area_entered(area: Area2D) -> void:
@@ -272,4 +272,3 @@ func _on_hitbox_monster_area_entered(area: Area2D) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if anim.animation == "attack":
 		go_to_idle_state()
-		return

@@ -6,7 +6,9 @@ func _ready():
 	hearts = [
 		$HeartsContainer.get_node_or_null("Heart1"),
 		$HeartsContainer.get_node_or_null("Heart2"),
-		$HeartsContainer.get_node_or_null("Heart3")
+		$HeartsContainer.get_node_or_null("Heart3"),
+		$HeartsContainer.get_node_or_null("Heart4"),
+		$HeartsContainer.get_node_or_null("Heart5")
 	]
 
 @onready var bullets = [

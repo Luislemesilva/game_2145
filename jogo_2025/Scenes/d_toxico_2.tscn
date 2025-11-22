@@ -145,7 +145,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"idle",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b5nx0"]
@@ -357,8 +357,9 @@ position = Vector2(-8, -6.5)
 script = ExtResource("6_n7nhq")
 
 [node name="HeartsContainer" type="HBoxContainer" parent="HUD"]
+offset_top = -6.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 34.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Heart1" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
@@ -373,6 +374,16 @@ animation = &"idle"
 
 [node name="Heart3" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
 position = Vector2(50, 19)
+sprite_frames = SubResource("SpriteFrames_qf5rf")
+animation = &"idle"
+
+[node name="Heart4" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(23, 34)
+sprite_frames = SubResource("SpriteFrames_qf5rf")
+animation = &"idle"
+
+[node name="Heart5" type="AnimatedSprite2D" parent="HUD/HeartsContainer"]
+position = Vector2(42, 34)
 sprite_frames = SubResource("SpriteFrames_qf5rf")
 animation = &"idle"
 
@@ -488,7 +499,7 @@ position = Vector2(274, 59)
 position = Vector2(469, 299)
 
 [node name="PoisonCloud10" parent="PoisonClouds" instance=ExtResource("28_mt3v8")]
-position = Vector2(945, -133)
+position = Vector2(1033, -133)
 
 [node name="PoisonCloud7" parent="PoisonClouds" instance=ExtResource("28_mt3v8")]
 position = Vector2(102, 11)

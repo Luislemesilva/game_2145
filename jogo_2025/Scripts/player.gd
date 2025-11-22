@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var respawn_position: Vector2
-@export var max_health := 3
+@export var max_health := 5
 var current_health := max_health
 
 
@@ -248,9 +248,6 @@ func hit_enemy(area: Area2D):
 
 func hit_lethal_area():
 	go_to_hurt_state()
-	
-	
-	
 	
 	
 func verificar_sistema_missoes():

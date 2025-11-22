@@ -1,4 +1,5 @@
 extends Node
+signal dialog_finished
 
 @onready var dialog_box_scene = preload("res://Entities/dialog_box.tscn")
 
@@ -25,11 +26,12 @@ func start_message(position: Vector2, lines: Array[String]):
 
 func show_text():
 	dialog_box = dialog_box_scene.instantiate()
+
+	# Godot 4 (Callable)
 	dialog_box.text_display_finished.connect(_on_all_text_displayed)
 
 	get_tree().current_scene.add_child(dialog_box)
 	dialog_box.position = dialog_box_position + Vector2(0, -50)
-
 
 	dialog_box.display_text(message_lines[current_line])
 	can_advance_message = false
@@ -42,7 +44,7 @@ func _on_all_text_displayed():
 func advance_message():
 	if not is_message_active:
 		return
-	
+
 	if not can_advance_message:
 		return
 
@@ -52,6 +54,8 @@ func advance_message():
 	if current_line >= message_lines.size():
 		is_message_active = false
 		current_line = 0
+		
+		emit_signal("dialog_finished")
 		return
 
 	show_text()
