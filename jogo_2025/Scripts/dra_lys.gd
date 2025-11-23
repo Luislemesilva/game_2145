@@ -6,8 +6,9 @@ extends Node2D
 var dialog_enabled := true
 
 const lines: Array[String] = [
-	"Olha só quem voltou dos mortos.",
-	"O LuIQ já te entregou a pistola."
+	"Ora, ora. O rato da Rede Fantasma finalmente saiu do bueiro. Hex! Pensei que o medo dos meus 'gases' teria te mantido escondido.",
+	"Você quer salvar a cidade? Você quer restaurar Neo Kairosaka? Mas quem vai comprar a cura se não houver a doença? Eu crio o veneno, Hex. E vendo o antídoto!.",
+	"Você não vai estragar o meu ciclo de lucro! Magnus me deu o Distrito Tóxico e eu vou te dar a minha maior criação!."
 ]
 
 func _ready():

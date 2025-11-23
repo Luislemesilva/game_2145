@@ -216,7 +216,7 @@ size = Vector2(20, 137)
 metadata/_edit_vertical_guides_ = [1080.0]
 
 [node name="Player" parent="." instance=ExtResource("10_mq4mc")]
-position = Vector2(26, 325)
+position = Vector2(13, 325)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_y4i5m")]
 
