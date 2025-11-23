@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://by75xuq4rjlnb"]
+[gd_scene load_steps=49 format=4 uid="uid://by75xuq4rjlnb"]
 
 [ext_resource type="TileSet" uid="uid://bud5vnowgwq1y" path="res://Tiles/rede_fantasma.tres" id="2_4kbmg"]
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="2_d643p"]
@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://bqr0oqlmpqubt" path="res://Entities/DialogNodes/ga_ma.tscn" id="29_6n300"]
 [ext_resource type="PackedScene" uid="uid://6tardn855vxg" path="res://Entities/DialogNodes/punchduca.tscn" id="30_ch07x"]
 [ext_resource type="PackedScene" uid="uid://cf16hk4k5r3w4" path="res://Entities/pack.tscn" id="31_6n300"]
+[ext_resource type="AudioStream" uid="uid://dam54x243d6gl" path="res://Sounds/Rede-fantasma.mp3" id="32_ch07x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uxbgp"]
 size = Vector2(20, 137)
@@ -419,6 +420,12 @@ position = Vector2(71, -311)
 
 [node name="Pack3" parent="Packs" instance=ExtResource("31_6n300")]
 position = Vector2(552, -528)
+
+[node name="RFAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_ch07x")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
 
 [editable path="LevelEnd"]
 [editable path="Plataforms/RFPlataform"]

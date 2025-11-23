@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://duyu05ve660tt"]
+[gd_scene load_steps=49 format=4 uid="uid://duyu05ve660tt"]
 
 [ext_resource type="Texture2D" uid="uid://dg3a52ks3dier" path="res://Sprites/Distrito tóxico/Tileset toxico laboratorio.png" id="1_mq4mc"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="2_i1co6"]
@@ -29,6 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvj7i8hnb5l5" path="res://Entities/poison_cloud_3.tscn" id="27_nl7hg"]
 [ext_resource type="PackedScene" uid="uid://bpjdmwsbhlid2" path="res://Entities/poison_cloud_2.tscn" id="28_mt3v8"]
 [ext_resource type="PackedScene" uid="uid://cf16hk4k5r3w4" path="res://Entities/pack.tscn" id="29_nl7hg"]
+[ext_resource type="AudioStream" uid="uid://di8osucx3yy5k" path="res://Sounds/Distrito tóxico.mp3" id="30_mt3v8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_542t8"]
 texture = ExtResource("1_mq4mc")
@@ -518,6 +519,12 @@ position = Vector2(997, -127)
 
 [node name="Pack4" parent="Packs" instance=ExtResource("29_nl7hg")]
 position = Vector2(638, 136)
+
+[node name="DTAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_mt3v8")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
 
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]

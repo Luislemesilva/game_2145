@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://ck05uaoknsstk"]
+[gd_scene load_steps=20 format=3 uid="uid://ck05uaoknsstk"]
 
 [ext_resource type="Script" uid="uid://m6ipv6oqpx72" path="res://Scripts/game_over.gd" id="1_3kj0l"]
 [ext_resource type="Texture2D" uid="uid://bbu4rh7i2ekcy" path="res://Sprites/HUD/Game Over Title.png" id="1_rqsc4"]
 [ext_resource type="FontFile" uid="uid://bw1ygok3fipei" path="res://Sprites/Fonts/PixelifySans-VariableFont_wght.ttf" id="2_3kj0l"]
+[ext_resource type="AudioStream" uid="uid://dblhxn88dnyc1" path="res://Sounds/GameOver.mp3" id="4_5dqdo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j4syb"]
 
@@ -161,5 +162,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_5dqdo")
 }
 autoplay = "Fade_in"
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5dqdo")
+volume_db = -10.0
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]

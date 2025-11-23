@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://cskgc47rvttp0"]
+[gd_scene load_steps=46 format=4 uid="uid://cskgc47rvttp0"]
 
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="1_cjj60"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="1_i6qml"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="22_uvxbh"]
 [ext_resource type="PackedScene" uid="uid://syo8c6xbk0bb" path="res://Entities/Enemies/watcher_totem.tscn" id="23_3u5pu"]
 [ext_resource type="PackedScene" uid="uid://cf16hk4k5r3w4" path="res://Entities/pack.tscn" id="25_iuh6y"]
+[ext_resource type="AudioStream" uid="uid://drqqyu6ts64rm" path="res://Sounds/Distrito-da-vigilância.mp3" id="26_wmv35"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dl7lb"]
 texture = ExtResource("3_lqxsl")
@@ -244,7 +245,7 @@ limit_right = 1080
 position = Vector2(543, 61)
 
 [node name="Player" parent="." instance=ExtResource("1_cjj60")]
-position = Vector2(721, 132)
+position = Vector2(11, 325)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_lqxsl")]
 
@@ -515,6 +516,12 @@ position = Vector2(981, -176)
 
 [node name="Pack4" parent="Packs" instance=ExtResource("25_iuh6y")]
 position = Vector2(971, 353)
+
+[node name="DVAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_wmv35")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
 
 [editable path="Plataforms/RFPlataform"]
 [editable path="DeathArea"]

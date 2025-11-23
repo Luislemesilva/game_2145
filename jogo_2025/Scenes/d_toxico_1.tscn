@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://d2234isk5boij"]
+[gd_scene load_steps=46 format=4 uid="uid://d2234isk5boij"]
 
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="1_jkwk2"]
 [ext_resource type="PackedScene" uid="uid://br8gqhb8ymoah" path="res://Entities/poison_cloud_1.tscn" id="1_wj1db"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvj7i8hnb5l5" path="res://Entities/poison_cloud_3.tscn" id="24_r3cff"]
 [ext_resource type="PackedScene" uid="uid://bpjdmwsbhlid2" path="res://Entities/poison_cloud_2.tscn" id="24_xljyc"]
 [ext_resource type="PackedScene" uid="uid://cf16hk4k5r3w4" path="res://Entities/pack.tscn" id="26_swmsv"]
+[ext_resource type="AudioStream" uid="uid://di8osucx3yy5k" path="res://Sounds/Distrito tóxico.mp3" id="27_q3tb8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bk6nf"]
 texture = ExtResource("2_6rtoa")
@@ -607,6 +608,12 @@ position = Vector2(630, -55)
 
 [node name="Pack4" parent="Packs" instance=ExtResource("26_swmsv")]
 position = Vector2(1058, -128)
+
+[node name="DTAmbience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_q3tb8")
+volume_db = -10.0
+autoplay = true
+mix_target = 1
 
 [editable path="Plataforms/DTPlataform"]
 [editable path="Plataforms/DTPlataform2"]
