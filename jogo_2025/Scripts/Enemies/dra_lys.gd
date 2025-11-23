@@ -13,7 +13,7 @@ var state := LysState.idle_human
 var can_throw = true
 
 @export var human_duration := 3.0
-@export var max_health := 1
+@export var max_health := 20
 var current_health := max_health
 
 var is_monster := false
