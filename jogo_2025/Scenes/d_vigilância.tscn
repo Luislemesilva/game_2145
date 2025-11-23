@@ -1,7 +1,8 @@
-[gd_scene load_steps=43 format=4 uid="uid://cskgc47rvttp0"]
+[gd_scene load_steps=45 format=4 uid="uid://cskgc47rvttp0"]
 
 [ext_resource type="PackedScene" uid="uid://w80u5ox1ktxp" path="res://Entities/Player/player.tscn" id="1_cjj60"]
 [ext_resource type="PackedScene" uid="uid://4t3m7evc6hpm" path="res://Entities/camera.tscn" id="1_i6qml"]
+[ext_resource type="PackedScene" uid="uid://pqx8t4lvca81" path="res://Entities/Enemies/watcher.tscn" id="2_ai3q8"]
 [ext_resource type="PackedScene" uid="uid://73uypqwft57b" path="res://Entities/Player/gun.tscn" id="2_lqxsl"]
 [ext_resource type="Texture2D" uid="uid://b1to44atys1qu" path="res://Sprites/Distrito da vigilância/Tileset distrito da vigilancia chao simples.png" id="3_lqxsl"]
 [ext_resource type="Texture2D" uid="uid://d3ktnit2hfxwi" path="res://Sprites/Distrito da vigilância/Tileset DECOR Vigilancia.png" id="4_dl7lb"]
@@ -23,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cbqt621mryrrt" path="res://Sprites/HUD/municao.png" id="21_iuh6y"]
 [ext_resource type="PackedScene" uid="uid://cheo8kh6gapuj" path="res://Entities/death_area.tscn" id="22_uvxbh"]
 [ext_resource type="PackedScene" uid="uid://syo8c6xbk0bb" path="res://Entities/Enemies/watcher_totem.tscn" id="23_3u5pu"]
+[ext_resource type="PackedScene" uid="uid://cf16hk4k5r3w4" path="res://Entities/pack.tscn" id="25_iuh6y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dl7lb"]
 texture = ExtResource("3_lqxsl")
@@ -238,8 +240,11 @@ animations = [{
 position = Vector2(4, 313)
 limit_right = 1080
 
+[node name="Watcher" parent="." instance=ExtResource("2_ai3q8")]
+position = Vector2(543, 61)
+
 [node name="Player" parent="." instance=ExtResource("1_cjj60")]
-position = Vector2(36, 325)
+position = Vector2(721, 132)
 
 [node name="Gun" parent="Player" instance=ExtResource("2_lqxsl")]
 
@@ -489,13 +494,27 @@ position = Vector2(400, 0)
 position = Vector2(1033, 289)
 
 [node name="Watcher Totem2" parent="WatcherTotens" instance=ExtResource("23_3u5pu")]
-position = Vector2(661, 97)
+position = Vector2(949, -191)
 
 [node name="Watcher Totem3" parent="WatcherTotens" instance=ExtResource("23_3u5pu")]
-position = Vector2(422, 97)
+position = Vector2(657, 97)
 
 [node name="Watcher Totem4" parent="WatcherTotens" instance=ExtResource("23_3u5pu")]
 position = Vector2(37, -23)
+
+[node name="Packs" type="Node2D" parent="."]
+
+[node name="Pack" parent="Packs" instance=ExtResource("25_iuh6y")]
+position = Vector2(418, 112)
+
+[node name="Pack2" parent="Packs" instance=ExtResource("25_iuh6y")]
+position = Vector2(1063, 136)
+
+[node name="Pack3" parent="Packs" instance=ExtResource("25_iuh6y")]
+position = Vector2(981, -176)
+
+[node name="Pack4" parent="Packs" instance=ExtResource("25_iuh6y")]
+position = Vector2(971, 353)
 
 [editable path="Plataforms/RFPlataform"]
 [editable path="DeathArea"]
