@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://lafkqso6aypd"]
+
+[ext_resource type="VideoStream" uid="uid://dmg37dwtqwxpy" path="res://Cutscene/Cutscene-Inicial-Ano-2145.ogv" id="1_7n648"]
+
+[node name="Cutscene" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -581.0
+offset_top = -308.0
+offset_right = 1339.0
+offset_bottom = 772.0
+stream = ExtResource("1_7n648")
+autoplay = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(387, 221)
+zoom = Vector2(0.4, 0.4)
